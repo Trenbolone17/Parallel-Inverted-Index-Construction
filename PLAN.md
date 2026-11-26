@@ -277,7 +277,7 @@ The full corpora exceed 8 GB of VRAM, so they're processed in batches. Times are
 
 ## 8. Progress
 
-**2026-11-25: weeks 1–2 foundation and D1 done.** See `inverted-index/README.md`.
+**2026-11-25: weeks 1–2 foundation and D1 done.** See `README.md`.
 - **Done:** index format, corpus loader, shared hash table, `naive` oracle, `seq` builder, `idxcheck`, `gen_zipf` and `pretokenize.py`.
 - **Tests:** 13 hand-checked cases plus 200 randomized differential tests, all passing. The ASan/UBSan build is clean.
 - **First measurement:** `seq` on 2M synthetic documents (200M tokens, V = 1M, s = 1.0) builds in 22.2 s. 97% of that is the map phase, about 107 ns per token, because each token waits on memory (cache misses). Peak RSS is 2.25 GB.
@@ -508,6 +508,15 @@ Findings:
   - **For the report:** our design is the right one for real text, and hash partitioning is the right one when replication is high. A natural next step is a hybrid that partitions light terms by hash and leaves heavy terms to D3's bitmaps; it is beyond the class scope.
 
 **2026-11-27: report drafted** in `report/` (7 pages, A4). `report/report.html` is the source; `report/build.sh` regenerates the figures (`make_figures.py`, from `inverted-index/results`) and prints the PDF with headless Brave/Chromium, because no LaTeX is installed. Fill in the highlighted placeholders before submitting: the authors and IDs, and the AI-use and per-member contribution statement required by the course policy. Still to do: the presentation and the demo.
+
+**2026-11-27: presentation drafted** as an 18-slide deck (a claude.ai Slides artifact, downloadable as PowerPoint or PDF). It uses a deep-green theme, and sage slides tie each design choice to a lecture in `Slides/`:
+- Decomposition Techniques: input, then output, data decomposition.
+- Process Mapping & Load Balancing: dynamic mapping on hybrid cores.
+- Brent's Theorem & Parallel Merge Sort: splitter merge vs merge tree.
+- PRAM and Multi-Core Architectures: concurrent writes, atomics.
+- Analytical Modeling: T_o = pT_p − T_s split into T_idle and T_excess; true vs relative speedup.
+
+Its charts come from `presentation/make_charts.py`. Still to do: the demo.
 
 ## 9. How to check the finished project works end to end
 

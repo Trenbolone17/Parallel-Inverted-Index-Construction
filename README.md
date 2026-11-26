@@ -1,10 +1,39 @@
 # Parallel inverted index construction (CS F422, Project 23)
 
-This project builds word → document posting lists from a pretokenized corpus, in C++ with OpenMP. The full plan, schedule and experiment design are in [../PLAN.md](../PLAN.md).
+This project builds word → document posting lists from a pretokenized corpus, in C++ with OpenMP:
+- **D1:** a sequential builder.
+- **D2:** an OpenMP builder with per-thread dictionaries and a sorted merge.
+- **D3:** heavy-term bitmaps under a memory budget.
+- **Baseline:** the same index on the Phoenix++ runtime.
+
+| | |
+|---|---|
+| **Report** (7 pages) | [report/report.pdf](report/report.pdf) |
+| **Presentation** | [slide deck](https://claude.ai/artifact/89aNd8GcLuYT2Xr9fyL2zm#slide-075bc7f8ebe2): opens only for people it is shared with; downloadable as PowerPoint or PDF |
+| **Plan and progress log** | [PLAN.md](PLAN.md) |
+| **Project brief** | [Parallel_Computing_25_Project_Catalogue.docx](Parallel_Computing_25_Project_Catalogue.docx), Project 23 |
+
+## Repository layout
+
+```
+inverted-index/   the code: builders, tests, tools, benchmark harness and raw results
+report/           report.html (source), report.pdf, make_figures.py, build.sh
+presentation/     make_charts.py: the slide charts, drawn from inverted-index/results
+PLAN.md           plan, design decisions and dated progress log with all results
+```
+
+## Requirements
+
+- **Compiler:** a C++20 compiler with OpenMP. Tested with GCC 16.2.1 and libgomp on Linux.
+- **Python 3.12** (for datasets and figures), with pyarrow, numpy, pandas and matplotlib. Tested with pyarrow 26.0.1, numpy 2.5.5, pandas 3.1.1 and matplotlib 3.11.2.
+- **Optional:** `git`, to fetch Phoenix++ for `make phoenix`; LLVM's OpenMP runtime, for `make tsan`; a Chromium-based browser, to print the report (`report/build.sh`).
 
 ## Build and test
 
+All commands from here on run in `inverted-index/`.
+
 ```sh
+cd inverted-index
 make            # bin/invidx, bin/idxcheck, bin/gen_zipf  (g++ -O3 -march=native -fopenmp)
 make test       # hand-checked cases + 200 randomized differential tests vs the naive oracle
 make asan       # same tests under AddressSanitizer + UBSan
@@ -13,11 +42,14 @@ make phoenix    # Phoenix++ reference: clones the authors' repo (pinned) into th
 ALGOS=phoenix tests/run_tests.sh   # the same tests for the Phoenix++ build
 ```
 
-To change the hand-checked cases, edit `tests/make_tiny.py`, then run `python3 tests/make_tiny.py`. The expected outputs in that file are written by hand, not computed.
+To change the hand-checked cases, edit [inverted-index/tests/make_tiny.py](inverted-index/tests/make_tiny.py), then run `python3 tests/make_tiny.py`. The expected outputs in that file are written by hand, not computed.
 
 ## Usage
 
 ```sh
+# Python environment for the dataset and figure scripts
+uv venv .venv && uv pip install --python .venv/bin/python pyarrow numpy pandas matplotlib
+
 # Synthetic corpus: 1M docs, vocabulary 100k, Zipf s = 1.0, mean length 100 (lognormal)
 bin/gen_zipf --docs 1000000 --vocab 100000 --zipf 1.0 --len 100 --seed 1 --out data/zipf.txt
 
@@ -39,8 +71,7 @@ bin/idxcheck --validate a.bin --corpus zipf.txt   # invariants + independent rec
 bin/idxcheck --dump a.bin | head                  # term<TAB>df<TAB>doc ids
 bin/idxcheck --info a.bin                         # sizes + checksum
 
-# Real corpora: download parquet shards from Hugging Face, one at a time, and write them
-# pretokenized (needs the venv: uv venv .venv && uv pip install --python .venv/bin/python pyarrow numpy pandas matplotlib)
+# Real corpora: download parquet shards from Hugging Face, one at a time, and write them pretokenized
 .venv/bin/python -I tools/fetch_corpus.py gutenberg --split test --out data/gutenberg_test.txt  # 100 books, 25 MB
 .venv/bin/python -I tools/fetch_corpus.py gutenberg --shards 4 --out data/gutenberg.txt         # ~5k books
 .venv/bin/python -I tools/fetch_corpus.py wiki --shards 41 --out data/wiki.txt                  # ~6.4M lead paragraphs
@@ -78,6 +109,7 @@ bench/experiments.sh e1 sizes e3 e4 e5 e6 plots      # or: bench/experiments.sh 
 | `e5` | D3's θ, sample rate, memory budget (Wikipedia) | omp-dynamic + D3 settings | `e5_theta`, `e5_sample`, `e5_budget` |
 | `e6` | threads 1–24, 3 corpora | seq, omp-dynamic, heavy-dynamic, phoenix | `e6_<corpus>` |
 
+The raw results of the runs in the report are committed in [inverted-index/results/](inverted-index/results/): one JSON line per run, plus summaries and machine metadata. The figures are not committed; `bench/experiments.sh plots` redraws them.
 
 How the harness measures:
 - **Pinning:** threads are placed one per P-core first, then on E-cores, then on the P-cores' second hyperthreads. The order is read from sysfs and recorded in `.meta.json`.
@@ -87,19 +119,26 @@ How the harness measures:
 
 Run benchmarks only on AC power with nothing else running, including the dataset download. Never mix results from different machines on one curve.
 
+To rebuild the report and the slide charts from the results (from the repository root):
+
+```sh
+report/build.sh                                              # figures + report/report.pdf
+inverted-index/.venv/bin/python presentation/make_charts.py  # presentation/charts/*.png
+```
+
 ## Input and output contract
 
-**Input** (details in `include/corpus.hpp`):
+**Input** (details in [inverted-index/include/corpus.hpp](inverted-index/include/corpus.hpp)):
 - One document per line; the document ID is the line number.
 - Empty lines are empty documents and still use an ID.
 - Tokens are runs of non-whitespace bytes.
 
-**Output** (details in `include/index_format.hpp`):
+**Output** (details in [inverted-index/include/index_format.hpp](inverted-index/include/index_format.hpp)):
 - A canonical binary index.
 - Terms are in byte order, and posting lists are strictly increasing.
 - Two builds are correct relative to each other only if their files are byte-identical.
 
-## Layout
+## Code layout (`inverted-index/`)
 
 ```
 include/   hash.hpp, hash_table.hpp, local_index.hpp (inner loop shared by seq and omp), corpus.hpp,
@@ -109,9 +148,16 @@ src/       invidx.cpp (CLI), build_naive.cpp (oracle), build_seq.cpp (D1), build
 tools/     gen_zipf.cpp, pretokenize.py, fetch_corpus.py
 bench/     run.py (benchmark harness), plot.py (report figures), experiments.sh (all report experiments)
 baselines/ phoenix_index.cpp (our index as a Phoenix++ application; built by `make phoenix`)
-third_party/ Phoenix++ checkout (not committed; `make phoenix` clones it)
+results/   raw benchmark results (JSONL, CSV summaries, machine metadata, run logs)
 tests/     make_tiny.py -> tiny/*.txt + *.expected, run_tests.sh
+third_party/ Phoenix++ checkout (not committed; `make phoenix` clones it)
 ```
+
+To add a builder (paths under `inverted-index/`):
+1. Declare it in `include/builders.hpp`.
+2. Add a branch in `src/invidx.cpp`.
+3. Add the source file to `BUILDERS` in the Makefile.
+4. Add its name to `ALGOS` in `tests/run_tests.sh`; `algo_args` maps test variant names to flags.
 
 ## Status
 
@@ -119,18 +165,12 @@ tests/     make_tiny.py -> tiny/*.txt + *.expected, run_tests.sh
 - [x] D1: `seq` builder (and `gen_zipf`, `pretokenize.py`)
 - [x] Dataset fetch script (Gutenberg, Wikipedia lead paragraphs), tested on the PG-19 test split and 1 Wikipedia shard
 - [x] Full dataset download: Gutenberg (4,976 books, 1.73 GB) and Wikipedia (6.4M lead paragraphs, 1.68 GB)
-- [x] E1 strong scaling on all three corpora (balanced power profile; rerun with the performance profile for the report)
 - [x] D2: `omp` (local dictionaries + sorted range merge; static or dynamic schedule)
 - [x] Benchmark harness (`bench/run.py`: pinning, repetitions, shuffled order, checksum guard; `bench/plot.py`: figures)
 - [x] D3: `heavy` (heavy-term bitmaps under a memory budget), with tests for all-heavy, budget-capped, none-heavy and multi-segment bitmaps
 - [x] Final run of E1, E3 and E5 on a quiet machine with the performance profile (735 runs, all checksums identical)
 - [x] Phoenix++ reference (`make phoenix`): same index, passes the hand-written and differential tests
 - [x] Corpus sizes, E4 (vocabulary and document-length sweeps) and E6 (Phoenix++ vs D2/D3): 1,060 runs, all checksums identical
-- [x] Report draft: `../report/report.pdf` (build with `../report/build.sh`); fill in the highlighted placeholders
-- [ ] Presentation, demo
-
-To add a builder:
-1. Declare it in `include/builders.hpp`.
-2. Add a branch in `src/invidx.cpp`.
-3. Add the source file to `BUILDERS` in the Makefile.
-4. Add its name to `ALGOS` in `tests/run_tests.sh`; `algo_args` maps test variant names to flags.
+- [x] Report: [report/report.pdf](report/report.pdf) (source `report/report.html`, rebuilt by `report/build.sh`)
+- [x] Presentation (slide charts: [presentation/make_charts.py](presentation/make_charts.py))
+- [ ] Demo
