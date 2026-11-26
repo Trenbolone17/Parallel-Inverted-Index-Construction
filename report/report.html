@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Parallel Inverted Index Construction — CS F422 Project 23</title>
+<style>
+@page {
+  size: A4;
+  margin: 16mm 18mm 17mm;
+  @bottom-center { content: counter(page); font: 8.5pt "Noto Sans"; color: #52514e; }
+}
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font: 9.6pt/1.34 "Noto Serif", serif; color: #111; margin: 0; text-align: justify; hyphens: auto; }
+h1 { font: 700 15pt/1.2 "Noto Sans", sans-serif; margin: 0 0 3pt; text-align: left; hyphens: none; }
+.meta { font: 9pt/1.35 "Noto Sans", sans-serif; color: #52514e; margin-bottom: 7pt; }
+h2 { font: 700 10.8pt/1.25 "Noto Sans", sans-serif; margin: 9pt 0 3pt; break-after: avoid; }
+h3 { font: 700 9.6pt/1.25 "Noto Sans", sans-serif; margin: 6pt 0 2pt; break-after: avoid; }
+p { margin: 0 0 4.5pt; orphans: 3; widows: 3; }
+ul { margin: 0 0 4.5pt; padding-left: 14pt; }
+li { margin-bottom: 1.5pt; }
+.abstract { border-left: 2.5pt solid #c3c2b7; padding: 2pt 0 2pt 8pt; margin: 0 0 6pt; }
+.abstract b:first-child { font-family: "Noto Sans", sans-serif; }
+code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 7.9pt; }
+pre { background: #f4f3ef; padding: 4pt 6pt; margin: 2pt 0 5pt; white-space: pre-wrap; text-align: left; line-height: 1.3; }
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figure img, figure svg { width: 100%; display: block; }
+figcaption, caption { font: 8.2pt/1.35 "Noto Sans", sans-serif; color: #333; text-align: left; }
+figcaption { margin-top: 3pt; }
+caption { caption-side: top; margin-bottom: 3pt; }
+table { border-collapse: collapse; width: 100%; font: 8.2pt/1.3 "Noto Sans", sans-serif; margin: 4pt 0 7pt; break-inside: avoid; font-variant-numeric: tabular-nums; }
+th, td { padding: 1.6pt 5pt; text-align: right; vertical-align: top; white-space: nowrap; }
+thead th { white-space: normal; }
+th:first-child, td:first-child { text-align: left; }
+thead th { border-bottom: 0.8pt solid #52514e; font-weight: 700; }
+tbody tr:last-child td { border-bottom: 0.8pt solid #52514e; }
+tr.sep td { border-top: 0.5pt solid #c3c2b7; }
+.note { color: #52514e; }
+.placeholder { background: #fff1c2; }
+.refs p { padding-left: 16pt; text-indent: -16pt; margin-bottom: 1pt; font-size: 8.6pt; text-align: left; }
+.two { columns: 2; column-gap: 14pt; }
+.keep { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<h1>Parallel Inverted Index Construction on a Hybrid Multicore: Local Dictionaries, Sorted Merging and Heavy-Term Bitmaps</h1>
+<div class="meta">
+  <span class="placeholder">[Student A name, ID]</span> · <span class="placeholder">[Student B name, ID]</span><br>
+  CS F422 Parallel Computing · Project 23 · November 2026
+</div>
+
+<div class="abstract">
+<p><b>Abstract.</b> We build word-to-document posting lists from pretokenized text on a 24-thread hybrid laptop CPU (8 performance and 8 efficiency cores). Following the map / local aggregation / reduce organization of Phoenix [1], our OpenMP builder (D2) fills a private hash table per thread and merges the threads' sorted dictionaries by term range in two passes. Our improvement (D3) stores the most frequent terms as shared document bitmaps under a memory budget. Every builder writes a byte-identical canonical index, checked by more than 10,000 tests against an independent oracle and by checksum in all 1,795 benchmark runs. On synthetic Zipf text, Project Gutenberg books and Wikipedia lead paragraphs, the best builder is 6.0×, 10.6× and 7.4× faster than our best sequential builder at 24 threads. The map phase scales about as far as the cores' clock rates allow; the remaining gap is merging dictionaries that every thread holds in part. D3 makes the dynamic schedule's merge 36% cheaper and better balanced, but gains only 1–8% end to end. Against the same index built on the authors' Phoenix++ runtime, our builder takes 16% less time on Wikipedia and 15% more on the synthetic corpus, a difference explained by how much of the vocabulary each thread duplicates.</p>
+</div>
+
+<h2>1 Introduction</h2>
+<p>An inverted index maps every term of a collection to its <i>posting list</i>, the sorted list of documents that contain it. Building one is a group-by: our corpora have 200–330 million tokens that collapse into 30–215 million distinct (term, document) pairs. Each token costs a hash-table lookup that usually misses the cache, and grouping the work of many threads requires a merge. Ranger et al. [1] showed that this shape, map tasks that emit key/value pairs into per-worker buffers followed by a per-key reduce, runs well on shared-memory machines; their Phoenix runtime is the starting point of this project.</p>
+<p>The scope is index construction only: pretokenized input, document-level postings, no ranking, positions or compression. Our contributions are:</p>
+<ul>
+<li><b>A checkable contract.</b> A canonical binary output in which any two correct builders produce identical bytes, a naive oracle, and a test harness run at 1–24 threads (§3).</li>
+<li><b>D1–D3.</b> A sequential builder; an OpenMP builder with per-thread dictionaries, splitters by regular sampling and a two-pass range merge; and heavy-term bitmaps under a memory budget (§4).</li>
+<li><b>An evaluation that explains its limits.</b> Three input families at three sizes, sweeps of skew, vocabulary and document length, ablations of D3, and a same-machine comparison with Phoenix++ [2] running our index as an application (§5–6). We separate scaling from practical speedup and relate both to the hardware.</li>
+</ul>
+
+<h2>2 Background and related work</h2>
+<p>Phoenix [1] runs map tasks that emit pairs into per-worker intermediate buffers, partitions keys among reduce tasks and merges the sorted reduce output. Phoenix++ [2] replaced its fixed buffers with pluggable <i>containers</i> (hash tables, arrays) and <i>combiners</i> that aggregate values as they are emitted; its word-count example is the closest relative of index construction (the Phoenix "reverse index" example indexes HTML links, not words). The information-retrieval literature describes in-memory single-pass inversion with a hash table of terms and growing posting lists [4], sort-based inversion, and bitvectors for very frequent terms [3]. We choose merge splitters with regular sampling, as in parallel sorting by regular sampling [5].</p>
+
+<h2>3 Problem contract and correctness</h2>
+<p><b>Input.</b> One document per line; the document ID is the 0-based line number, and an empty line is a valid empty document. Tokens are maximal runs of bytes other than ASCII whitespace and are otherwise opaque, so UTF-8 passes through. Lowercasing and splitting on non-alphanumerics happen offline (<code>tools/pretokenize.py</code>) and are timed separately (Table 1). <b>Output.</b> A binary index holding the document, term and posting counts; term offsets and bytes, with terms in strictly increasing byte order; and posting offsets and 32-bit document IDs, strictly increasing within each list. Because this layout is unique, <i>a builder is correct exactly when its file is byte-identical to the oracle's</i>, whatever the thread count, schedule or heuristic.</p>
+<p><b>Testing.</b> The oracle (<code>naive</code>) is a deliberately simple <code>std::map&lt;string, set&lt;uint32&gt;&gt;</code> builder with its own input reader. The default suite (<code>make test</code>) runs 13 hand-written cases with hand-written expected outputs (empty corpus, empty documents, repeated and prefix terms, unusual whitespace, a missing final newline, UTF-8, a 10,000-byte token). It then runs 200 random corpora from our generator, with random size, vocabulary, skew and length distribution, through 9 builder variants at 1, 2, 3, 7, 16 and 24 threads; odd counts exercise block and range boundaries. A 600,001-document corpus makes D3's bitmaps span several decode segments. An independent checker recounts every posting from the corpus. All 10,462 checks pass, as do 2,622 under AddressSanitizer and UBSan, and 451 for the Phoenix++ build. Planted bugs were caught: an inconsistent range cut, wrong segment offsets, a wrong heavy/light order and a dropped bitmap word. ThreadSanitizer could not be run (it needs LLVM's OpenMP runtime, which is not installed). Finally, every benchmark run records the index checksum, and all runs on a corpus agree.</p>
+
+<h2>4 Design</h2>
+<p>All builders read the whole file into memory and find document boundaries with a parallel newline count and prefix sum. They share one open-addressing hash table (linear probing, load factor ≤ 0.5, keys are views into the input buffer, so no allocation per token, and a word-at-a-time hash). Speedups therefore measure parallelization, not a change of data structure.</p>
+
+<figure>
+<svg viewBox="0 0 680 196" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52514e"/>
+    </marker>
+  </defs>
+  <g font-size="10" fill="#0b0b0b">
+    <!-- row 1 -->
+    <rect x="11" y="6" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="85" y="23" text-anchor="middle" font-weight="700" font-size="10.8">Load + scan</text>
+    <text x="85" y="38" text-anchor="middle" fill="#52514e">file read into memory;</text>
+    <text x="85" y="51" text-anchor="middle" fill="#52514e">parallel newline count</text>
+
+    <rect x="181" y="6" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="255" y="23" text-anchor="middle" font-weight="700" font-size="10.8">Map (per thread)</text>
+    <text x="255" y="38" text-anchor="middle" fill="#52514e">local hash table:</text>
+    <text x="255" y="51" text-anchor="middle" fill="#52514e">term → sorted doc list</text>
+    <text x="255" y="64" text-anchor="middle" fill="#9a6700" font-weight="700">D3: heavy term → bitmap bit</text>
+
+    <rect x="351" y="6" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="425" y="23" text-anchor="middle" font-weight="700" font-size="10.8">Local sort</text>
+    <text x="425" y="38" text-anchor="middle" fill="#52514e">each thread sorts its</text>
+    <text x="425" y="51" text-anchor="middle" fill="#52514e">dictionary by term</text>
+
+    <rect x="521" y="6" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="595" y="23" text-anchor="middle" font-weight="700" font-size="10.8">Splitters</text>
+    <text x="595" y="38" text-anchor="middle" fill="#52514e">regular sampling of runs</text>
+    <text x="595" y="51" text-anchor="middle" fill="#52514e">→ R = 4T term ranges</text>
+
+    <!-- row 2 -->
+    <rect x="11" y="120" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="85" y="137" text-anchor="middle" font-weight="700" font-size="10.8">Merge, pass 1</text>
+    <text x="85" y="152" text-anchor="middle" fill="#52514e">T-way merge per range:</text>
+    <text x="85" y="165" text-anchor="middle" fill="#52514e">count terms, postings</text>
+
+    <rect x="181" y="120" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="255" y="137" text-anchor="middle" font-weight="700" font-size="10.8">Prefix sums</text>
+    <text x="255" y="152" text-anchor="middle" fill="#52514e">output offsets of</text>
+    <text x="255" y="165" text-anchor="middle" fill="#52514e">every range</text>
+
+    <rect x="351" y="120" width="148" height="64" rx="4" fill="#f4f3ef" stroke="#898781"/>
+    <text x="425" y="137" text-anchor="middle" font-weight="700" font-size="10.8">Merge, pass 2</text>
+    <text x="425" y="152" text-anchor="middle" fill="#52514e">write terms; concatenate</text>
+    <text x="425" y="165" text-anchor="middle" fill="#52514e">(static) or k-way merge lists</text>
+    <text x="425" y="178" text-anchor="middle" fill="#9a6700" font-weight="700">D3: reserve heavy slots</text>
+
+    <rect x="521" y="120" width="148" height="64" rx="4" fill="#fdf1d6" stroke="#eda100" stroke-width="1.4"/>
+    <text x="595" y="137" text-anchor="middle" font-weight="700" font-size="10.8">D3: decode bitmaps</text>
+    <text x="595" y="152" text-anchor="middle" fill="#52514e">popcount + ctz tasks per</text>
+    <text x="595" y="165" text-anchor="middle" fill="#52514e">(heavy term × segment)</text>
+  </g>
+  <g stroke="#52514e" stroke-width="1.2" fill="none" marker-end="url(#ar)">
+    <path d="M159,38 H179"/><path d="M329,38 H349"/><path d="M499,38 H519"/>
+    <path d="M595,70 V95 H85 V118"/>
+    <path d="M159,152 H179"/><path d="M329,152 H349"/><path d="M499,152 H519"/>
+  </g>
+</svg>
+<figcaption><b>Figure 1.</b> The D2 pipeline; D3 additions in amber. Every step after the scan runs with T threads; the merge loops are dynamically scheduled over the R ranges. The result is the canonical index of §3.</figcaption>
+</figure>
+
+<h3>4.1 D1: sequential builder</h3>
+<p><code>seq</code> scans documents in order, looks each token up in the hash table and appends the document ID unless it equals the list's last entry. Processing documents in order makes deduplication free and keeps every list sorted. It then sorts the terms and lays out the index. The map phase is 88–97% of its time: 35–100 ns per token, mostly cache misses into the table.</p>
+
+<h3>4.2 D2: local dictionaries with sorted merging</h3>
+<p><b>Map.</b> Each thread builds a private table over its documents. With the <i>static</i> schedule a thread gets one contiguous block of equal bytes, so all of thread <i>t</i>'s document IDs precede thread <i>t</i>+1's and merging a term's lists is a concatenation in thread order. With the <i>dynamic</i> schedule (16 chunks per thread, <code>schedule(monotonic:dynamic)</code>) the load balances across core types, but a term's lists interleave and need a k-way merge. <b>Local sort.</b> Each thread sorts its dictionary by term. <b>Splitters.</b> Regular sampling of the sorted runs, weighted by run length, picks R = 4T term ranges (oversplitting for balance); every run is cut at the same keys by binary search. <b>Two-pass merge.</b> Over the ranges, with a dynamic schedule: pass 1 merges the T runs by term to count distinct terms and postings and records the merge order; prefix sums give each range's output offsets; pass 2 writes term bytes and posting lists in place. Output is deterministic and nothing is reallocated. Temporaries are freed in parallel.</p>
+
+<h3>4.3 D3: heavy-term bitmaps under a memory budget</h3>
+<p><b>Why.</b> In Zipf-distributed text a few terms occur in a large fraction of documents. On Wikipedia the 104 terms with document frequency ≥ N/32 make up 43% of tokens and 35% of postings. In D2 they grow per-thread vectors by doubling, and under the dynamic schedule each is merged by a single thread, so the layout phase's imbalance reaches 1.35 (max/mean) at 24 threads. <b>Detection.</b> Threads count document frequencies on a stratified 1% sample. Per-thread candidates are pruned with a pigeonhole bound, and exact sample counts are then summed. A term is heavy if its sampled frequency is ≥ θ. The default θ = 1/32 is the break-even density at which an N-bit bitmap is as large as a list of 32-bit IDs. <b>Budget.</b> The number of heavy terms H is capped so that H·N/8 bytes fit the budget (default 1 GB), keeping the most frequent. Misclassification only costs speed, never correctness. <b>Map.</b> Heavy terms are pre-inserted in every local table with a heavy ID; a heavy token sets bit <i>d</i> in that term's shared bitmap, after the same last-document check as D2. Chunks start at arbitrary documents, so only a chunk's first and last 64-bit word can be shared with another thread. Those use a relaxed atomic OR (<code>std::atomic_ref</code>); interior words use a plain OR. <b>Merge and decode.</b> Light terms are merged as in D2. Heavy terms need no merge: the write pass reserves their slots in term order, and balanced tasks of (heavy term × 262,144-document segment) count bits, take prefix sums and write IDs with count-trailing-zeros.</p>
+<p>Measurement forced two design changes. Aligning chunks to 512 documents, planned in order to avoid atomics, collapsed Gutenberg's 4,976 books into about 10 chunks and made D3 2× slower; boundary atomics replaced it. Without the last-document check, every repeat of a word in a long book rewrote a scattered bitmap word, which made D3 23% slower on Gutenberg.</p>
+
+<h3>4.4 Phoenix++ reference</h3>
+<p>The catalogue names Phoenix as the baseline, and its examples do not build a word index, so we wrote ours as a Phoenix++ application (<code>baselines/phoenix_index.cpp</code>, about 300 lines). We supply four pieces. The <i>split</i> makes ~1 MB chunks of whole documents, as in Phoenix++'s word count. The <i>map</i> emits (term, document) per token. The <i>combiner</i> is a per-thread posting list with last-document deduplication. The <i>reduce</i> sorts a term's IDs, followed by the same canonical layout. Phoenix++'s unmodified code does the scheduling, the per-thread hash tables, the hash partitioning into T reduce buckets, the cross-thread union and the sort/merge of reduced terms. It runs pinned like ours, reads the same input and produces the same checksum. Phoenix++ predates C++11 name lookup and needs <code>-fpermissive</code> with GCC 16.</p>
+
+<h2>5 Experimental methodology</h2>
+<p><b>Machine.</b> Intel Core i7-13700HX laptop: 8 P-cores with 2 hyperthreads each (up to 5.0 GHz), 8 E-cores (up to 3.7 GHz), 30 MB L3, one NUMA node, 31 GB RAM. Linux 7.3, GCC 16.2.1 with <code>-O3 -march=native</code> and libgomp, AC power, performance power profile. <b>Pinning.</b> Threads are pinned (<code>OMP_PLACES</code>, <code>OMP_PROC_BIND=close</code>) first one per P-core, then to E-cores, then to the P-cores' second hyperthreads. Up to 8 threads therefore use only P-cores, 12 and 16 add E-cores, and 24 adds hyperthreads; figures shade these regions. <b>Protocol.</b> Each run is a fresh process (clean peak RSS) after one untimed warm-up that loads the input into the page cache. Each configuration runs 5 times, in a new random order per repetition, and we report the median. Repeated runs differed by a median of 0.5–2.5% (max/min). <b>Measures.</b> <i>Build time</i> covers the document-boundary scan and every builder phase up to a complete in-memory canonical index, including freeing temporaries. Reading the file, writing the index and offline tokenization are reported separately. <i>Scaling speedup</i> is T<sub>v</sub>(1)/T<sub>v</sub>(p) for a variant v; <i>practical speedup</i> is T<sub>seq</sub>/T<sub>v</sub>(p). Counters include tokens, hash probes, local dictionary entries, heavy terms and peak RSS. Smaller corpora (25% and 50%) take every 4th or 2nd document, so only the size changes.</p>
+
+<table>
+<caption><b>Table 1.</b> Input families. Gutenberg is PG-19 [7] (4 of 23 training shards); Wikipedia is the first paragraph of every article (dump 2023-11-01 [9]); the synthetic corpus uses Zipf s = 1, V = 10⁶, log-normal lengths (alias method [8]).</caption>
+<thead><tr><th></th><th>Synthetic Zipf</th><th>Gutenberg books</th><th>Wikipedia leads</th></tr></thead>
+<tbody>
+<tr><td>documents · mean tokens per document</td><td>2,000,000 · 100</td><td>4,976 · 65,438</td><td>6,407,814 · 44.5</td></tr>
+<tr><td>tokens · distinct terms</td><td>200.1 M · 1.00 M</td><td>325.6 M · 0.78 M</td><td>285.3 M · 2.78 M</td></tr>
+<tr><td>postings · postings per token</td><td>163.1 M · 0.82</td><td>29.9 M · 0.09</td><td>214.5 M · 0.75</td></tr>
+<tr><td>input · index size</td><td>0.71 · 0.67 GB</td><td>1.73 · 0.14 GB</td><td>1.68 · 0.93 GB</td></tr>
+<tr class="sep"><td>one-time preprocessing (Python, multiprocess)</td><td>generation &lt; 1 s</td><td>tokenization 13.3 s</td><td>tokenization 53.9 s</td></tr>
+<tr><td>load from page cache · write index</td><td>0.10 · 0.15 s</td><td>0.29 · 0.05 s</td><td>0.27 · 0.19 s</td></tr>
+<tr><td><code>seq</code> build time · peak RSS</td><td>20.65 s · 2.2 GB</td><td>11.80 s · 2.0 GB</td><td>16.95 s · 3.8 GB</td></tr>
+</tbody>
+</table>
+
+<h2>6 Results</h2>
+<h3>6.1 Strong scaling</h3>
+<p>Figure 2 and Table 2 show build time from 1 to 24 threads. With D3 and the dynamic schedule, the best builder reaches a practical speedup of <b>6.0×</b> (Zipf), <b>10.6×</b> (Gutenberg) and <b>7.4×</b> (Wikipedia); scaling speedups are similar (6.0×, 10.5×, 7.9×). At one thread every D2 variant is within 2.1% of <code>seq</code>, so parallelization costs little. On the 8 P-cores the builders reach 4.3–6.1×, and E-cores plus hyperthreads add a further 1.35–1.73×. The two schedules trade off differently by input. Static blocks have equal bytes, but E-core threads are slower, so the map phase's imbalance is 1.07–1.19 against 1.02–1.03 with the dynamic schedule. That makes the dynamic schedule clearly better on Gutenberg (1.20 against 1.31 s at 24 threads). On Wikipedia at 8 threads, static is faster (3.43 against 3.61 s), because the dynamic schedule's k-way merge of interleaved lists costs 0.46 s of layout against 0.08 s; this is the cost D3 removes (§6.4). Corpus size changes little (Table 3): speedup rises slightly from 25% to 100% as fixed costs amortize, and the curves keep their shape.</p>
+
+<figure>
+<img src="figures/fig_scaling.svg" alt="Practical speedup vs threads for four variants on three corpora">
+<figcaption><b>Figure 2.</b> Practical speedup over <code>seq</code> (E1). <code>omp</code> = D2, <code>heavy</code> = D3; <code>-dynamic</code> = dynamic schedule. Shading: 12–16 threads add E-cores (light), 24 adds hyperthreads (dark). Bold: best variant at 24 threads.</figcaption>
+</figure>
+
+<table>
+<caption><b>Table 2.</b> Median build time in seconds (E1). Best per column in bold. Peak RSS at 24 threads, D2-dynamic → D3-dynamic: Zipf 3.95 → 3.79 GB, Gutenberg 2.21 → 2.16 GB, Wikipedia 4.46 → 4.22 GB.</caption>
+<thead><tr><th>variant</th><th>Zipf, 8</th><th>Zipf, 24</th><th>Gutenberg, 8</th><th>Gutenberg, 24</th><th>Wikipedia, 8</th><th>Wikipedia, 24</th></tr></thead>
+<tbody>
+<tr><td><code>seq</code> (1 thread)</td><td colspan="2" style="text-align:center">20.65</td><td colspan="2" style="text-align:center">11.80</td><td colspan="2" style="text-align:center">16.95</td></tr>
+<tr><td>D2 <code>omp</code> (static)</td><td><b>4.63</b></td><td>3.48</td><td>2.10</td><td>1.31</td><td><b>3.43</b></td><td>2.34</td></tr>
+<tr><td>D2 <code>omp-dynamic</code></td><td>4.75</td><td>3.45</td><td>1.96</td><td>1.20</td><td>3.61</td><td>2.35</td></tr>
+<tr><td>D3 <code>heavy</code> (static)</td><td>4.66</td><td>3.50</td><td>2.13</td><td>1.28</td><td>3.51</td><td>2.36</td></tr>
+<tr><td>D3 <code>heavy-dynamic</code></td><td>4.74</td><td><b>3.42</b></td><td><b>1.92</b></td><td><b>1.11</b></td><td>3.49</td><td><b>2.28</b></td></tr>
+<tr class="sep"><td>practical speedup of the best</td><td>4.5×</td><td>6.0×</td><td>6.1×</td><td>10.6×</td><td>4.9×</td><td>7.4×</td></tr>
+</tbody>
+</table>
+
+<table>
+<caption><b>Table 3.</b> Corpus size: <code>seq</code> time and practical speedup of D3-dynamic at 8 / 24 threads.</caption>
+<thead><tr><th>corpus</th><th>25% of documents</th><th>50%</th><th>100%</th></tr></thead>
+<tbody>
+<tr><td>Synthetic Zipf</td><td>6.08 s · 4.0× / 5.4×</td><td>11.52 s · 4.3× / 5.8×</td><td>20.65 s · 4.4× / 6.0×</td></tr>
+<tr><td>Gutenberg</td><td>2.84 s · 5.9× / 9.8×</td><td>5.64 s · 6.0× / 10.2×</td><td>11.80 s · 6.1× / 10.6×</td></tr>
+<tr><td>Wikipedia</td><td>4.50 s · 4.7× / 7.0×</td><td>8.67 s · 4.8× / 7.3×</td><td>16.95 s · 4.9× / 7.4×</td></tr>
+</tbody>
+</table>
+
+<h3>6.2 Where the time goes: the clock ceiling and vocabulary replication</h3>
+<p><b>The map phase runs close to the hardware limit.</b> We sampled core frequencies during runs: 4.75 GHz on average with one busy thread, 3.94 GHz with all 8 P-cores busy, and 3.6 GHz on E-cores. Eight P-cores can therefore deliver at most about 8 × 3.94 / 4.75 ≈ 6.6× of one core at full turbo, and the map phase reaches 5.3–6.8× at 8 threads (10.3–13.2× at 24 with D3-dynamic). The CPU time spent in map at 8 threads is 1.14× (Gutenberg), 1.28× (Wikipedia) and 1.42× (Zipf) that of <code>seq</code>. On real text the clock drop (1.21×) accounts for this; on Zipf, tokens drawn independently from a million terms add memory traffic.</p>
+<p><b>The phases after the map are the gap.</b> At 24 threads they take 23% (Gutenberg), 38% (Wikipedia) and 43% (Zipf) of build time (Figure 3). The cause is <i>replication</i>: a thread's dictionary holds every term that occurs in its documents, so the threads together hold 17.1× (Zipf), 3.8× (Gutenberg) and 3.2× (Wikipedia) as many entries as there are distinct terms. On Zipf every thread sorts most of the vocabulary, and local sort takes 0.78 s at 24 threads, more than <code>seq</code>'s single sort of the whole vocabulary (0.40 s). If these phases scaled like the map, Zipf would build in about 2.0 s (10×) instead of 3.4 s. Replication is much lower on real text because rare words are bursty: they cluster in a few documents [6], whereas our generator draws every token independently. This cost is inherent to the "local dictionaries with sorted merging" design.</p>
+
+<figure>
+<img src="figures/fig_phases.svg" alt="Stacked phase times at 24 threads for D2, D3 and Phoenix++ on three corpora">
+<figcaption><b>Figure 3.</b> Median phase times at 24 threads (E6 run). The map phases are similar; the builders differ in what happens after it. "heavy (D3)" is sampling plus decoding; "other" is the scan and freeing.</figcaption>
+</figure>
+
+<h3>6.3 Input characteristics</h3>
+<p><b>Skew</b> (E3; 2M documents, V = 10⁶, Zipf s from 0 to 1.4; Figure 4a). Build time at 24 threads falls from 6.2 s (s = 0) to 0.56 s (s = 1.4), since skewed text has fewer distinct (term, document) pairs and its frequent terms stay in cache. D3's advantage grows with skew, up to 3% less time and 13% less memory at s ≥ 1.2. At s = 0 the sample finds no heavy terms and D3 costs nothing measurable, so the uniform vocabulary we had expected to be D3's unfavorable case is not. <b>Vocabulary</b> (E4; 2M documents, 200M tokens, V from 10⁴ to 10⁷; Figure 4b, c). A small vocabulary stays in cache and scales best (11.6× at V = 10⁴). From 10⁵ on, speedup settles near 6×, and parallel memory grows faster than sequential memory (6.6 against 3.3 GB at V = 10⁷), which is replication again. <b>Document length</b> (E4; mean 10 to 10,000 tokens at 200M tokens). Length hardly matters: our build takes 3.49 to 3.26 s at 24 threads (6.5–7.0×), so per-document overhead is negligible even for 10-token documents.</p>
+
+<figure>
+<img src="figures/fig_inputs.svg" alt="D3 relative to D2 vs skew; speedup and memory vs vocabulary size">
+<figcaption><b>Figure 4.</b> (a) D3-dynamic relative to D2-dynamic at 24 threads as skew grows (E3). (b, c) Practical speedup and peak memory at 24 threads as the vocabulary grows (E4), including Phoenix++ and <code>seq</code>'s memory.</figcaption>
+</figure>
+
+<h3>6.4 D3: ablations and unfavorable cases</h3>
+<p>With the dynamic schedule D3 removes what it targets. On Wikipedia at 24 threads the layout phase falls from 0.28 to 0.18 s (θ = 1/32) and to 0.13 s (θ = 1/128), and its imbalance from 1.33 to 1.16 and 1.07 (Figure 5b). Because layout is a small share of the total, the end-to-end gain is 3% (2.32 → 2.25 s), with 5% less peak memory (4.46 → 4.23 GB). Across the E1 corpora the gain at 24 threads is 1% (Zipf), 3% (Wikipedia) and 8% (Gutenberg). On Gutenberg 96% of tokens hit one of 27,110 heavy terms, so D3 also skips most posting-vector growth in the map. The threshold gives a U-shaped build time: memory is lowest at the default 1/32, and time is lowest at 1/128 (Figure 5). Table 4 covers sample rate and budget.</p>
+<p><b>Unfavorable cases.</b> (i) <i>θ too low:</i> at θ = 1/512 the 1,340 bitmaps hit the 1 GB cap and peak memory (4.83 GB) exceeds D2's by 8%. (ii) <i>Oversampling:</i> a 10% sample costs 0.11 s and makes D3 slower than D2; a 0.1% sample finds 101 of the 104 heavy terms in 3 ms. (iii) <i>One thread on Wikipedia:</i> D3 is 6% slower than D2 (18.07 against 17.07 s). The 79 MB of bitmaps exceed the 30 MB L3, so bit writes miss the cache (+0.77 s in map), and sampling (0.13 s) and decoding (0.10 s) add more. From 8 threads on, each thread writes a narrow slice of every bitmap and the penalty disappears. (iv) <i>Static schedule:</i> layout is already cheap (0.08 s at 8 threads), so D3 has nothing to remove and lands within ±2% of D2.</p>
+
+<figure>
+<img src="figures/fig_theta.svg" alt="Build time, layout and decode time, and peak RSS vs theta">
+<figcaption><b>Figure 5.</b> D3's threshold θ on Wikipedia, dynamic schedule, 24 threads (E5); dashed: D2. Lower θ makes more terms heavy (numbers under the axis): layout gets cheaper and better balanced, while decoding and bitmap memory grow. Note the truncated axes in (a) and (c): all build times are within 3% of each other.</figcaption>
+</figure>
+
+<table>
+<caption><b>Table 4.</b> D3 sample rate and memory budget (Wikipedia, dynamic schedule, 24 threads, E5). D2 takes 2.32–2.33 s and 4.46 GB.</caption>
+<thead><tr><th>setting</th><th>heavy terms</th><th>sampling time</th><th>build time</th><th>peak RSS</th></tr></thead>
+<tbody>
+<tr><td>sample 0.1%, θ = 1/32</td><td>101</td><td>0.003 s</td><td>2.26 s</td><td>4.23 GB</td></tr>
+<tr><td>sample 1% (default), θ = 1/32</td><td>104</td><td>0.013 s</td><td>2.26 s</td><td>4.23 GB</td></tr>
+<tr><td>sample 10%, θ = 1/32</td><td>102</td><td>0.11 s</td><td>2.34 s</td><td>4.22 GB</td></tr>
+<tr class="sep"><td>budget 16 MB, θ = 1/128</td><td>20</td><td>0.014 s</td><td>2.28 s</td><td>4.28 GB</td></tr>
+<tr><td>budget 64 MB, θ = 1/128</td><td>83</td><td>0.014 s</td><td>2.25 s</td><td>4.23 GB</td></tr>
+<tr><td>budget 256 MB, θ = 1/128</td><td>335</td><td>0.014 s</td><td>2.26 s</td><td>4.27 GB</td></tr>
+<tr><td>budget 1 GB (not binding: 426 MB used), θ = 1/128</td><td>557</td><td>0.014 s</td><td>2.25 s</td><td>4.37 GB</td></tr>
+</tbody>
+</table>
+
+<h3>6.5 Comparison with Phoenix++</h3>
+<p>Figure 6 and Table 5 compare D2 and D3 with Phoenix++ in one interleaved run. The map phases are comparable, since both fill per-thread hash tables: 1.95 against 2.17 s on Zipf and 1.39 against 1.50 s on Wikipedia at 24 threads. The designs differ after the map. Phoenix++ hash-partitions every thread's table into T reduce buckets, so each term is combined once by one reduce task. D2 sorts every thread's dictionary and merges the runs, so its work grows with replication. On the synthetic corpus (17× replication) Phoenix++ needs half our post-map time and takes 15% less time overall. On Wikipedia (3.2×) our sorted merge is cheaper and our builder takes 16% less time with 24% less memory; Gutenberg is a tie. Phoenix++ always uses more memory, 17–31% here and up to 44% in E4, because per-thread tables, partitioned copies and reduced lists coexist. It also never frees its combiner state, a small advantage we did not correct for (our build time includes up to 0.24 s of freeing).</p>
+
+<figure>
+<img src="figures/fig_phoenix.svg" alt="Practical speedup vs threads: D2, D3 and Phoenix++">
+<figcaption><b>Figure 6.</b> Practical speedup of D2, D3 and our index on Phoenix++ (E6; one run per corpus, all variants interleaved, identical checksums).</figcaption>
+</figure>
+
+<table>
+<caption><b>Table 5.</b> Phoenix++ against D2 and D3 at 24 threads (E6). D2 and D3 use the dynamic schedule. Replication = local dictionary entries / distinct terms.</caption>
+<thead><tr><th>corpus</th><th>replication</th><th>D2</th><th>D3</th><th>Phoenix++</th><th>after map, D3 / Phoenix++</th><th>peak RSS, D3 / Phoenix++</th></tr></thead>
+<tbody>
+<tr><td>Synthetic Zipf</td><td>17.1×</td><td>3.44 s</td><td>3.45 s</td><td><b>2.94 s</b></td><td>1.47 / 0.75 s</td><td>3.80 / 4.72 GB</td></tr>
+<tr><td>Gutenberg</td><td>3.8×</td><td>1.17 s</td><td><b>1.08 s</b></td><td>1.15 s</td><td>0.21 / 0.22 s</td><td>2.16 / 2.52 GB</td></tr>
+<tr><td>Wikipedia</td><td>3.2×</td><td>2.33 s</td><td><b>2.26 s</b></td><td>2.68 s</td><td>0.81 / 1.12 s</td><td>4.23 / 5.56 GB</td></tr>
+</tbody>
+</table>
+
+<h2>7 Discussion and limitations</h2>
+<p>Within the required design, the remaining speedup is bounded by the clock drop under load and by replication. D3's end-to-end gains are modest because the map dominates and frequent terms are already cache-hot lookups. Its value is a bounded-memory representation that keeps the dynamic schedule's merge balanced, and it is never harmful at 8 or more threads. All results come from one machine with a warm page cache (cold reads were not measured), and the synthetic generator overstates replication about fivefold compared with real text, which makes synthetic results pessimistic for D2. ThreadSanitizer was not run; the boundary atomics are race-free by construction. Three extensions follow from the measurements: storing an 8-byte key prefix inline to speed up the local sort, the largest post-map phase; hash-partitioning light terms at map time, Phoenix++'s strength, combined with D3's bitmaps for heavy terms; and a GPU builder.</p>
+
+<h2>8 Conclusion</h2>
+<p>A per-thread-dictionary builder with sorted range merging reaches 6–10.6× over a tuned sequential builder on a 24-thread hybrid CPU and produces exactly the same index. Its map phase is close to what the hardware delivers, and its limit is vocabulary replication across threads. Heavy-term bitmaps under a memory budget work as designed but buy only a few percent. On real text the design beats the Phoenix++ runtime in both time and memory, while Phoenix++'s hash partitioning wins when replication is extreme.</p>
+
+<h2>Reproducibility</h2>
+<pre>cd inverted-index
+make &amp;&amp; make test &amp;&amp; make asan                  # builders, oracle, 10,462 checks
+make phoenix &amp;&amp; ALGOS=phoenix tests/run_tests.sh # Phoenix++ (commit 1276c8d) + its tests
+.venv/bin/python -I tools/fetch_corpus.py gutenberg --shards 4 --out data/gutenberg.txt
+.venv/bin/python -I tools/fetch_corpus.py wiki --shards 41 --out data/wiki.txt
+bench/experiments.sh all          # E1, sizes, E3-E6 (about 4.5 h) -&gt; results/, results/figures/
+cd ../report &amp;&amp; ./build.sh        # this report's figures and PDF</pre>
+<p>Versions: GCC 16.2.1 (libgomp), Python 3.12.16, pandas 3.1.1, NumPy 2.5.5, matplotlib 3.11.2, PyArrow 26.0.1. Raw results (one JSON line per run) and machine metadata are in <code>inverted-index/results/</code>.</p>
+
+<h2>Attribution and use of AI tools</h2>
+<p>Phoenix++ (Stanford University, BSD license) is used unmodified as an external baseline; the Makefile fetches it and it is not redistributed. PG-19 [7] and Wikipedia [9] (CC BY-SA 4.0) are obtained from Hugging Face. The index format, builders, tests, corpus generator, benchmark scripts and figures were written for this project. <span class="placeholder">[Describe AI assistance as the course policy requires. For example: "We used Claude (Anthropic), an AI coding assistant, to help implement the code, run the experiments and draft this report; we reviewed, tested and are responsible for all of it." State each member's contribution, e.g. Student A: baseline, correctness, datasets, evaluation; Student B: parallel builders, profiling.]</span></p>
+
+<h2>References</h2>
+<div class="refs">
+<p>[1] C. Ranger, R. Raghuraman, A. Penmetsa, G. Bradski, C. Kozyrakis. Evaluating MapReduce for multi-core and multiprocessor systems. <i>HPCA</i>, 2007, pp. 13–24.</p>
+<p>[2] J. Talbot, R. M. Yoo, C. Kozyrakis. Phoenix++: Modular MapReduce for shared-memory systems. <i>2nd Int. Workshop on MapReduce and its Applications</i>, 2011, pp. 9–16.</p>
+<p>[3] J. Zobel, A. Moffat. Inverted files for text search engines. <i>ACM Computing Surveys</i> 38(2), 2006.</p>
+<p>[4] S. Heinz, J. Zobel. Efficient single-pass index construction for text databases. <i>JASIST</i> 54(8):713–729, 2003.</p>
+<p>[5] H. Shi, J. Schaeffer. Parallel sorting by regular sampling. <i>J. Parallel and Distributed Computing</i> 14(4):361–372, 1992.</p>
+<p>[6] K. W. Church, W. A. Gale. Poisson mixtures. <i>Natural Language Engineering</i> 1(2):163–190, 1995.</p>
+<p>[7] J. W. Rae, A. Potapenko, S. M. Jayakumar, C. Hillier, T. P. Lillicrap. Compressive transformers for long-range sequence modelling. <i>ICLR</i>, 2020 (the PG-19 dataset).</p>
+<p>[8] M. D. Vose. A linear algorithm for generating random numbers with a given distribution. <i>IEEE Trans. Software Engineering</i> 17(9):972–975, 1991.</p>
+<p>[9] Wikimedia Foundation. English Wikipedia dump of 2023-11-01; Hugging Face <code>wikimedia/wikipedia</code>, <code>20231101.en</code>.</p>
+</div>
+
+</body>
+</html>
