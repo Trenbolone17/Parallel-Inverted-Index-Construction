@@ -6,6 +6,8 @@
 //                                                 pairs independently of any builder
 //   idxcheck --dump A.bin                         text dump to stdout
 //   idxcheck --info A.bin                         sizes and checksum
+//   idxcheck --lookup A.bin WORD...               each word's document count and first IDs
+//                                                 (binary search over the sorted terms)
 
 #include <algorithm>
 #include <cstdio>
@@ -14,6 +16,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include "index_format.hpp"
@@ -25,7 +28,8 @@ static void usage(std::FILE* f) {
         "usage: idxcheck A.bin B.bin\n"
         "       idxcheck --validate A.bin [--corpus CORPUS]\n"
         "       idxcheck --dump A.bin\n"
-        "       idxcheck --info A.bin\n",
+        "       idxcheck --info A.bin\n"
+        "       idxcheck --lookup A.bin WORD...\n",
         f);
 }
 
@@ -51,6 +55,28 @@ static std::string check_against_corpus(const Index& ix, const std::string& path
         return "corpus has " + std::to_string(pairs) + " distinct (term, doc) pairs, index has " +
                std::to_string(ix.n_postings()) + " postings";
     return "";
+}
+
+// term<TAB>df<TAB>first IDs (" ..." if more), like --dump; "term<TAB>0" if absent.
+static void lookup(const Index& ix, int argc, char** argv, int first) {
+    constexpr size_t kShown = 12;
+    for (int a = first; a < argc; ++a) {
+        const std::string_view w = argv[a];
+        uint64_t lo = 0, hi = ix.n_terms();  // terms are sorted like string_view compares
+        while (lo < hi) {
+            const uint64_t mid = lo + (hi - lo) / 2;
+            if (ix.term(mid) < w) lo = mid + 1;
+            else hi = mid;
+        }
+        if (lo == ix.n_terms() || ix.term(lo) != w) {
+            std::printf("%s\t0\n", argv[a]);
+            continue;
+        }
+        const auto list = ix.list(lo);
+        std::printf("%s\t%zu\t", argv[a], list.size());
+        for (size_t i = 0; i < std::min(list.size(), kShown); ++i) std::printf(i ? " %u" : "%u", list[i]);
+        std::printf(list.size() > kShown ? " ...\n" : "\n");
+    }
 }
 
 int main(int argc, char** argv) {
@@ -81,6 +107,10 @@ int main(int argc, char** argv) {
                         static_cast<unsigned long long>(ix.n_docs), static_cast<unsigned long long>(ix.n_terms()),
                         static_cast<unsigned long long>(ix.n_postings()), ix.term_bytes.size(),
                         static_cast<unsigned long long>(checksum(ix)));
+            return 0;
+        }
+        if (argc >= 4 && std::strcmp(argv[1], "--lookup") == 0) {
+            lookup(read_index(argv[2]), argc, argv, 3);
             return 0;
         }
         if (argc == 3 && argv[1][0] != '-') {

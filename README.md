@@ -9,7 +9,8 @@ This project builds word → document posting lists from a pretokenized corpus, 
 | | |
 |---|---|
 | **Report** (7 pages) | [report/report.pdf](report/report.pdf) |
-| **Presentation** | [slide deck](https://claude.ai/artifact/89aNd8GcLuYT2Xr9fyL2zm#slide-075bc7f8ebe2): opens only for people it is shared with; downloadable as PowerPoint or PDF |
+| **Presentation** | [slide deck](https://claude.ai/artifact/89aNd8GcLuYT2Xr9fyL2zm#slide-075bc7f8ebe2), downloadable as PowerPoint or PDF |
+| **Live demo** | [inverted-index/demo.sh](inverted-index/demo.sh), see [Demo](#demo) |
 | **Plan and progress log** | [PLAN.md](PLAN.md) |
 | **Project brief** | [Parallel_Computing_25_Project_Catalogue.docx](Parallel_Computing_25_Project_Catalogue.docx), Project 23 |
 
@@ -70,6 +71,7 @@ bin/idxcheck a.bin b.bin                          # identical? (exit 0 / 1)
 bin/idxcheck --validate a.bin --corpus zipf.txt   # invariants + independent recount
 bin/idxcheck --dump a.bin | head                  # term<TAB>df<TAB>doc ids
 bin/idxcheck --info a.bin                         # sizes + checksum
+bin/idxcheck --lookup a.bin parallel index        # per word: document count and first IDs (binary search)
 
 # Real corpora: download parquet shards from Hugging Face, one at a time, and write them pretokenized
 .venv/bin/python -I tools/fetch_corpus.py gutenberg --split test --out data/gutenberg_test.txt  # 100 books, 25 MB
@@ -86,6 +88,22 @@ python3 tools/pretokenize.py --dir books/ --out data/books.txt
 - peak RSS and the `OMP_PLACES`/`OMP_PROC_BIND` settings.
 
 `build_total` covers everything from the document-boundary scan up to a finished in-memory index. File loading and writing are reported separately.
+
+## Demo
+
+```sh
+./demo.sh                  # five steps, Enter between them; about a minute of building on Wikipedia
+./demo.sh --no-pause       # a rehearsal straight through
+./demo.sh --help           # --corpus FILE, --words "…", --threads N, --skip-tests
+```
+
+1. **The slide-2 example:** three tiny documents and their index.
+2. **Correctness:** a short run of the test suite, about 300 checks across every builder at 1, 7 and 24 threads.
+3. **Full-size builds:** the sequential builder, D2, D3 (8 P-cores, then all threads) and Phoenix++, pinned like the benchmarks.
+4. **Same answer:** byte-for-byte comparison plus a table of times and speedups.
+5. **Using the index:** word lookups, and the start of a document that contains the first word.
+
+Without `data/wiki.txt` the demo generates a synthetic corpus. For the slides' timings, plug in and run `powerprofilesctl set performance` first; the script warns otherwise.
 
 ## Benchmarks
 
@@ -149,6 +167,7 @@ tools/     gen_zipf.cpp, pretokenize.py, fetch_corpus.py
 bench/     run.py (benchmark harness), plot.py (report figures), experiments.sh (all report experiments)
 baselines/ phoenix_index.cpp (our index as a Phoenix++ application; built by `make phoenix`)
 results/   raw benchmark results (JSONL, CSV summaries, machine metadata, run logs)
+demo.sh    the live demo for the presentation
 tests/     make_tiny.py -> tiny/*.txt + *.expected, run_tests.sh
 third_party/ Phoenix++ checkout (not committed; `make phoenix` clones it)
 ```
@@ -173,4 +192,4 @@ To add a builder (paths under `inverted-index/`):
 - [x] Corpus sizes, E4 (vocabulary and document-length sweeps) and E6 (Phoenix++ vs D2/D3): 1,060 runs, all checksums identical
 - [x] Report: [report/report.pdf](report/report.pdf) (source `report/report.html`, rebuilt by `report/build.sh`)
 - [x] Presentation (slide charts: [presentation/make_charts.py](presentation/make_charts.py))
-- [ ] Demo
+- [x] Demo: [inverted-index/demo.sh](inverted-index/demo.sh)

@@ -518,6 +518,15 @@ Findings:
 
 Its charts come from `presentation/make_charts.py`. Still to do: the demo.
 
+**2026-11-27: demo ready.** `inverted-index/demo.sh` runs five steps with a pause after each:
+1. the slide-2 example;
+2. a short run of the test suite (301 checks, 6 builders);
+3. full Wikipedia builds: sequential, D2, D3 at 8 and 24 threads, Phoenix++;
+4. byte comparison and a speedup table;
+5. word lookups.
+
+`idxcheck --lookup` was added for step 5: a binary search over the sorted terms, checked against `--dump`. In a rehearsal on the balanced power profile all five builds gave the same checksum and both comparisons printed "identical". The timings were about 20% slower than the benchmarks, so the script now warns when the profile isn't "performance" or the laptop is on battery. Slide 17 now shows the script.
+
 ## 9. How to check the finished project works end to end
 
 - `make && make test`: hand tests plus randomized differential tests. All variants must match `naive` byte for byte at every thread count.
