@@ -1,0 +1,1425 @@
+15 configurations x 5 reps = 75 runs on data/zipf_2M_25pct.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 4.5; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=16     1.275s  rss  1.29 GB  (0 min elapsed, ~2 min left in this experiment)
+  [2/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=8      1.518s  rss  1.06 GB  (0 min elapsed, ~2 min left in this experiment)
+  [3/75] e1s_zipf_2M_25 rep 1 seq            T=1      6.113s  rss  0.63 GB  (0 min elapsed, ~4 min left in this experiment)
+  [4/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=8      1.512s  rss  1.10 GB  (0 min elapsed, ~3 min left in this experiment)
+  [5/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=12     1.410s  rss  1.22 GB  (0 min elapsed, ~3 min left in this experiment)
+  [6/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=4      2.353s  rss  0.88 GB  (0 min elapsed, ~3 min left in this experiment)
+  [7/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=16     1.279s  rss  1.25 GB  (0 min elapsed, ~3 min left in this experiment)
+  [8/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=24     1.125s  rss  1.44 GB  (0 min elapsed, ~2 min left in this experiment)
+  [9/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=1      6.181s  rss  0.64 GB  (0 min elapsed, ~3 min left in this experiment)
+  [10/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=2      3.778s  rss  0.73 GB  (0 min elapsed, ~3 min left in this experiment)
+  [11/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=12     1.390s  rss  1.18 GB  (0 min elapsed, ~3 min left in this experiment)
+  [12/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=2      3.699s  rss  0.70 GB  (1 min elapsed, ~3 min left in this experiment)
+  [13/75] e1s_zipf_2M_25 rep 1 omp-dynamic    T=24     1.111s  rss  1.49 GB  (1 min elapsed, ~3 min left in this experiment)
+  [14/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=1      6.172s  rss  0.61 GB  (1 min elapsed, ~3 min left in this experiment)
+  [15/75] e1s_zipf_2M_25 rep 1 heavy-dynamic  T=4      2.330s  rss  0.84 GB  (1 min elapsed, ~3 min left in this experiment)
+  [16/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=12     1.408s  rss  1.22 GB  (1 min elapsed, ~3 min left in this experiment)
+  [17/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=8      1.545s  rss  1.06 GB  (1 min elapsed, ~3 min left in this experiment)
+  [18/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=16     1.297s  rss  1.25 GB  (1 min elapsed, ~2 min left in this experiment)
+  [19/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=1      6.268s  rss  0.64 GB  (1 min elapsed, ~3 min left in this experiment)
+  [20/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=1      6.209s  rss  0.61 GB  (1 min elapsed, ~3 min left in this experiment)
+  [21/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=16     1.267s  rss  1.30 GB  (1 min elapsed, ~3 min left in this experiment)
+  [22/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=4      2.355s  rss  0.84 GB  (1 min elapsed, ~3 min left in this experiment)
+  [23/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=2      3.794s  rss  0.73 GB  (1 min elapsed, ~3 min left in this experiment)
+  [24/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=12     1.380s  rss  1.18 GB  (1 min elapsed, ~2 min left in this experiment)
+  [25/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=2      3.708s  rss  0.70 GB  (1 min elapsed, ~2 min left in this experiment)
+  [26/75] e1s_zipf_2M_25 rep 2 seq            T=1      6.078s  rss  0.63 GB  (1 min elapsed, ~2 min left in this experiment)
+  [27/75] e1s_zipf_2M_25 rep 2 heavy-dynamic  T=24     1.128s  rss  1.44 GB  (1 min elapsed, ~2 min left in this experiment)
+  [28/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=4      2.335s  rss  0.88 GB  (1 min elapsed, ~2 min left in this experiment)
+  [29/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=24     1.128s  rss  1.49 GB  (1 min elapsed, ~2 min left in this experiment)
+  [30/75] e1s_zipf_2M_25 rep 2 omp-dynamic    T=8      1.501s  rss  1.10 GB  (1 min elapsed, ~2 min left in this experiment)
+  [31/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=24     1.133s  rss  1.48 GB  (1 min elapsed, ~2 min left in this experiment)
+  [32/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=12     1.394s  rss  1.21 GB  (1 min elapsed, ~2 min left in this experiment)
+  [33/75] e1s_zipf_2M_25 rep 3 seq            T=1      6.301s  rss  0.63 GB  (2 min elapsed, ~2 min left in this experiment)
+  [34/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=1      6.156s  rss  0.61 GB  (2 min elapsed, ~2 min left in this experiment)
+  [35/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=16     1.258s  rss  1.29 GB  (2 min elapsed, ~2 min left in this experiment)
+  [36/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=12     1.396s  rss  1.17 GB  (2 min elapsed, ~2 min left in this experiment)
+  [37/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=2      3.753s  rss  0.70 GB  (2 min elapsed, ~2 min left in this experiment)
+  [38/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=2      3.789s  rss  0.73 GB  (2 min elapsed, ~2 min left in this experiment)
+  [39/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=4      2.315s  rss  0.84 GB  (2 min elapsed, ~2 min left in this experiment)
+  [40/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=8      1.506s  rss  1.10 GB  (2 min elapsed, ~2 min left in this experiment)
+  [41/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=1      5.926s  rss  0.64 GB  (2 min elapsed, ~2 min left in this experiment)
+  [42/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=24     1.116s  rss  1.44 GB  (2 min elapsed, ~2 min left in this experiment)
+  [43/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=8      1.529s  rss  1.06 GB  (2 min elapsed, ~2 min left in this experiment)
+  [44/75] e1s_zipf_2M_25 rep 3 heavy-dynamic  T=16     1.241s  rss  1.25 GB  (2 min elapsed, ~1 min left in this experiment)
+  [45/75] e1s_zipf_2M_25 rep 3 omp-dynamic    T=4      2.301s  rss  0.88 GB  (2 min elapsed, ~1 min left in this experiment)
+  [46/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=24     1.113s  rss  1.43 GB  (2 min elapsed, ~1 min left in this experiment)
+  [47/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=4      2.315s  rss  0.84 GB  (2 min elapsed, ~1 min left in this experiment)
+  [48/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=2      3.752s  rss  0.69 GB  (2 min elapsed, ~1 min left in this experiment)
+  [49/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=2      3.699s  rss  0.73 GB  (2 min elapsed, ~1 min left in this experiment)
+  [50/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=16     1.235s  rss  1.29 GB  (2 min elapsed, ~1 min left in this experiment)
+  [51/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=4      2.313s  rss  0.88 GB  (2 min elapsed, ~1 min left in this experiment)
+  [52/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=1      6.060s  rss  0.61 GB  (2 min elapsed, ~1 min left in this experiment)
+  [53/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=12     1.385s  rss  1.21 GB  (2 min elapsed, ~1 min left in this experiment)
+  [54/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=16     1.225s  rss  1.26 GB  (3 min elapsed, ~1 min left in this experiment)
+  [55/75] e1s_zipf_2M_25 rep 4 seq            T=1      6.038s  rss  0.63 GB  (3 min elapsed, ~1 min left in this experiment)
+  [56/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=1      5.949s  rss  0.64 GB  (3 min elapsed, ~1 min left in this experiment)
+  [57/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=24     1.120s  rss  1.48 GB  (3 min elapsed, ~1 min left in this experiment)
+  [58/75] e1s_zipf_2M_25 rep 4 omp-dynamic    T=8      1.549s  rss  1.10 GB  (3 min elapsed, ~1 min left in this experiment)
+  [59/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=12     1.401s  rss  1.18 GB  (3 min elapsed, ~1 min left in this experiment)
+  [60/75] e1s_zipf_2M_25 rep 4 heavy-dynamic  T=8      1.486s  rss  1.06 GB  (3 min elapsed, ~1 min left in this experiment)
+  [61/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=8      1.530s  rss  1.10 GB  (3 min elapsed, ~1 min left in this experiment)
+  [62/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=2      3.746s  rss  0.70 GB  (3 min elapsed, ~1 min left in this experiment)
+  [63/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=16     1.228s  rss  1.29 GB  (3 min elapsed, ~1 min left in this experiment)
+  [64/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=1      5.929s  rss  0.61 GB  (3 min elapsed, ~1 min left in this experiment)
+  [65/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=2      3.671s  rss  0.73 GB  (3 min elapsed, ~0 min left in this experiment)
+  [66/75] e1s_zipf_2M_25 rep 5 seq            T=1      5.822s  rss  0.63 GB  (3 min elapsed, ~0 min left in this experiment)
+  [67/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=4      2.347s  rss  0.84 GB  (3 min elapsed, ~0 min left in this experiment)
+  [68/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=24     1.118s  rss  1.44 GB  (3 min elapsed, ~0 min left in this experiment)
+  [69/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=12     1.373s  rss  1.17 GB  (3 min elapsed, ~0 min left in this experiment)
+  [70/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=16     1.234s  rss  1.26 GB  (3 min elapsed, ~0 min left in this experiment)
+  [71/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=1      5.973s  rss  0.64 GB  (3 min elapsed, ~0 min left in this experiment)
+  [72/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=24     1.129s  rss  1.48 GB  (3 min elapsed, ~0 min left in this experiment)
+  [73/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=4      2.328s  rss  0.88 GB  (3 min elapsed, ~0 min left in this experiment)
+  [74/75] e1s_zipf_2M_25 rep 5 heavy-dynamic  T=8      1.493s  rss  1.06 GB  (3 min elapsed, ~0 min left in this experiment)
+  [75/75] e1s_zipf_2M_25 rep 5 omp-dynamic    T=12     1.386s  rss  1.21 GB  (4 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1     6.078    5.822    6.301    1.00x     1.00x
+heavy-dynamic      1     6.156    5.929    6.209    1.00x     0.99x
+heavy-dynamic      2     3.747    3.699    3.753    1.64x     1.62x
+heavy-dynamic      4     2.330    2.315    2.355    2.64x     2.61x
+heavy-dynamic      8     1.518    1.486    1.545    4.05x     4.00x
+heavy-dynamic     12     1.390    1.373    1.401    4.43x     4.37x
+heavy-dynamic     16     1.241    1.225    1.296    4.96x     4.90x
+heavy-dynamic     24     1.118    1.113    1.128    5.50x     5.43x
+omp-dynamic        1     5.973    5.926    6.268    1.00x     1.02x
+omp-dynamic        2     3.778    3.671    3.794    1.58x     1.61x
+omp-dynamic        4     2.328    2.301    2.353    2.57x     2.61x
+omp-dynamic        8     1.512    1.501    1.549    3.95x     4.02x
+omp-dynamic       12     1.394    1.385    1.410    4.29x     4.36x
+omp-dynamic       16     1.258    1.228    1.275    4.75x     4.83x
+omp-dynamic       24     1.128    1.111    1.133    5.29x     5.39x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_zipf_2M_25.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_zipf_2M_25_summary.csv
+15 configurations x 5 reps = 75 runs on data/zipf_2M_50pct.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 6.1; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=16     2.261s  rss  2.19 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=8      2.680s  rss  1.66 GB  (0 min elapsed, ~3 min left in this experiment)
+  [3/75] e1s_zipf_2M_50 rep 1 seq            T=1     11.478s  rss  1.16 GB  (0 min elapsed, ~7 min left in this experiment)
+  [4/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=8      2.692s  rss  1.73 GB  (0 min elapsed, ~6 min left in this experiment)
+  [5/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=12     2.482s  rss  1.99 GB  (0 min elapsed, ~5 min left in this experiment)
+  [6/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=4      4.244s  rss  1.44 GB  (0 min elapsed, ~5 min left in this experiment)
+  [7/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=16     2.273s  rss  2.10 GB  (0 min elapsed, ~5 min left in this experiment)
+  [8/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=24     2.002s  rss  2.31 GB  (1 min elapsed, ~4 min left in this experiment)
+  [9/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=1     11.502s  rss  1.16 GB  (1 min elapsed, ~5 min left in this experiment)
+  [10/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=2      6.945s  rss  1.26 GB  (1 min elapsed, ~5 min left in this experiment)
+  [11/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=12     2.462s  rss  1.91 GB  (1 min elapsed, ~5 min left in this experiment)
+  [12/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=2      6.836s  rss  1.19 GB  (1 min elapsed, ~5 min left in this experiment)
+  [13/75] e1s_zipf_2M_50 rep 1 omp-dynamic    T=24     2.012s  rss  2.38 GB  (1 min elapsed, ~5 min left in this experiment)
+  [14/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=1     11.477s  rss  1.09 GB  (1 min elapsed, ~5 min left in this experiment)
+  [15/75] e1s_zipf_2M_50 rep 1 heavy-dynamic  T=4      4.349s  rss  1.37 GB  (1 min elapsed, ~5 min left in this experiment)
+  [16/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=12     2.472s  rss  1.98 GB  (1 min elapsed, ~5 min left in this experiment)
+  [17/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=8      2.749s  rss  1.66 GB  (1 min elapsed, ~5 min left in this experiment)
+  [18/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=16     2.261s  rss  2.10 GB  (1 min elapsed, ~5 min left in this experiment)
+  [19/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=1     12.913s  rss  1.16 GB  (2 min elapsed, ~5 min left in this experiment)
+  [20/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=1     12.907s  rss  1.09 GB  (2 min elapsed, ~5 min left in this experiment)
+  [21/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=16     2.264s  rss  2.18 GB  (2 min elapsed, ~5 min left in this experiment)
+  [22/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=4      4.223s  rss  1.37 GB  (2 min elapsed, ~5 min left in this experiment)
+  [23/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=2      7.115s  rss  1.26 GB  (2 min elapsed, ~5 min left in this experiment)
+  [24/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=12     2.452s  rss  1.91 GB  (2 min elapsed, ~5 min left in this experiment)
+  [25/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=2      6.988s  rss  1.19 GB  (2 min elapsed, ~5 min left in this experiment)
+  [26/75] e1s_zipf_2M_50 rep 2 seq            T=1     11.713s  rss  1.16 GB  (2 min elapsed, ~5 min left in this experiment)
+  [27/75] e1s_zipf_2M_50 rep 2 heavy-dynamic  T=24     2.016s  rss  2.32 GB  (2 min elapsed, ~4 min left in this experiment)
+  [28/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=4      4.321s  rss  1.44 GB  (3 min elapsed, ~4 min left in this experiment)
+  [29/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=24     2.018s  rss  2.39 GB  (3 min elapsed, ~4 min left in this experiment)
+  [30/75] e1s_zipf_2M_50 rep 2 omp-dynamic    T=8      2.702s  rss  1.73 GB  (3 min elapsed, ~4 min left in this experiment)
+  [31/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=24     2.011s  rss  2.39 GB  (3 min elapsed, ~4 min left in this experiment)
+  [32/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=12     2.471s  rss  1.99 GB  (3 min elapsed, ~4 min left in this experiment)
+  [33/75] e1s_zipf_2M_50 rep 3 seq            T=1     11.519s  rss  1.15 GB  (3 min elapsed, ~4 min left in this experiment)
+  [34/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=1     11.743s  rss  1.09 GB  (3 min elapsed, ~4 min left in this experiment)
+  [35/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=16     2.253s  rss  2.18 GB  (3 min elapsed, ~4 min left in this experiment)
+  [36/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=12     2.450s  rss  1.91 GB  (3 min elapsed, ~3 min left in this experiment)
+  [37/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=2      7.075s  rss  1.19 GB  (3 min elapsed, ~3 min left in this experiment)
+  [38/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=2      7.152s  rss  1.26 GB  (3 min elapsed, ~3 min left in this experiment)
+  [39/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=4      4.229s  rss  1.37 GB  (4 min elapsed, ~3 min left in this experiment)
+  [40/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=8      2.715s  rss  1.73 GB  (4 min elapsed, ~3 min left in this experiment)
+  [41/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=1     11.555s  rss  1.16 GB  (4 min elapsed, ~3 min left in this experiment)
+  [42/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=24     2.028s  rss  2.32 GB  (4 min elapsed, ~3 min left in this experiment)
+  [43/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=8      2.685s  rss  1.66 GB  (4 min elapsed, ~3 min left in this experiment)
+  [44/75] e1s_zipf_2M_50 rep 3 heavy-dynamic  T=16     2.255s  rss  2.11 GB  (4 min elapsed, ~3 min left in this experiment)
+  [45/75] e1s_zipf_2M_50 rep 3 omp-dynamic    T=4      4.208s  rss  1.44 GB  (4 min elapsed, ~3 min left in this experiment)
+  [46/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=24     1.994s  rss  2.32 GB  (4 min elapsed, ~3 min left in this experiment)
+  [47/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=4      4.241s  rss  1.37 GB  (4 min elapsed, ~2 min left in this experiment)
+  [48/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=2      6.925s  rss  1.19 GB  (4 min elapsed, ~2 min left in this experiment)
+  [49/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=2      7.090s  rss  1.26 GB  (4 min elapsed, ~2 min left in this experiment)
+  [50/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=16     2.243s  rss  2.18 GB  (4 min elapsed, ~2 min left in this experiment)
+  [51/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=4      4.190s  rss  1.44 GB  (4 min elapsed, ~2 min left in this experiment)
+  [52/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=1     11.909s  rss  1.09 GB  (5 min elapsed, ~2 min left in this experiment)
+  [53/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=12     2.503s  rss  1.98 GB  (5 min elapsed, ~2 min left in this experiment)
+  [54/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=16     2.321s  rss  2.10 GB  (5 min elapsed, ~2 min left in this experiment)
+  [55/75] e1s_zipf_2M_50 rep 4 seq            T=1     12.564s  rss  1.16 GB  (5 min elapsed, ~2 min left in this experiment)
+  [56/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=1     12.759s  rss  1.16 GB  (5 min elapsed, ~2 min left in this experiment)
+  [57/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=24     2.032s  rss  2.36 GB  (5 min elapsed, ~2 min left in this experiment)
+  [58/75] e1s_zipf_2M_50 rep 4 omp-dynamic    T=8      2.683s  rss  1.73 GB  (5 min elapsed, ~2 min left in this experiment)
+  [59/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=12     2.414s  rss  1.90 GB  (5 min elapsed, ~1 min left in this experiment)
+  [60/75] e1s_zipf_2M_50 rep 4 heavy-dynamic  T=8      2.557s  rss  1.66 GB  (5 min elapsed, ~1 min left in this experiment)
+  [61/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=8      2.620s  rss  1.73 GB  (5 min elapsed, ~1 min left in this experiment)
+  [62/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=2      6.535s  rss  1.19 GB  (5 min elapsed, ~1 min left in this experiment)
+  [63/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=16     2.231s  rss  2.18 GB  (6 min elapsed, ~1 min left in this experiment)
+  [64/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=1     10.403s  rss  1.09 GB  (6 min elapsed, ~1 min left in this experiment)
+  [65/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=2      6.638s  rss  1.26 GB  (6 min elapsed, ~1 min left in this experiment)
+  [66/75] e1s_zipf_2M_50 rep 5 seq            T=1     10.376s  rss  1.15 GB  (6 min elapsed, ~1 min left in this experiment)
+  [67/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=4      4.055s  rss  1.37 GB  (6 min elapsed, ~1 min left in this experiment)
+  [68/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=24     1.949s  rss  2.31 GB  (6 min elapsed, ~1 min left in this experiment)
+  [69/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=12     2.431s  rss  1.91 GB  (6 min elapsed, ~1 min left in this experiment)
+  [70/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=16     2.214s  rss  2.10 GB  (6 min elapsed, ~0 min left in this experiment)
+  [71/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=1     10.376s  rss  1.16 GB  (6 min elapsed, ~0 min left in this experiment)
+  [72/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=24     1.967s  rss  2.39 GB  (6 min elapsed, ~0 min left in this experiment)
+  [73/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=4      4.051s  rss  1.44 GB  (6 min elapsed, ~0 min left in this experiment)
+  [74/75] e1s_zipf_2M_50 rep 5 heavy-dynamic  T=8      2.611s  rss  1.66 GB  (6 min elapsed, ~0 min left in this experiment)
+  [75/75] e1s_zipf_2M_50 rep 5 omp-dynamic    T=12     2.421s  rss  1.99 GB  (7 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    11.519   10.376   12.564    1.00x     1.00x
+heavy-dynamic      1    11.743   10.403   12.907    1.00x     0.98x
+heavy-dynamic      2     6.925    6.535    7.075    1.70x     1.66x
+heavy-dynamic      4     4.229    4.055    4.348    2.78x     2.72x
+heavy-dynamic      8     2.679    2.557    2.749    4.38x     4.30x
+heavy-dynamic     12     2.450    2.414    2.462    4.79x     4.70x
+heavy-dynamic     16     2.261    2.214    2.321    5.19x     5.09x
+heavy-dynamic     24     2.002    1.949    2.028    5.87x     5.75x
+omp-dynamic        1    11.555   10.376   12.913    1.00x     1.00x
+omp-dynamic        2     7.090    6.638    7.152    1.63x     1.62x
+omp-dynamic        4     4.208    4.051    4.321    2.75x     2.74x
+omp-dynamic        8     2.692    2.620    2.715    4.29x     4.28x
+omp-dynamic       12     2.472    2.421    2.503    4.67x     4.66x
+omp-dynamic       16     2.253    2.231    2.264    5.13x     5.11x
+omp-dynamic       24     2.012    1.967    2.033    5.74x     5.72x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_zipf_2M_50.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_zipf_2M_50_summary.csv
+15 configurations x 5 reps = 75 runs on data/gutenberg_25pct.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 3.9; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=16     0.371s  rss  0.62 GB  (0 min elapsed, ~1 min left in this experiment)
+  [2/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=8      0.478s  rss  0.54 GB  (0 min elapsed, ~1 min left in this experiment)
+  [3/75] e1s_gutenberg_25 rep 1 seq            T=1      2.840s  rss  0.51 GB  (0 min elapsed, ~2 min left in this experiment)
+  [4/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=8      0.499s  rss  0.56 GB  (0 min elapsed, ~1 min left in this experiment)
+  [5/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=12     0.417s  rss  0.60 GB  (0 min elapsed, ~1 min left in this experiment)
+  [6/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=4      0.838s  rss  0.55 GB  (0 min elapsed, ~1 min left in this experiment)
+  [7/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=16     0.353s  rss  0.59 GB  (0 min elapsed, ~1 min left in this experiment)
+  [8/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=24     0.293s  rss  0.60 GB  (0 min elapsed, ~1 min left in this experiment)
+  [9/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=1      2.893s  rss  0.51 GB  (0 min elapsed, ~1 min left in this experiment)
+  [10/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=2      1.488s  rss  0.52 GB  (0 min elapsed, ~1 min left in this experiment)
+  [11/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=12     0.396s  rss  0.56 GB  (0 min elapsed, ~1 min left in this experiment)
+  [12/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=2      1.471s  rss  0.50 GB  (0 min elapsed, ~1 min left in this experiment)
+  [13/75] e1s_gutenberg_25 rep 1 omp-dynamic    T=24     0.321s  rss  0.63 GB  (0 min elapsed, ~1 min left in this experiment)
+  [14/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=1      2.858s  rss  0.49 GB  (0 min elapsed, ~1 min left in this experiment)
+  [15/75] e1s_gutenberg_25 rep 1 heavy-dynamic  T=4      0.824s  rss  0.52 GB  (0 min elapsed, ~1 min left in this experiment)
+  [16/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=12     0.419s  rss  0.60 GB  (0 min elapsed, ~1 min left in this experiment)
+  [17/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=8      0.483s  rss  0.53 GB  (0 min elapsed, ~1 min left in this experiment)
+  [18/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=16     0.346s  rss  0.59 GB  (0 min elapsed, ~1 min left in this experiment)
+  [19/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=1      2.909s  rss  0.51 GB  (0 min elapsed, ~1 min left in this experiment)
+  [20/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=1      2.865s  rss  0.49 GB  (0 min elapsed, ~1 min left in this experiment)
+  [21/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=16     0.368s  rss  0.62 GB  (0 min elapsed, ~1 min left in this experiment)
+  [22/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=4      0.805s  rss  0.52 GB  (0 min elapsed, ~1 min left in this experiment)
+  [23/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=2      1.501s  rss  0.52 GB  (0 min elapsed, ~1 min left in this experiment)
+  [24/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=12     0.401s  rss  0.57 GB  (0 min elapsed, ~1 min left in this experiment)
+  [25/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=2      1.512s  rss  0.50 GB  (0 min elapsed, ~1 min left in this experiment)
+  [26/75] e1s_gutenberg_25 rep 2 seq            T=1      2.991s  rss  0.51 GB  (1 min elapsed, ~1 min left in this experiment)
+  [27/75] e1s_gutenberg_25 rep 2 heavy-dynamic  T=24     0.291s  rss  0.61 GB  (1 min elapsed, ~1 min left in this experiment)
+  [28/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=4      0.824s  rss  0.55 GB  (1 min elapsed, ~1 min left in this experiment)
+  [29/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=24     0.312s  rss  0.63 GB  (1 min elapsed, ~1 min left in this experiment)
+  [30/75] e1s_gutenberg_25 rep 2 omp-dynamic    T=8      0.499s  rss  0.57 GB  (1 min elapsed, ~1 min left in this experiment)
+  [31/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=24     0.315s  rss  0.63 GB  (1 min elapsed, ~1 min left in this experiment)
+  [32/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=12     0.411s  rss  0.60 GB  (1 min elapsed, ~1 min left in this experiment)
+  [33/75] e1s_gutenberg_25 rep 3 seq            T=1      2.856s  rss  0.51 GB  (1 min elapsed, ~1 min left in this experiment)
+  [34/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=1      2.865s  rss  0.49 GB  (1 min elapsed, ~1 min left in this experiment)
+  [35/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=16     0.374s  rss  0.62 GB  (1 min elapsed, ~1 min left in this experiment)
+  [36/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=12     0.399s  rss  0.56 GB  (1 min elapsed, ~1 min left in this experiment)
+  [37/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=2      1.512s  rss  0.50 GB  (1 min elapsed, ~1 min left in this experiment)
+  [38/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=2      1.527s  rss  0.52 GB  (1 min elapsed, ~1 min left in this experiment)
+  [39/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=4      0.809s  rss  0.52 GB  (1 min elapsed, ~1 min left in this experiment)
+  [40/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=8      0.503s  rss  0.56 GB  (1 min elapsed, ~1 min left in this experiment)
+  [41/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=1      2.869s  rss  0.51 GB  (1 min elapsed, ~1 min left in this experiment)
+  [42/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=24     0.291s  rss  0.60 GB  (1 min elapsed, ~1 min left in this experiment)
+  [43/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=8      0.480s  rss  0.54 GB  (1 min elapsed, ~1 min left in this experiment)
+  [44/75] e1s_gutenberg_25 rep 3 heavy-dynamic  T=16     0.353s  rss  0.59 GB  (1 min elapsed, ~1 min left in this experiment)
+  [45/75] e1s_gutenberg_25 rep 3 omp-dynamic    T=4      0.847s  rss  0.54 GB  (1 min elapsed, ~1 min left in this experiment)
+  [46/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=24     0.294s  rss  0.61 GB  (1 min elapsed, ~1 min left in this experiment)
+  [47/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=4      0.815s  rss  0.52 GB  (1 min elapsed, ~1 min left in this experiment)
+  [48/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=2      1.487s  rss  0.50 GB  (1 min elapsed, ~1 min left in this experiment)
+  [49/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=2      1.515s  rss  0.52 GB  (1 min elapsed, ~1 min left in this experiment)
+  [50/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=16     0.368s  rss  0.61 GB  (1 min elapsed, ~0 min left in this experiment)
+  [51/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=4      0.843s  rss  0.54 GB  (1 min elapsed, ~0 min left in this experiment)
+  [52/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=1      2.907s  rss  0.49 GB  (1 min elapsed, ~0 min left in this experiment)
+  [53/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=12     0.414s  rss  0.59 GB  (1 min elapsed, ~0 min left in this experiment)
+  [54/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=16     0.352s  rss  0.59 GB  (1 min elapsed, ~0 min left in this experiment)
+  [55/75] e1s_gutenberg_25 rep 4 seq            T=1      2.798s  rss  0.51 GB  (1 min elapsed, ~0 min left in this experiment)
+  [56/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=1      2.892s  rss  0.51 GB  (1 min elapsed, ~0 min left in this experiment)
+  [57/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=24     0.320s  rss  0.63 GB  (1 min elapsed, ~0 min left in this experiment)
+  [58/75] e1s_gutenberg_25 rep 4 omp-dynamic    T=8      0.499s  rss  0.57 GB  (1 min elapsed, ~0 min left in this experiment)
+  [59/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=12     0.406s  rss  0.56 GB  (1 min elapsed, ~0 min left in this experiment)
+  [60/75] e1s_gutenberg_25 rep 4 heavy-dynamic  T=8      0.476s  rss  0.53 GB  (1 min elapsed, ~0 min left in this experiment)
+  [61/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=8      0.495s  rss  0.56 GB  (1 min elapsed, ~0 min left in this experiment)
+  [62/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=2      1.470s  rss  0.50 GB  (1 min elapsed, ~0 min left in this experiment)
+  [63/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=16     0.372s  rss  0.61 GB  (1 min elapsed, ~0 min left in this experiment)
+  [64/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=1      2.912s  rss  0.49 GB  (1 min elapsed, ~0 min left in this experiment)
+  [65/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=2      1.487s  rss  0.52 GB  (1 min elapsed, ~0 min left in this experiment)
+  [66/75] e1s_gutenberg_25 rep 5 seq            T=1      2.783s  rss  0.51 GB  (1 min elapsed, ~0 min left in this experiment)
+  [67/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=4      0.809s  rss  0.52 GB  (1 min elapsed, ~0 min left in this experiment)
+  [68/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=24     0.291s  rss  0.60 GB  (1 min elapsed, ~0 min left in this experiment)
+  [69/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=12     0.403s  rss  0.56 GB  (1 min elapsed, ~0 min left in this experiment)
+  [70/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=16     0.350s  rss  0.59 GB  (1 min elapsed, ~0 min left in this experiment)
+  [71/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=1      2.930s  rss  0.51 GB  (1 min elapsed, ~0 min left in this experiment)
+  [72/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=24     0.321s  rss  0.63 GB  (1 min elapsed, ~0 min left in this experiment)
+  [73/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=4      0.835s  rss  0.55 GB  (1 min elapsed, ~0 min left in this experiment)
+  [74/75] e1s_gutenberg_25 rep 5 heavy-dynamic  T=8      0.479s  rss  0.53 GB  (1 min elapsed, ~0 min left in this experiment)
+  [75/75] e1s_gutenberg_25 rep 5 omp-dynamic    T=12     0.420s  rss  0.59 GB  (1 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1     2.840    2.783    2.990    1.00x     1.00x
+heavy-dynamic      1     2.865    2.858    2.912    1.00x     0.99x
+heavy-dynamic      2     1.487    1.470    1.512    1.93x     1.91x
+heavy-dynamic      4     0.809    0.805    0.824    3.54x     3.51x
+heavy-dynamic      8     0.479    0.476    0.483    5.98x     5.93x
+heavy-dynamic     12     0.401    0.397    0.406    7.14x     7.08x
+heavy-dynamic     16     0.352    0.346    0.353    8.14x     8.06x
+heavy-dynamic     24     0.291    0.291    0.294    9.84x     9.75x
+omp-dynamic        1     2.893    2.869    2.930    1.00x     0.98x
+omp-dynamic        2     1.501    1.487    1.527    1.93x     1.89x
+omp-dynamic        4     0.838    0.824    0.847    3.45x     3.39x
+omp-dynamic        8     0.499    0.495    0.503    5.80x     5.69x
+omp-dynamic       12     0.417    0.411    0.420    6.93x     6.81x
+omp-dynamic       16     0.371    0.368    0.374    7.80x     7.66x
+omp-dynamic       24     0.320    0.312    0.321    9.04x     8.87x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_gutenberg_25.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_gutenberg_25_summary.csv
+15 configurations x 5 reps = 75 runs on data/gutenberg_50pct.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 3.9; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=16     0.686s  rss  1.11 GB  (0 min elapsed, ~1 min left in this experiment)
+  [2/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=8      0.940s  rss  1.02 GB  (0 min elapsed, ~1 min left in this experiment)
+  [3/75] e1s_gutenberg_50 rep 1 seq            T=1      5.639s  rss  0.98 GB  (0 min elapsed, ~3 min left in this experiment)
+  [4/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=8      0.953s  rss  1.07 GB  (0 min elapsed, ~3 min left in this experiment)
+  [5/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=12     0.810s  rss  1.08 GB  (0 min elapsed, ~2 min left in this experiment)
+  [6/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=4      1.653s  rss  1.03 GB  (0 min elapsed, ~2 min left in this experiment)
+  [7/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=16     0.660s  rss  1.04 GB  (0 min elapsed, ~2 min left in this experiment)
+  [8/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=24     0.552s  rss  1.10 GB  (0 min elapsed, ~2 min left in this experiment)
+  [9/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=1      5.777s  rss  0.99 GB  (0 min elapsed, ~2 min left in this experiment)
+  [10/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=2      2.930s  rss  1.01 GB  (0 min elapsed, ~2 min left in this experiment)
+  [11/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=12     0.786s  rss  1.04 GB  (0 min elapsed, ~2 min left in this experiment)
+  [12/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=2      2.909s  rss  0.95 GB  (0 min elapsed, ~2 min left in this experiment)
+  [13/75] e1s_gutenberg_50 rep 1 omp-dynamic    T=24     0.595s  rss  1.17 GB  (0 min elapsed, ~2 min left in this experiment)
+  [14/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=1      5.793s  rss  0.93 GB  (1 min elapsed, ~2 min left in this experiment)
+  [15/75] e1s_gutenberg_50 rep 1 heavy-dynamic  T=4      1.632s  rss  0.97 GB  (1 min elapsed, ~2 min left in this experiment)
+  [16/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=12     0.802s  rss  1.09 GB  (1 min elapsed, ~2 min left in this experiment)
+  [17/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=8      0.943s  rss  1.01 GB  (1 min elapsed, ~2 min left in this experiment)
+  [18/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=16     0.670s  rss  1.05 GB  (1 min elapsed, ~2 min left in this experiment)
+  [19/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=1      5.609s  rss  0.98 GB  (1 min elapsed, ~2 min left in this experiment)
+  [20/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=1      5.826s  rss  0.93 GB  (1 min elapsed, ~2 min left in this experiment)
+  [21/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=16     0.687s  rss  1.11 GB  (1 min elapsed, ~2 min left in this experiment)
+  [22/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=4      1.630s  rss  0.97 GB  (1 min elapsed, ~2 min left in this experiment)
+  [23/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=2      2.972s  rss  1.01 GB  (1 min elapsed, ~2 min left in this experiment)
+  [24/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=12     0.786s  rss  1.03 GB  (1 min elapsed, ~2 min left in this experiment)
+  [25/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=2      2.883s  rss  0.95 GB  (1 min elapsed, ~2 min left in this experiment)
+  [26/75] e1s_gutenberg_50 rep 2 seq            T=1      5.693s  rss  0.98 GB  (1 min elapsed, ~2 min left in this experiment)
+  [27/75] e1s_gutenberg_50 rep 2 heavy-dynamic  T=24     0.554s  rss  1.10 GB  (1 min elapsed, ~2 min left in this experiment)
+  [28/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=4      1.624s  rss  1.03 GB  (1 min elapsed, ~2 min left in this experiment)
+  [29/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=24     0.590s  rss  1.17 GB  (1 min elapsed, ~2 min left in this experiment)
+  [30/75] e1s_gutenberg_50 rep 2 omp-dynamic    T=8      0.957s  rss  1.07 GB  (1 min elapsed, ~2 min left in this experiment)
+  [31/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=24     0.588s  rss  1.17 GB  (1 min elapsed, ~2 min left in this experiment)
+  [32/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=12     0.805s  rss  1.09 GB  (1 min elapsed, ~2 min left in this experiment)
+  [33/75] e1s_gutenberg_50 rep 3 seq            T=1      5.476s  rss  0.98 GB  (1 min elapsed, ~2 min left in this experiment)
+  [34/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=1      5.821s  rss  0.93 GB  (1 min elapsed, ~2 min left in this experiment)
+  [35/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=16     0.694s  rss  1.11 GB  (1 min elapsed, ~2 min left in this experiment)
+  [36/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=12     0.772s  rss  1.03 GB  (1 min elapsed, ~2 min left in this experiment)
+  [37/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=2      2.900s  rss  0.95 GB  (1 min elapsed, ~1 min left in this experiment)
+  [38/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=2      2.924s  rss  1.01 GB  (2 min elapsed, ~1 min left in this experiment)
+  [39/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=4      1.613s  rss  0.97 GB  (2 min elapsed, ~1 min left in this experiment)
+  [40/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=8      0.959s  rss  1.07 GB  (2 min elapsed, ~1 min left in this experiment)
+  [41/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=1      5.671s  rss  0.98 GB  (2 min elapsed, ~1 min left in this experiment)
+  [42/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=24     0.550s  rss  1.11 GB  (2 min elapsed, ~1 min left in this experiment)
+  [43/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=8      0.944s  rss  1.02 GB  (2 min elapsed, ~1 min left in this experiment)
+  [44/75] e1s_gutenberg_50 rep 3 heavy-dynamic  T=16     0.662s  rss  1.05 GB  (2 min elapsed, ~1 min left in this experiment)
+  [45/75] e1s_gutenberg_50 rep 3 omp-dynamic    T=4      1.649s  rss  1.03 GB  (2 min elapsed, ~1 min left in this experiment)
+  [46/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=24     0.547s  rss  1.10 GB  (2 min elapsed, ~1 min left in this experiment)
+  [47/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=4      1.618s  rss  0.97 GB  (2 min elapsed, ~1 min left in this experiment)
+  [48/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=2      2.905s  rss  0.95 GB  (2 min elapsed, ~1 min left in this experiment)
+  [49/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=2      2.947s  rss  1.01 GB  (2 min elapsed, ~1 min left in this experiment)
+  [50/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=16     0.699s  rss  1.11 GB  (2 min elapsed, ~1 min left in this experiment)
+  [51/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=4      1.619s  rss  1.03 GB  (2 min elapsed, ~1 min left in this experiment)
+  [52/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=1      5.850s  rss  0.93 GB  (2 min elapsed, ~1 min left in this experiment)
+  [53/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=12     0.805s  rss  1.08 GB  (2 min elapsed, ~1 min left in this experiment)
+  [54/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=16     0.663s  rss  1.05 GB  (2 min elapsed, ~1 min left in this experiment)
+  [55/75] e1s_gutenberg_50 rep 4 seq            T=1      5.639s  rss  0.98 GB  (2 min elapsed, ~1 min left in this experiment)
+  [56/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=1      5.760s  rss  0.99 GB  (2 min elapsed, ~1 min left in this experiment)
+  [57/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=24     0.587s  rss  1.17 GB  (2 min elapsed, ~1 min left in this experiment)
+  [58/75] e1s_gutenberg_50 rep 4 omp-dynamic    T=8      0.961s  rss  1.07 GB  (2 min elapsed, ~1 min left in this experiment)
+  [59/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=12     0.773s  rss  1.04 GB  (2 min elapsed, ~1 min left in this experiment)
+  [60/75] e1s_gutenberg_50 rep 4 heavy-dynamic  T=8      0.944s  rss  1.02 GB  (2 min elapsed, ~1 min left in this experiment)
+  [61/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=8      0.950s  rss  1.08 GB  (2 min elapsed, ~1 min left in this experiment)
+  [62/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=2      2.904s  rss  0.95 GB  (2 min elapsed, ~0 min left in this experiment)
+  [63/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=16     0.698s  rss  1.12 GB  (2 min elapsed, ~0 min left in this experiment)
+  [64/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=1      5.818s  rss  0.93 GB  (2 min elapsed, ~0 min left in this experiment)
+  [65/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=2      2.995s  rss  1.01 GB  (3 min elapsed, ~0 min left in this experiment)
+  [66/75] e1s_gutenberg_50 rep 5 seq            T=1      5.620s  rss  0.98 GB  (3 min elapsed, ~0 min left in this experiment)
+  [67/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=4      1.606s  rss  0.97 GB  (3 min elapsed, ~0 min left in this experiment)
+  [68/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=24     0.550s  rss  1.10 GB  (3 min elapsed, ~0 min left in this experiment)
+  [69/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=12     0.775s  rss  1.03 GB  (3 min elapsed, ~0 min left in this experiment)
+  [70/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=16     0.659s  rss  1.05 GB  (3 min elapsed, ~0 min left in this experiment)
+  [71/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=1      5.733s  rss  0.98 GB  (3 min elapsed, ~0 min left in this experiment)
+  [72/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=24     0.594s  rss  1.18 GB  (3 min elapsed, ~0 min left in this experiment)
+  [73/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=4      1.625s  rss  1.03 GB  (3 min elapsed, ~0 min left in this experiment)
+  [74/75] e1s_gutenberg_50 rep 5 heavy-dynamic  T=8      0.949s  rss  1.01 GB  (3 min elapsed, ~0 min left in this experiment)
+  [75/75] e1s_gutenberg_50 rep 5 omp-dynamic    T=12     0.800s  rss  1.09 GB  (3 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1     5.638    5.476    5.693    1.00x     1.00x
+heavy-dynamic      1     5.821    5.793    5.850    1.00x     0.97x
+heavy-dynamic      2     2.905    2.884    2.909    2.00x     1.94x
+heavy-dynamic      4     1.618    1.606    1.632    3.60x     3.48x
+heavy-dynamic      8     0.944    0.940    0.949    6.17x     5.97x
+heavy-dynamic     12     0.775    0.772    0.786    7.51x     7.27x
+heavy-dynamic     16     0.662    0.659    0.670    8.79x     8.52x
+heavy-dynamic     24     0.550    0.547    0.554   10.58x    10.25x
+omp-dynamic        1     5.733    5.609    5.777    1.00x     0.98x
+omp-dynamic        2     2.947    2.924    2.995    1.95x     1.91x
+omp-dynamic        4     1.625    1.619    1.653    3.53x     3.47x
+omp-dynamic        8     0.957    0.950    0.961    5.99x     5.89x
+omp-dynamic       12     0.805    0.800    0.810    7.12x     7.00x
+omp-dynamic       16     0.695    0.686    0.700    8.26x     8.12x
+omp-dynamic       24     0.590    0.587    0.595    9.72x     9.56x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_gutenberg_50.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_gutenberg_50_summary.csv
+15 configurations x 5 reps = 75 runs on data/wiki_25pct.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 2.2; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/75] e1s_wiki_25 rep 1 omp-dynamic    T=16     0.749s  rss  1.25 GB  (0 min elapsed, ~1 min left in this experiment)
+  [2/75] e1s_wiki_25 rep 1 heavy-dynamic  T=8      0.949s  rss  1.12 GB  (0 min elapsed, ~1 min left in this experiment)
+  [3/75] e1s_wiki_25 rep 1 seq            T=1      4.500s  rss  1.02 GB  (0 min elapsed, ~3 min left in this experiment)
+  [4/75] e1s_wiki_25 rep 1 omp-dynamic    T=8      0.968s  rss  1.18 GB  (0 min elapsed, ~2 min left in this experiment)
+  [5/75] e1s_wiki_25 rep 1 omp-dynamic    T=12     0.826s  rss  1.19 GB  (0 min elapsed, ~2 min left in this experiment)
+  [6/75] e1s_wiki_25 rep 1 omp-dynamic    T=4      1.568s  rss  1.09 GB  (0 min elapsed, ~2 min left in this experiment)
+  [7/75] e1s_wiki_25 rep 1 heavy-dynamic  T=16     0.732s  rss  1.19 GB  (0 min elapsed, ~2 min left in this experiment)
+  [8/75] e1s_wiki_25 rep 1 heavy-dynamic  T=24     0.642s  rss  1.27 GB  (0 min elapsed, ~2 min left in this experiment)
+  [9/75] e1s_wiki_25 rep 1 omp-dynamic    T=1      4.596s  rss  1.03 GB  (0 min elapsed, ~2 min left in this experiment)
+  [10/75] e1s_wiki_25 rep 1 omp-dynamic    T=2      2.657s  rss  1.06 GB  (0 min elapsed, ~2 min left in this experiment)
+  [11/75] e1s_wiki_25 rep 1 heavy-dynamic  T=12     0.802s  rss  1.13 GB  (0 min elapsed, ~2 min left in this experiment)
+  [12/75] e1s_wiki_25 rep 1 heavy-dynamic  T=2      2.677s  rss  0.99 GB  (0 min elapsed, ~2 min left in this experiment)
+  [13/75] e1s_wiki_25 rep 1 omp-dynamic    T=24     0.678s  rss  1.34 GB  (0 min elapsed, ~2 min left in this experiment)
+  [14/75] e1s_wiki_25 rep 1 heavy-dynamic  T=1      4.671s  rss  0.95 GB  (0 min elapsed, ~2 min left in this experiment)
+  [15/75] e1s_wiki_25 rep 1 heavy-dynamic  T=4      1.549s  rss  1.03 GB  (1 min elapsed, ~2 min left in this experiment)
+  [16/75] e1s_wiki_25 rep 2 omp-dynamic    T=12     0.837s  rss  1.19 GB  (1 min elapsed, ~2 min left in this experiment)
+  [17/75] e1s_wiki_25 rep 2 heavy-dynamic  T=8      0.948s  rss  1.12 GB  (1 min elapsed, ~2 min left in this experiment)
+  [18/75] e1s_wiki_25 rep 2 heavy-dynamic  T=16     0.725s  rss  1.19 GB  (1 min elapsed, ~2 min left in this experiment)
+  [19/75] e1s_wiki_25 rep 2 omp-dynamic    T=1      4.575s  rss  1.03 GB  (1 min elapsed, ~2 min left in this experiment)
+  [20/75] e1s_wiki_25 rep 2 heavy-dynamic  T=1      4.824s  rss  0.95 GB  (1 min elapsed, ~2 min left in this experiment)
+  [21/75] e1s_wiki_25 rep 2 omp-dynamic    T=16     0.781s  rss  1.25 GB  (1 min elapsed, ~2 min left in this experiment)
+  [22/75] e1s_wiki_25 rep 2 heavy-dynamic  T=4      1.688s  rss  1.04 GB  (1 min elapsed, ~2 min left in this experiment)
+  [23/75] e1s_wiki_25 rep 2 omp-dynamic    T=2      3.086s  rss  1.06 GB  (1 min elapsed, ~2 min left in this experiment)
+  [24/75] e1s_wiki_25 rep 2 heavy-dynamic  T=12     0.823s  rss  1.13 GB  (1 min elapsed, ~2 min left in this experiment)
+  [25/75] e1s_wiki_25 rep 2 heavy-dynamic  T=2      2.631s  rss  0.99 GB  (1 min elapsed, ~2 min left in this experiment)
+  [26/75] e1s_wiki_25 rep 2 seq            T=1      4.405s  rss  1.02 GB  (1 min elapsed, ~2 min left in this experiment)
+  [27/75] e1s_wiki_25 rep 2 heavy-dynamic  T=24     0.645s  rss  1.27 GB  (1 min elapsed, ~2 min left in this experiment)
+  [28/75] e1s_wiki_25 rep 2 omp-dynamic    T=4      1.562s  rss  1.09 GB  (1 min elapsed, ~2 min left in this experiment)
+  [29/75] e1s_wiki_25 rep 2 omp-dynamic    T=24     0.675s  rss  1.34 GB  (1 min elapsed, ~2 min left in this experiment)
+  [30/75] e1s_wiki_25 rep 2 omp-dynamic    T=8      0.972s  rss  1.18 GB  (1 min elapsed, ~2 min left in this experiment)
+  [31/75] e1s_wiki_25 rep 3 omp-dynamic    T=24     0.675s  rss  1.34 GB  (1 min elapsed, ~1 min left in this experiment)
+  [32/75] e1s_wiki_25 rep 3 omp-dynamic    T=12     0.837s  rss  1.19 GB  (1 min elapsed, ~1 min left in this experiment)
+  [33/75] e1s_wiki_25 rep 3 seq            T=1      4.464s  rss  1.02 GB  (1 min elapsed, ~1 min left in this experiment)
+  [34/75] e1s_wiki_25 rep 3 heavy-dynamic  T=1      4.670s  rss  0.95 GB  (1 min elapsed, ~1 min left in this experiment)
+  [35/75] e1s_wiki_25 rep 3 omp-dynamic    T=16     0.755s  rss  1.25 GB  (1 min elapsed, ~1 min left in this experiment)
+  [36/75] e1s_wiki_25 rep 3 heavy-dynamic  T=12     0.823s  rss  1.13 GB  (1 min elapsed, ~1 min left in this experiment)
+  [37/75] e1s_wiki_25 rep 3 heavy-dynamic  T=2      2.733s  rss  0.99 GB  (1 min elapsed, ~1 min left in this experiment)
+  [38/75] e1s_wiki_25 rep 3 omp-dynamic    T=2      2.722s  rss  1.06 GB  (1 min elapsed, ~1 min left in this experiment)
+  [39/75] e1s_wiki_25 rep 3 heavy-dynamic  T=4      1.556s  rss  1.03 GB  (1 min elapsed, ~1 min left in this experiment)
+  [40/75] e1s_wiki_25 rep 3 omp-dynamic    T=8      0.964s  rss  1.18 GB  (1 min elapsed, ~1 min left in this experiment)
+  [41/75] e1s_wiki_25 rep 3 omp-dynamic    T=1      4.561s  rss  1.03 GB  (1 min elapsed, ~1 min left in this experiment)
+  [42/75] e1s_wiki_25 rep 3 heavy-dynamic  T=24     0.642s  rss  1.27 GB  (1 min elapsed, ~1 min left in this experiment)
+  [43/75] e1s_wiki_25 rep 3 heavy-dynamic  T=8      0.957s  rss  1.12 GB  (1 min elapsed, ~1 min left in this experiment)
+  [44/75] e1s_wiki_25 rep 3 heavy-dynamic  T=16     0.735s  rss  1.19 GB  (2 min elapsed, ~1 min left in this experiment)
+  [45/75] e1s_wiki_25 rep 3 omp-dynamic    T=4      1.558s  rss  1.09 GB  (2 min elapsed, ~1 min left in this experiment)
+  [46/75] e1s_wiki_25 rep 4 heavy-dynamic  T=24     0.645s  rss  1.27 GB  (2 min elapsed, ~1 min left in this experiment)
+  [47/75] e1s_wiki_25 rep 4 heavy-dynamic  T=4      1.522s  rss  1.03 GB  (2 min elapsed, ~1 min left in this experiment)
+  [48/75] e1s_wiki_25 rep 4 heavy-dynamic  T=2      2.738s  rss  0.99 GB  (2 min elapsed, ~1 min left in this experiment)
+  [49/75] e1s_wiki_25 rep 4 omp-dynamic    T=2      2.725s  rss  1.06 GB  (2 min elapsed, ~1 min left in this experiment)
+  [50/75] e1s_wiki_25 rep 4 omp-dynamic    T=16     0.748s  rss  1.24 GB  (2 min elapsed, ~1 min left in this experiment)
+  [51/75] e1s_wiki_25 rep 4 omp-dynamic    T=4      1.562s  rss  1.09 GB  (2 min elapsed, ~1 min left in this experiment)
+  [52/75] e1s_wiki_25 rep 4 heavy-dynamic  T=1      4.709s  rss  0.95 GB  (2 min elapsed, ~1 min left in this experiment)
+  [53/75] e1s_wiki_25 rep 4 omp-dynamic    T=12     0.837s  rss  1.19 GB  (2 min elapsed, ~1 min left in this experiment)
+  [54/75] e1s_wiki_25 rep 4 heavy-dynamic  T=16     0.728s  rss  1.19 GB  (2 min elapsed, ~1 min left in this experiment)
+  [55/75] e1s_wiki_25 rep 4 seq            T=1      4.505s  rss  1.02 GB  (2 min elapsed, ~1 min left in this experiment)
+  [56/75] e1s_wiki_25 rep 4 omp-dynamic    T=1      4.562s  rss  1.03 GB  (2 min elapsed, ~1 min left in this experiment)
+  [57/75] e1s_wiki_25 rep 4 omp-dynamic    T=24     0.671s  rss  1.33 GB  (2 min elapsed, ~1 min left in this experiment)
+  [58/75] e1s_wiki_25 rep 4 omp-dynamic    T=8      0.978s  rss  1.19 GB  (2 min elapsed, ~1 min left in this experiment)
+  [59/75] e1s_wiki_25 rep 4 heavy-dynamic  T=12     0.818s  rss  1.13 GB  (2 min elapsed, ~1 min left in this experiment)
+  [60/75] e1s_wiki_25 rep 4 heavy-dynamic  T=8      0.964s  rss  1.12 GB  (2 min elapsed, ~1 min left in this experiment)
+  [61/75] e1s_wiki_25 rep 5 omp-dynamic    T=8      0.979s  rss  1.18 GB  (2 min elapsed, ~0 min left in this experiment)
+  [62/75] e1s_wiki_25 rep 5 heavy-dynamic  T=2      2.720s  rss  0.99 GB  (2 min elapsed, ~0 min left in this experiment)
+  [63/75] e1s_wiki_25 rep 5 omp-dynamic    T=16     0.761s  rss  1.25 GB  (2 min elapsed, ~0 min left in this experiment)
+  [64/75] e1s_wiki_25 rep 5 heavy-dynamic  T=1      4.726s  rss  0.95 GB  (2 min elapsed, ~0 min left in this experiment)
+  [65/75] e1s_wiki_25 rep 5 omp-dynamic    T=2      2.720s  rss  1.06 GB  (2 min elapsed, ~0 min left in this experiment)
+  [66/75] e1s_wiki_25 rep 5 seq            T=1      4.587s  rss  1.02 GB  (2 min elapsed, ~0 min left in this experiment)
+  [67/75] e1s_wiki_25 rep 5 heavy-dynamic  T=4      1.540s  rss  1.03 GB  (2 min elapsed, ~0 min left in this experiment)
+  [68/75] e1s_wiki_25 rep 5 heavy-dynamic  T=24     0.638s  rss  1.26 GB  (2 min elapsed, ~0 min left in this experiment)
+  [69/75] e1s_wiki_25 rep 5 heavy-dynamic  T=12     0.818s  rss  1.13 GB  (2 min elapsed, ~0 min left in this experiment)
+  [70/75] e1s_wiki_25 rep 5 heavy-dynamic  T=16     0.730s  rss  1.19 GB  (2 min elapsed, ~0 min left in this experiment)
+  [71/75] e1s_wiki_25 rep 5 omp-dynamic    T=1      4.593s  rss  1.03 GB  (2 min elapsed, ~0 min left in this experiment)
+  [72/75] e1s_wiki_25 rep 5 omp-dynamic    T=24     0.671s  rss  1.34 GB  (2 min elapsed, ~0 min left in this experiment)
+  [73/75] e1s_wiki_25 rep 5 omp-dynamic    T=4      1.568s  rss  1.09 GB  (3 min elapsed, ~0 min left in this experiment)
+  [74/75] e1s_wiki_25 rep 5 heavy-dynamic  T=8      0.952s  rss  1.12 GB  (3 min elapsed, ~0 min left in this experiment)
+  [75/75] e1s_wiki_25 rep 5 omp-dynamic    T=12     0.832s  rss  1.19 GB  (3 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1     4.500    4.405    4.587    1.00x     1.00x
+heavy-dynamic      1     4.709    4.670    4.824    1.00x     0.96x
+heavy-dynamic      2     2.720    2.631    2.738    1.73x     1.66x
+heavy-dynamic      4     1.549    1.522    1.688    3.04x     2.91x
+heavy-dynamic      8     0.952    0.948    0.964    4.95x     4.73x
+heavy-dynamic     12     0.818    0.802    0.824    5.75x     5.50x
+heavy-dynamic     16     0.730    0.725    0.736    6.45x     6.16x
+heavy-dynamic     24     0.642    0.638    0.645    7.33x     7.00x
+omp-dynamic        1     4.575    4.561    4.596    1.00x     0.98x
+omp-dynamic        2     2.722    2.657    3.086    1.68x     1.65x
+omp-dynamic        4     1.562    1.558    1.568    2.93x     2.88x
+omp-dynamic        8     0.972    0.964    0.979    4.71x     4.63x
+omp-dynamic       12     0.837    0.826    0.837    5.47x     5.38x
+omp-dynamic       16     0.755    0.748    0.781    6.06x     5.96x
+omp-dynamic       24     0.675    0.671    0.678    6.78x     6.67x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_wiki_25.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_wiki_25_summary.csv
+15 configurations x 5 reps = 75 runs on data/wiki_50pct.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 5.5; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/75] e1s_wiki_50 rep 1 omp-dynamic    T=16     1.422s  rss  2.34 GB  (0 min elapsed, ~2 min left in this experiment)
+  [2/75] e1s_wiki_50 rep 1 heavy-dynamic  T=8      1.830s  rss  2.04 GB  (0 min elapsed, ~2 min left in this experiment)
+  [3/75] e1s_wiki_50 rep 1 seq            T=1      8.852s  rss  1.94 GB  (0 min elapsed, ~5 min left in this experiment)
+  [4/75] e1s_wiki_50 rep 1 omp-dynamic    T=8      1.849s  rss  2.16 GB  (0 min elapsed, ~4 min left in this experiment)
+  [5/75] e1s_wiki_50 rep 1 omp-dynamic    T=12     1.623s  rss  2.25 GB  (0 min elapsed, ~4 min left in this experiment)
+  [6/75] e1s_wiki_50 rep 1 omp-dynamic    T=4      3.210s  rss  2.10 GB  (0 min elapsed, ~4 min left in this experiment)
+  [7/75] e1s_wiki_50 rep 1 heavy-dynamic  T=16     1.420s  rss  2.21 GB  (0 min elapsed, ~4 min left in this experiment)
+  [8/75] e1s_wiki_50 rep 1 heavy-dynamic  T=24     1.261s  rss  2.24 GB  (0 min elapsed, ~3 min left in this experiment)
+  [9/75] e1s_wiki_50 rep 1 omp-dynamic    T=1      9.277s  rss  1.95 GB  (1 min elapsed, ~4 min left in this experiment)
+  [10/75] e1s_wiki_50 rep 1 omp-dynamic    T=2      5.444s  rss  2.04 GB  (1 min elapsed, ~4 min left in this experiment)
+  [11/75] e1s_wiki_50 rep 1 heavy-dynamic  T=12     1.561s  rss  2.13 GB  (1 min elapsed, ~4 min left in this experiment)
+  [12/75] e1s_wiki_50 rep 1 heavy-dynamic  T=2      5.848s  rss  1.89 GB  (1 min elapsed, ~4 min left in this experiment)
+  [13/75] e1s_wiki_50 rep 1 omp-dynamic    T=24     1.302s  rss  2.35 GB  (1 min elapsed, ~4 min left in this experiment)
+  [14/75] e1s_wiki_50 rep 1 heavy-dynamic  T=1     10.072s  rss  1.80 GB  (1 min elapsed, ~4 min left in this experiment)
+  [15/75] e1s_wiki_50 rep 1 heavy-dynamic  T=4      3.256s  rss  1.96 GB  (1 min elapsed, ~4 min left in this experiment)
+  [16/75] e1s_wiki_50 rep 2 omp-dynamic    T=12     1.680s  rss  2.25 GB  (1 min elapsed, ~4 min left in this experiment)
+  [17/75] e1s_wiki_50 rep 2 heavy-dynamic  T=8      1.911s  rss  2.04 GB  (1 min elapsed, ~4 min left in this experiment)
+  [18/75] e1s_wiki_50 rep 2 heavy-dynamic  T=16     1.409s  rss  2.21 GB  (1 min elapsed, ~4 min left in this experiment)
+  [19/75] e1s_wiki_50 rep 2 omp-dynamic    T=1      9.562s  rss  1.95 GB  (1 min elapsed, ~4 min left in this experiment)
+  [20/75] e1s_wiki_50 rep 2 heavy-dynamic  T=1      9.099s  rss  1.80 GB  (1 min elapsed, ~4 min left in this experiment)
+  [21/75] e1s_wiki_50 rep 2 omp-dynamic    T=16     1.460s  rss  2.34 GB  (1 min elapsed, ~4 min left in this experiment)
+  [22/75] e1s_wiki_50 rep 2 heavy-dynamic  T=4      2.993s  rss  1.96 GB  (2 min elapsed, ~4 min left in this experiment)
+  [23/75] e1s_wiki_50 rep 2 omp-dynamic    T=2      5.347s  rss  2.04 GB  (2 min elapsed, ~4 min left in this experiment)
+  [24/75] e1s_wiki_50 rep 2 heavy-dynamic  T=12     1.561s  rss  2.14 GB  (2 min elapsed, ~4 min left in this experiment)
+  [25/75] e1s_wiki_50 rep 2 heavy-dynamic  T=2      5.308s  rss  1.89 GB  (2 min elapsed, ~3 min left in this experiment)
+  [26/75] e1s_wiki_50 rep 2 seq            T=1      8.661s  rss  1.93 GB  (2 min elapsed, ~4 min left in this experiment)
+  [27/75] e1s_wiki_50 rep 2 heavy-dynamic  T=24     1.181s  rss  2.24 GB  (2 min elapsed, ~3 min left in this experiment)
+  [28/75] e1s_wiki_50 rep 2 omp-dynamic    T=4      3.031s  rss  2.10 GB  (2 min elapsed, ~3 min left in this experiment)
+  [29/75] e1s_wiki_50 rep 2 omp-dynamic    T=24     1.222s  rss  2.36 GB  (2 min elapsed, ~3 min left in this experiment)
+  [30/75] e1s_wiki_50 rep 2 omp-dynamic    T=8      1.837s  rss  2.16 GB  (2 min elapsed, ~3 min left in this experiment)
+  [31/75] e1s_wiki_50 rep 3 omp-dynamic    T=24     1.236s  rss  2.36 GB  (2 min elapsed, ~3 min left in this experiment)
+  [32/75] e1s_wiki_50 rep 3 omp-dynamic    T=12     1.592s  rss  2.25 GB  (2 min elapsed, ~3 min left in this experiment)
+  [33/75] e1s_wiki_50 rep 3 seq            T=1      8.659s  rss  1.93 GB  (2 min elapsed, ~3 min left in this experiment)
+  [34/75] e1s_wiki_50 rep 3 heavy-dynamic  T=1      9.127s  rss  1.80 GB  (2 min elapsed, ~3 min left in this experiment)
+  [35/75] e1s_wiki_50 rep 3 omp-dynamic    T=16     1.448s  rss  2.34 GB  (2 min elapsed, ~3 min left in this experiment)
+  [36/75] e1s_wiki_50 rep 3 heavy-dynamic  T=12     1.556s  rss  2.14 GB  (2 min elapsed, ~3 min left in this experiment)
+  [37/75] e1s_wiki_50 rep 3 heavy-dynamic  T=2      5.326s  rss  1.89 GB  (3 min elapsed, ~3 min left in this experiment)
+  [38/75] e1s_wiki_50 rep 3 omp-dynamic    T=2      5.323s  rss  2.03 GB  (3 min elapsed, ~3 min left in this experiment)
+  [39/75] e1s_wiki_50 rep 3 heavy-dynamic  T=4      2.999s  rss  1.96 GB  (3 min elapsed, ~2 min left in this experiment)
+  [40/75] e1s_wiki_50 rep 3 omp-dynamic    T=8      1.833s  rss  2.16 GB  (3 min elapsed, ~2 min left in this experiment)
+  [41/75] e1s_wiki_50 rep 3 omp-dynamic    T=1      8.847s  rss  1.95 GB  (3 min elapsed, ~2 min left in this experiment)
+  [42/75] e1s_wiki_50 rep 3 heavy-dynamic  T=24     1.189s  rss  2.24 GB  (3 min elapsed, ~2 min left in this experiment)
+  [43/75] e1s_wiki_50 rep 3 heavy-dynamic  T=8      1.795s  rss  2.04 GB  (3 min elapsed, ~2 min left in this experiment)
+  [44/75] e1s_wiki_50 rep 3 heavy-dynamic  T=16     1.373s  rss  2.22 GB  (3 min elapsed, ~2 min left in this experiment)
+  [45/75] e1s_wiki_50 rep 3 omp-dynamic    T=4      3.043s  rss  2.10 GB  (3 min elapsed, ~2 min left in this experiment)
+  [46/75] e1s_wiki_50 rep 4 heavy-dynamic  T=24     1.174s  rss  2.24 GB  (3 min elapsed, ~2 min left in this experiment)
+  [47/75] e1s_wiki_50 rep 4 heavy-dynamic  T=4      2.997s  rss  1.96 GB  (3 min elapsed, ~2 min left in this experiment)
+  [48/75] e1s_wiki_50 rep 4 heavy-dynamic  T=2      5.292s  rss  1.89 GB  (3 min elapsed, ~2 min left in this experiment)
+  [49/75] e1s_wiki_50 rep 4 omp-dynamic    T=2      5.356s  rss  2.04 GB  (3 min elapsed, ~2 min left in this experiment)
+  [50/75] e1s_wiki_50 rep 4 omp-dynamic    T=16     1.443s  rss  2.34 GB  (3 min elapsed, ~2 min left in this experiment)
+  [51/75] e1s_wiki_50 rep 4 omp-dynamic    T=4      3.059s  rss  2.10 GB  (3 min elapsed, ~2 min left in this experiment)
+  [52/75] e1s_wiki_50 rep 4 heavy-dynamic  T=1      9.099s  rss  1.80 GB  (4 min elapsed, ~2 min left in this experiment)
+  [53/75] e1s_wiki_50 rep 4 omp-dynamic    T=12     1.604s  rss  2.25 GB  (4 min elapsed, ~1 min left in this experiment)
+  [54/75] e1s_wiki_50 rep 4 heavy-dynamic  T=16     1.386s  rss  2.21 GB  (4 min elapsed, ~1 min left in this experiment)
+  [55/75] e1s_wiki_50 rep 4 seq            T=1      8.773s  rss  1.93 GB  (4 min elapsed, ~1 min left in this experiment)
+  [56/75] e1s_wiki_50 rep 4 omp-dynamic    T=1      8.866s  rss  1.95 GB  (4 min elapsed, ~1 min left in this experiment)
+  [57/75] e1s_wiki_50 rep 4 omp-dynamic    T=24     1.233s  rss  2.36 GB  (4 min elapsed, ~1 min left in this experiment)
+  [58/75] e1s_wiki_50 rep 4 omp-dynamic    T=8      1.839s  rss  2.16 GB  (4 min elapsed, ~1 min left in this experiment)
+  [59/75] e1s_wiki_50 rep 4 heavy-dynamic  T=12     1.551s  rss  2.14 GB  (4 min elapsed, ~1 min left in this experiment)
+  [60/75] e1s_wiki_50 rep 4 heavy-dynamic  T=8      1.812s  rss  2.04 GB  (4 min elapsed, ~1 min left in this experiment)
+  [61/75] e1s_wiki_50 rep 5 omp-dynamic    T=8      1.841s  rss  2.16 GB  (4 min elapsed, ~1 min left in this experiment)
+  [62/75] e1s_wiki_50 rep 5 heavy-dynamic  T=2      5.302s  rss  1.89 GB  (4 min elapsed, ~1 min left in this experiment)
+  [63/75] e1s_wiki_50 rep 5 omp-dynamic    T=16     1.441s  rss  2.34 GB  (4 min elapsed, ~1 min left in this experiment)
+  [64/75] e1s_wiki_50 rep 5 heavy-dynamic  T=1      9.115s  rss  1.80 GB  (4 min elapsed, ~1 min left in this experiment)
+  [65/75] e1s_wiki_50 rep 5 omp-dynamic    T=2      5.378s  rss  2.03 GB  (4 min elapsed, ~1 min left in this experiment)
+  [66/75] e1s_wiki_50 rep 5 seq            T=1      8.668s  rss  1.93 GB  (5 min elapsed, ~1 min left in this experiment)
+  [67/75] e1s_wiki_50 rep 5 heavy-dynamic  T=4      3.010s  rss  1.96 GB  (5 min elapsed, ~1 min left in this experiment)
+  [68/75] e1s_wiki_50 rep 5 heavy-dynamic  T=24     1.181s  rss  2.24 GB  (5 min elapsed, ~0 min left in this experiment)
+  [69/75] e1s_wiki_50 rep 5 heavy-dynamic  T=12     1.555s  rss  2.14 GB  (5 min elapsed, ~0 min left in this experiment)
+  [70/75] e1s_wiki_50 rep 5 heavy-dynamic  T=16     1.388s  rss  2.21 GB  (5 min elapsed, ~0 min left in this experiment)
+  [71/75] e1s_wiki_50 rep 5 omp-dynamic    T=1      8.826s  rss  1.96 GB  (5 min elapsed, ~0 min left in this experiment)
+  [72/75] e1s_wiki_50 rep 5 omp-dynamic    T=24     1.239s  rss  2.37 GB  (5 min elapsed, ~0 min left in this experiment)
+  [73/75] e1s_wiki_50 rep 5 omp-dynamic    T=4      3.046s  rss  2.10 GB  (5 min elapsed, ~0 min left in this experiment)
+  [74/75] e1s_wiki_50 rep 5 heavy-dynamic  T=8      1.817s  rss  2.04 GB  (5 min elapsed, ~0 min left in this experiment)
+  [75/75] e1s_wiki_50 rep 5 omp-dynamic    T=12     1.599s  rss  2.25 GB  (5 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1     8.668    8.659    8.852    1.00x     1.00x
+heavy-dynamic      1     9.115    9.099   10.072    1.00x     0.95x
+heavy-dynamic      2     5.308    5.292    5.848    1.72x     1.63x
+heavy-dynamic      4     2.999    2.993    3.256    3.04x     2.89x
+heavy-dynamic      8     1.817    1.795    1.911    5.02x     4.77x
+heavy-dynamic     12     1.556    1.552    1.561    5.86x     5.57x
+heavy-dynamic     16     1.388    1.373    1.420    6.57x     6.25x
+heavy-dynamic     24     1.181    1.174    1.261    7.72x     7.34x
+omp-dynamic        1     8.866    8.825    9.562    1.00x     0.98x
+omp-dynamic        2     5.356    5.323    5.444    1.66x     1.62x
+omp-dynamic        4     3.046    3.031    3.210    2.91x     2.85x
+omp-dynamic        8     1.839    1.833    1.849    4.82x     4.71x
+omp-dynamic       12     1.604    1.592    1.680    5.53x     5.40x
+omp-dynamic       16     1.443    1.423    1.460    6.14x     6.01x
+omp-dynamic       24     1.236    1.222    1.302    7.17x     7.01x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_wiki_50.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e1s_wiki_50_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_v10000.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 3.2; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_vocab_10000 rep 1 heavy-dynamic  T=8      1.105s  rss  1.53 GB  (0 min elapsed, ~1 min left in this experiment)
+  [2/35] e4_vocab_10000 rep 1 phoenix        T=8      1.436s  rss  2.27 GB  (0 min elapsed, ~1 min left in this experiment)
+  [3/35] e4_vocab_10000 rep 1 seq            T=1      7.557s  rss  1.74 GB  (0 min elapsed, ~2 min left in this experiment)
+  [4/35] e4_vocab_10000 rep 1 omp-dynamic    T=24     0.709s  rss  1.80 GB  (0 min elapsed, ~2 min left in this experiment)
+  [5/35] e4_vocab_10000 rep 1 omp-dynamic    T=8      1.182s  rss  1.75 GB  (0 min elapsed, ~1 min left in this experiment)
+  [6/35] e4_vocab_10000 rep 1 heavy-dynamic  T=24     0.660s  rss  1.58 GB  (0 min elapsed, ~1 min left in this experiment)
+  [7/35] e4_vocab_10000 rep 1 phoenix        T=24     0.873s  rss  2.34 GB  (0 min elapsed, ~1 min left in this experiment)
+  [8/35] e4_vocab_10000 rep 2 heavy-dynamic  T=24     0.657s  rss  1.58 GB  (0 min elapsed, ~1 min left in this experiment)
+  [9/35] e4_vocab_10000 rep 2 heavy-dynamic  T=8      1.102s  rss  1.53 GB  (0 min elapsed, ~1 min left in this experiment)
+  [10/35] e4_vocab_10000 rep 2 omp-dynamic    T=8      1.195s  rss  1.75 GB  (0 min elapsed, ~1 min left in this experiment)
+  [11/35] e4_vocab_10000 rep 2 omp-dynamic    T=24     0.715s  rss  1.80 GB  (0 min elapsed, ~1 min left in this experiment)
+  [12/35] e4_vocab_10000 rep 2 seq            T=1      7.603s  rss  1.74 GB  (0 min elapsed, ~1 min left in this experiment)
+  [13/35] e4_vocab_10000 rep 2 phoenix        T=24     0.889s  rss  2.34 GB  (0 min elapsed, ~1 min left in this experiment)
+  [14/35] e4_vocab_10000 rep 2 phoenix        T=8      1.452s  rss  2.27 GB  (1 min elapsed, ~1 min left in this experiment)
+  [15/35] e4_vocab_10000 rep 3 heavy-dynamic  T=24     0.654s  rss  1.58 GB  (1 min elapsed, ~1 min left in this experiment)
+  [16/35] e4_vocab_10000 rep 3 phoenix        T=8      1.446s  rss  2.27 GB  (1 min elapsed, ~1 min left in this experiment)
+  [17/35] e4_vocab_10000 rep 3 omp-dynamic    T=8      1.188s  rss  1.75 GB  (1 min elapsed, ~1 min left in this experiment)
+  [18/35] e4_vocab_10000 rep 3 phoenix        T=24     0.877s  rss  2.34 GB  (1 min elapsed, ~1 min left in this experiment)
+  [19/35] e4_vocab_10000 rep 3 heavy-dynamic  T=8      1.106s  rss  1.53 GB  (1 min elapsed, ~1 min left in this experiment)
+  [20/35] e4_vocab_10000 rep 3 seq            T=1      7.591s  rss  1.73 GB  (1 min elapsed, ~1 min left in this experiment)
+  [21/35] e4_vocab_10000 rep 3 omp-dynamic    T=24     0.707s  rss  1.80 GB  (1 min elapsed, ~1 min left in this experiment)
+  [22/35] e4_vocab_10000 rep 4 heavy-dynamic  T=24     0.654s  rss  1.58 GB  (1 min elapsed, ~0 min left in this experiment)
+  [23/35] e4_vocab_10000 rep 4 phoenix        T=24     0.882s  rss  2.34 GB  (1 min elapsed, ~0 min left in this experiment)
+  [24/35] e4_vocab_10000 rep 4 omp-dynamic    T=8      1.198s  rss  1.75 GB  (1 min elapsed, ~0 min left in this experiment)
+  [25/35] e4_vocab_10000 rep 4 phoenix        T=8      1.454s  rss  2.27 GB  (1 min elapsed, ~0 min left in this experiment)
+  [26/35] e4_vocab_10000 rep 4 seq            T=1      7.577s  rss  1.74 GB  (1 min elapsed, ~0 min left in this experiment)
+  [27/35] e4_vocab_10000 rep 4 omp-dynamic    T=24     0.706s  rss  1.80 GB  (1 min elapsed, ~0 min left in this experiment)
+  [28/35] e4_vocab_10000 rep 4 heavy-dynamic  T=8      1.102s  rss  1.53 GB  (1 min elapsed, ~0 min left in this experiment)
+  [29/35] e4_vocab_10000 rep 5 phoenix        T=24     0.882s  rss  2.34 GB  (1 min elapsed, ~0 min left in this experiment)
+  [30/35] e4_vocab_10000 rep 5 omp-dynamic    T=24     0.705s  rss  1.80 GB  (1 min elapsed, ~0 min left in this experiment)
+  [31/35] e4_vocab_10000 rep 5 phoenix        T=8      1.448s  rss  2.27 GB  (1 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_vocab_10000 rep 5 seq            T=1      7.687s  rss  1.73 GB  (1 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_vocab_10000 rep 5 omp-dynamic    T=8      1.192s  rss  1.75 GB  (1 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_vocab_10000 rep 5 heavy-dynamic  T=24     0.657s  rss  1.58 GB  (1 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_vocab_10000 rep 5 heavy-dynamic  T=8      1.104s  rss  1.53 GB  (1 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1     7.591    7.558    7.687    1.00x     1.00x
+heavy-dynamic      8     1.104    1.101    1.106              6.88x
+heavy-dynamic     24     0.657    0.654    0.660             11.56x
+omp-dynamic        8     1.192    1.182    1.198              6.37x
+omp-dynamic       24     0.707    0.705    0.715             10.73x
+phoenix            8     1.448    1.436    1.454              5.24x
+phoenix           24     0.882    0.873    0.888              8.61x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_10000.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_10000_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_v100000.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 6.9; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_vocab_100000 rep 1 heavy-dynamic  T=8      2.540s  rss  1.86 GB  (0 min elapsed, ~2 min left in this experiment)
+  [2/35] e4_vocab_100000 rep 1 phoenix        T=8      2.795s  rss  2.63 GB  (0 min elapsed, ~2 min left in this experiment)
+  [3/35] e4_vocab_100000 rep 1 seq            T=1     10.872s  rss  1.94 GB  (0 min elapsed, ~3 min left in this experiment)
+  [4/35] e4_vocab_100000 rep 1 omp-dynamic    T=24     1.714s  rss  2.22 GB  (0 min elapsed, ~2 min left in this experiment)
+  [5/35] e4_vocab_100000 rep 1 omp-dynamic    T=8      2.589s  rss  2.03 GB  (0 min elapsed, ~2 min left in this experiment)
+  [6/35] e4_vocab_100000 rep 1 heavy-dynamic  T=24     1.669s  rss  2.04 GB  (0 min elapsed, ~2 min left in this experiment)
+  [7/35] e4_vocab_100000 rep 1 phoenix        T=24     1.707s  rss  2.85 GB  (0 min elapsed, ~2 min left in this experiment)
+  [8/35] e4_vocab_100000 rep 2 heavy-dynamic  T=24     1.668s  rss  2.04 GB  (0 min elapsed, ~2 min left in this experiment)
+  [9/35] e4_vocab_100000 rep 2 heavy-dynamic  T=8      2.539s  rss  1.86 GB  (1 min elapsed, ~1 min left in this experiment)
+  [10/35] e4_vocab_100000 rep 2 omp-dynamic    T=8      2.600s  rss  2.03 GB  (1 min elapsed, ~1 min left in this experiment)
+  [11/35] e4_vocab_100000 rep 2 omp-dynamic    T=24     1.730s  rss  2.22 GB  (1 min elapsed, ~1 min left in this experiment)
+  [12/35] e4_vocab_100000 rep 2 seq            T=1     10.703s  rss  1.94 GB  (1 min elapsed, ~1 min left in this experiment)
+  [13/35] e4_vocab_100000 rep 2 phoenix        T=24     1.700s  rss  2.85 GB  (1 min elapsed, ~1 min left in this experiment)
+  [14/35] e4_vocab_100000 rep 2 phoenix        T=8      2.778s  rss  2.63 GB  (1 min elapsed, ~1 min left in this experiment)
+  [15/35] e4_vocab_100000 rep 3 heavy-dynamic  T=24     1.677s  rss  2.05 GB  (1 min elapsed, ~1 min left in this experiment)
+  [16/35] e4_vocab_100000 rep 3 phoenix        T=8      2.794s  rss  2.63 GB  (1 min elapsed, ~1 min left in this experiment)
+  [17/35] e4_vocab_100000 rep 3 omp-dynamic    T=8      2.598s  rss  2.03 GB  (1 min elapsed, ~1 min left in this experiment)
+  [18/35] e4_vocab_100000 rep 3 phoenix        T=24     1.699s  rss  2.85 GB  (1 min elapsed, ~1 min left in this experiment)
+  [19/35] e4_vocab_100000 rep 3 heavy-dynamic  T=8      2.542s  rss  1.86 GB  (1 min elapsed, ~1 min left in this experiment)
+  [20/35] e4_vocab_100000 rep 3 seq            T=1     10.853s  rss  1.94 GB  (1 min elapsed, ~1 min left in this experiment)
+  [21/35] e4_vocab_100000 rep 3 omp-dynamic    T=24     1.702s  rss  2.22 GB  (1 min elapsed, ~1 min left in this experiment)
+  [22/35] e4_vocab_100000 rep 4 heavy-dynamic  T=24     1.675s  rss  2.04 GB  (1 min elapsed, ~1 min left in this experiment)
+  [23/35] e4_vocab_100000 rep 4 phoenix        T=24     1.730s  rss  2.85 GB  (1 min elapsed, ~1 min left in this experiment)
+  [24/35] e4_vocab_100000 rep 4 omp-dynamic    T=8      2.597s  rss  2.04 GB  (1 min elapsed, ~1 min left in this experiment)
+  [25/35] e4_vocab_100000 rep 4 phoenix        T=8      2.777s  rss  2.63 GB  (1 min elapsed, ~1 min left in this experiment)
+  [26/35] e4_vocab_100000 rep 4 seq            T=1     10.679s  rss  1.94 GB  (2 min elapsed, ~1 min left in this experiment)
+  [27/35] e4_vocab_100000 rep 4 omp-dynamic    T=24     1.707s  rss  2.22 GB  (2 min elapsed, ~0 min left in this experiment)
+  [28/35] e4_vocab_100000 rep 4 heavy-dynamic  T=8      2.525s  rss  1.86 GB  (2 min elapsed, ~0 min left in this experiment)
+  [29/35] e4_vocab_100000 rep 5 phoenix        T=24     1.713s  rss  2.85 GB  (2 min elapsed, ~0 min left in this experiment)
+  [30/35] e4_vocab_100000 rep 5 omp-dynamic    T=24     1.702s  rss  2.22 GB  (2 min elapsed, ~0 min left in this experiment)
+  [31/35] e4_vocab_100000 rep 5 phoenix        T=8      2.772s  rss  2.63 GB  (2 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_vocab_100000 rep 5 seq            T=1     10.699s  rss  1.94 GB  (2 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_vocab_100000 rep 5 omp-dynamic    T=8      2.607s  rss  2.03 GB  (2 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_vocab_100000 rep 5 heavy-dynamic  T=24     1.667s  rss  2.04 GB  (2 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_vocab_100000 rep 5 heavy-dynamic  T=8      2.541s  rss  1.87 GB  (2 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    10.703   10.679   10.872    1.00x     1.00x
+heavy-dynamic      8     2.540    2.525    2.542              4.21x
+heavy-dynamic     24     1.669    1.667    1.677              6.41x
+omp-dynamic        8     2.598    2.589    2.607              4.12x
+omp-dynamic       24     1.706    1.702    1.730              6.27x
+phoenix            8     2.778    2.772    2.795              3.85x
+phoenix           24     1.707    1.699    1.730              6.27x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_100000.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_100000_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_2M.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 5.7; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_vocab_1000000 rep 1 heavy-dynamic  T=8      4.719s  rss  2.72 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/35] e4_vocab_1000000 rep 1 phoenix        T=8      4.550s  rss  3.41 GB  (0 min elapsed, ~3 min left in this experiment)
+  [3/35] e4_vocab_1000000 rep 1 seq            T=1     20.614s  rss  2.19 GB  (1 min elapsed, ~5 min left in this experiment)
+  [4/35] e4_vocab_1000000 rep 1 omp-dynamic    T=24     3.448s  rss  3.95 GB  (1 min elapsed, ~4 min left in this experiment)
+  [5/35] e4_vocab_1000000 rep 1 omp-dynamic    T=8      4.744s  rss  2.85 GB  (1 min elapsed, ~4 min left in this experiment)
+  [6/35] e4_vocab_1000000 rep 1 heavy-dynamic  T=24     3.448s  rss  3.80 GB  (1 min elapsed, ~3 min left in this experiment)
+  [7/35] e4_vocab_1000000 rep 1 phoenix        T=24     2.940s  rss  4.71 GB  (1 min elapsed, ~3 min left in this experiment)
+  [8/35] e4_vocab_1000000 rep 2 heavy-dynamic  T=24     3.443s  rss  3.80 GB  (1 min elapsed, ~3 min left in this experiment)
+  [9/35] e4_vocab_1000000 rep 2 heavy-dynamic  T=8      4.730s  rss  2.72 GB  (1 min elapsed, ~3 min left in this experiment)
+  [10/35] e4_vocab_1000000 rep 2 omp-dynamic    T=8      4.747s  rss  2.85 GB  (1 min elapsed, ~3 min left in this experiment)
+  [11/35] e4_vocab_1000000 rep 2 omp-dynamic    T=24     3.446s  rss  3.95 GB  (1 min elapsed, ~2 min left in this experiment)
+  [12/35] e4_vocab_1000000 rep 2 seq            T=1     20.434s  rss  2.19 GB  (1 min elapsed, ~3 min left in this experiment)
+  [13/35] e4_vocab_1000000 rep 2 phoenix        T=24     2.924s  rss  4.72 GB  (1 min elapsed, ~2 min left in this experiment)
+  [14/35] e4_vocab_1000000 rep 2 phoenix        T=8      4.564s  rss  3.41 GB  (2 min elapsed, ~2 min left in this experiment)
+  [15/35] e4_vocab_1000000 rep 3 heavy-dynamic  T=24     3.444s  rss  3.80 GB  (2 min elapsed, ~2 min left in this experiment)
+  [16/35] e4_vocab_1000000 rep 3 phoenix        T=8      4.536s  rss  3.45 GB  (2 min elapsed, ~2 min left in this experiment)
+  [17/35] e4_vocab_1000000 rep 3 omp-dynamic    T=8      4.750s  rss  2.85 GB  (2 min elapsed, ~2 min left in this experiment)
+  [18/35] e4_vocab_1000000 rep 3 phoenix        T=24     2.935s  rss  4.71 GB  (2 min elapsed, ~2 min left in this experiment)
+  [19/35] e4_vocab_1000000 rep 3 heavy-dynamic  T=8      4.747s  rss  2.72 GB  (2 min elapsed, ~2 min left in this experiment)
+  [20/35] e4_vocab_1000000 rep 3 seq            T=1     20.540s  rss  2.19 GB  (2 min elapsed, ~2 min left in this experiment)
+  [21/35] e4_vocab_1000000 rep 3 omp-dynamic    T=24     3.439s  rss  3.94 GB  (2 min elapsed, ~2 min left in this experiment)
+  [22/35] e4_vocab_1000000 rep 4 heavy-dynamic  T=24     3.443s  rss  3.80 GB  (2 min elapsed, ~1 min left in this experiment)
+  [23/35] e4_vocab_1000000 rep 4 phoenix        T=24     2.954s  rss  4.71 GB  (2 min elapsed, ~1 min left in this experiment)
+  [24/35] e4_vocab_1000000 rep 4 omp-dynamic    T=8      4.777s  rss  2.85 GB  (3 min elapsed, ~1 min left in this experiment)
+  [25/35] e4_vocab_1000000 rep 4 phoenix        T=8      4.524s  rss  3.45 GB  (3 min elapsed, ~1 min left in this experiment)
+  [26/35] e4_vocab_1000000 rep 4 seq            T=1     20.316s  rss  2.20 GB  (3 min elapsed, ~1 min left in this experiment)
+  [27/35] e4_vocab_1000000 rep 4 omp-dynamic    T=24     3.455s  rss  3.95 GB  (3 min elapsed, ~1 min left in this experiment)
+  [28/35] e4_vocab_1000000 rep 4 heavy-dynamic  T=8      4.750s  rss  2.72 GB  (3 min elapsed, ~1 min left in this experiment)
+  [29/35] e4_vocab_1000000 rep 5 phoenix        T=24     2.969s  rss  4.71 GB  (3 min elapsed, ~1 min left in this experiment)
+  [30/35] e4_vocab_1000000 rep 5 omp-dynamic    T=24     3.423s  rss  3.93 GB  (3 min elapsed, ~1 min left in this experiment)
+  [31/35] e4_vocab_1000000 rep 5 phoenix        T=8      4.564s  rss  3.41 GB  (3 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_vocab_1000000 rep 5 seq            T=1     20.309s  rss  2.20 GB  (4 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_vocab_1000000 rep 5 omp-dynamic    T=8      4.763s  rss  2.85 GB  (4 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_vocab_1000000 rep 5 heavy-dynamic  T=24     3.446s  rss  3.80 GB  (4 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_vocab_1000000 rep 5 heavy-dynamic  T=8      4.719s  rss  2.72 GB  (4 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    20.434   20.309   20.614    1.00x     1.00x
+heavy-dynamic      8     4.730    4.719    4.750              4.32x
+heavy-dynamic     24     3.445    3.443    3.448              5.93x
+omp-dynamic        8     4.750    4.744    4.777              4.30x
+omp-dynamic       24     3.446    3.423    3.455              5.93x
+phoenix            8     4.550    4.524    4.564              4.49x
+phoenix           24     2.940    2.924    2.970              6.95x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_1000000.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_1000000_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_v10000000.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 7.4; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_vocab_10000000 rep 1 heavy-dynamic  T=8      8.044s  rss  5.21 GB  (0 min elapsed, ~5 min left in this experiment)
+  [2/35] e4_vocab_10000000 rep 1 phoenix        T=8      8.606s  rss  6.62 GB  (0 min elapsed, ~5 min left in this experiment)
+  [3/35] e4_vocab_10000000 rep 1 seq            T=1     33.694s  rss  3.28 GB  (1 min elapsed, ~9 min left in this experiment)
+  [4/35] e4_vocab_10000000 rep 1 omp-dynamic    T=24     5.855s  rss  6.70 GB  (1 min elapsed, ~7 min left in this experiment)
+  [5/35] e4_vocab_10000000 rep 1 omp-dynamic    T=8      8.064s  rss  5.32 GB  (1 min elapsed, ~7 min left in this experiment)
+  [6/35] e4_vocab_10000000 rep 1 heavy-dynamic  T=24     5.830s  rss  6.57 GB  (1 min elapsed, ~6 min left in this experiment)
+  [7/35] e4_vocab_10000000 rep 1 phoenix        T=24     6.233s  rss  8.74 GB  (1 min elapsed, ~5 min left in this experiment)
+  [8/35] e4_vocab_10000000 rep 2 heavy-dynamic  T=24     5.921s  rss  6.57 GB  (1 min elapsed, ~5 min left in this experiment)
+  [9/35] e4_vocab_10000000 rep 2 heavy-dynamic  T=8      8.080s  rss  5.21 GB  (2 min elapsed, ~4 min left in this experiment)
+  [10/35] e4_vocab_10000000 rep 2 omp-dynamic    T=8      7.986s  rss  5.32 GB  (2 min elapsed, ~4 min left in this experiment)
+  [11/35] e4_vocab_10000000 rep 2 omp-dynamic    T=24     5.852s  rss  6.70 GB  (2 min elapsed, ~4 min left in this experiment)
+  [12/35] e4_vocab_10000000 rep 2 seq            T=1     33.684s  rss  3.28 GB  (2 min elapsed, ~5 min left in this experiment)
+  [13/35] e4_vocab_10000000 rep 2 phoenix        T=24     6.285s  rss  8.73 GB  (2 min elapsed, ~4 min left in this experiment)
+  [14/35] e4_vocab_10000000 rep 2 phoenix        T=8      8.625s  rss  6.62 GB  (3 min elapsed, ~4 min left in this experiment)
+  [15/35] e4_vocab_10000000 rep 3 heavy-dynamic  T=24     5.767s  rss  6.60 GB  (3 min elapsed, ~4 min left in this experiment)
+  [16/35] e4_vocab_10000000 rep 3 phoenix        T=8      8.588s  rss  6.63 GB  (3 min elapsed, ~3 min left in this experiment)
+  [17/35] e4_vocab_10000000 rep 3 omp-dynamic    T=8      8.014s  rss  5.32 GB  (3 min elapsed, ~3 min left in this experiment)
+  [18/35] e4_vocab_10000000 rep 3 phoenix        T=24     6.201s  rss  8.69 GB  (3 min elapsed, ~3 min left in this experiment)
+  [19/35] e4_vocab_10000000 rep 3 heavy-dynamic  T=8      8.106s  rss  5.21 GB  (3 min elapsed, ~3 min left in this experiment)
+  [20/35] e4_vocab_10000000 rep 3 seq            T=1     33.752s  rss  3.28 GB  (4 min elapsed, ~3 min left in this experiment)
+  [21/35] e4_vocab_10000000 rep 3 omp-dynamic    T=24     5.731s  rss  6.73 GB  (4 min elapsed, ~3 min left in this experiment)
+  [22/35] e4_vocab_10000000 rep 4 heavy-dynamic  T=24     5.755s  rss  6.60 GB  (4 min elapsed, ~2 min left in this experiment)
+  [23/35] e4_vocab_10000000 rep 4 phoenix        T=24     6.326s  rss  8.68 GB  (4 min elapsed, ~2 min left in this experiment)
+  [24/35] e4_vocab_10000000 rep 4 omp-dynamic    T=8      8.116s  rss  5.32 GB  (4 min elapsed, ~2 min left in this experiment)
+  [25/35] e4_vocab_10000000 rep 4 phoenix        T=8      8.657s  rss  6.62 GB  (4 min elapsed, ~2 min left in this experiment)
+  [26/35] e4_vocab_10000000 rep 4 seq            T=1     33.798s  rss  3.28 GB  (5 min elapsed, ~2 min left in this experiment)
+  [27/35] e4_vocab_10000000 rep 4 omp-dynamic    T=24     5.738s  rss  6.70 GB  (5 min elapsed, ~2 min left in this experiment)
+  [28/35] e4_vocab_10000000 rep 4 heavy-dynamic  T=8      8.033s  rss  5.21 GB  (5 min elapsed, ~1 min left in this experiment)
+  [29/35] e4_vocab_10000000 rep 5 phoenix        T=24     6.302s  rss  8.69 GB  (5 min elapsed, ~1 min left in this experiment)
+  [30/35] e4_vocab_10000000 rep 5 omp-dynamic    T=24     5.819s  rss  6.70 GB  (5 min elapsed, ~1 min left in this experiment)
+  [31/35] e4_vocab_10000000 rep 5 phoenix        T=8      8.604s  rss  6.64 GB  (6 min elapsed, ~1 min left in this experiment)
+  [32/35] e4_vocab_10000000 rep 5 seq            T=1     33.788s  rss  3.28 GB  (6 min elapsed, ~1 min left in this experiment)
+  [33/35] e4_vocab_10000000 rep 5 omp-dynamic    T=8      8.052s  rss  5.32 GB  (6 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_vocab_10000000 rep 5 heavy-dynamic  T=24     5.757s  rss  6.58 GB  (6 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_vocab_10000000 rep 5 heavy-dynamic  T=8      8.075s  rss  5.21 GB  (7 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    33.752   33.684   33.798    1.00x     1.00x
+heavy-dynamic      8     8.075    8.033    8.106              4.18x
+heavy-dynamic     24     5.767    5.755    5.921              5.85x
+omp-dynamic        8     8.052    7.986    8.116              4.19x
+omp-dynamic       24     5.819    5.731    5.855              5.80x
+phoenix            8     8.606    8.588    8.657              3.92x
+phoenix           24     6.285    6.201    6.326              5.37x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_10000000.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_vocab_10000000_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_len10.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 7.7; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_len_10 rep 1 heavy-dynamic  T=8      4.807s  rss  3.07 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/35] e4_len_10 rep 1 phoenix        T=8      4.786s  rss  3.75 GB  (0 min elapsed, ~3 min left in this experiment)
+  [3/35] e4_len_10 rep 1 seq            T=1     20.631s  rss  2.53 GB  (1 min elapsed, ~6 min left in this experiment)
+  [4/35] e4_len_10 rep 1 omp-dynamic    T=24     3.478s  rss  4.27 GB  (1 min elapsed, ~4 min left in this experiment)
+  [5/35] e4_len_10 rep 1 omp-dynamic    T=8      4.829s  rss  3.19 GB  (1 min elapsed, ~4 min left in this experiment)
+  [6/35] e4_len_10 rep 1 heavy-dynamic  T=24     3.514s  rss  4.16 GB  (1 min elapsed, ~4 min left in this experiment)
+  [7/35] e4_len_10 rep 1 phoenix        T=24     3.194s  rss  5.11 GB  (1 min elapsed, ~3 min left in this experiment)
+  [8/35] e4_len_10 rep 2 heavy-dynamic  T=24     3.507s  rss  4.17 GB  (1 min elapsed, ~3 min left in this experiment)
+  [9/35] e4_len_10 rep 2 heavy-dynamic  T=8      4.841s  rss  3.07 GB  (1 min elapsed, ~3 min left in this experiment)
+  [10/35] e4_len_10 rep 2 omp-dynamic    T=8      4.829s  rss  3.19 GB  (1 min elapsed, ~3 min left in this experiment)
+  [11/35] e4_len_10 rep 2 omp-dynamic    T=24     3.530s  rss  4.28 GB  (1 min elapsed, ~2 min left in this experiment)
+  [12/35] e4_len_10 rep 2 seq            T=1     20.765s  rss  2.53 GB  (1 min elapsed, ~3 min left in this experiment)
+  [13/35] e4_len_10 rep 2 phoenix        T=24     3.185s  rss  5.11 GB  (1 min elapsed, ~3 min left in this experiment)
+  [14/35] e4_len_10 rep 2 phoenix        T=8      4.767s  rss  3.75 GB  (2 min elapsed, ~2 min left in this experiment)
+  [15/35] e4_len_10 rep 3 heavy-dynamic  T=24     3.519s  rss  4.16 GB  (2 min elapsed, ~2 min left in this experiment)
+  [16/35] e4_len_10 rep 3 phoenix        T=8      4.784s  rss  3.75 GB  (2 min elapsed, ~2 min left in this experiment)
+  [17/35] e4_len_10 rep 3 omp-dynamic    T=8      4.810s  rss  3.19 GB  (2 min elapsed, ~2 min left in this experiment)
+  [18/35] e4_len_10 rep 3 phoenix        T=24     3.181s  rss  5.11 GB  (2 min elapsed, ~2 min left in this experiment)
+  [19/35] e4_len_10 rep 3 heavy-dynamic  T=8      4.835s  rss  3.07 GB  (2 min elapsed, ~2 min left in this experiment)
+  [20/35] e4_len_10 rep 3 seq            T=1     20.792s  rss  2.53 GB  (2 min elapsed, ~2 min left in this experiment)
+  [21/35] e4_len_10 rep 3 omp-dynamic    T=24     3.499s  rss  4.28 GB  (2 min elapsed, ~2 min left in this experiment)
+  [22/35] e4_len_10 rep 4 heavy-dynamic  T=24     3.506s  rss  4.16 GB  (2 min elapsed, ~1 min left in this experiment)
+  [23/35] e4_len_10 rep 4 phoenix        T=24     3.231s  rss  5.06 GB  (2 min elapsed, ~1 min left in this experiment)
+  [24/35] e4_len_10 rep 4 omp-dynamic    T=8      4.848s  rss  3.19 GB  (3 min elapsed, ~1 min left in this experiment)
+  [25/35] e4_len_10 rep 4 phoenix        T=8      4.857s  rss  3.79 GB  (3 min elapsed, ~1 min left in this experiment)
+  [26/35] e4_len_10 rep 4 seq            T=1     20.625s  rss  2.53 GB  (3 min elapsed, ~1 min left in this experiment)
+  [27/35] e4_len_10 rep 4 omp-dynamic    T=24     3.490s  rss  4.28 GB  (3 min elapsed, ~1 min left in this experiment)
+  [28/35] e4_len_10 rep 4 heavy-dynamic  T=8      4.827s  rss  3.07 GB  (3 min elapsed, ~1 min left in this experiment)
+  [29/35] e4_len_10 rep 5 phoenix        T=24     3.202s  rss  5.11 GB  (3 min elapsed, ~1 min left in this experiment)
+  [30/35] e4_len_10 rep 5 omp-dynamic    T=24     3.479s  rss  4.26 GB  (3 min elapsed, ~1 min left in this experiment)
+  [31/35] e4_len_10 rep 5 phoenix        T=8      4.845s  rss  3.79 GB  (3 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_len_10 rep 5 seq            T=1     20.442s  rss  2.54 GB  (4 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_len_10 rep 5 omp-dynamic    T=8      4.818s  rss  3.19 GB  (4 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_len_10 rep 5 heavy-dynamic  T=24     3.508s  rss  4.17 GB  (4 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_len_10 rep 5 heavy-dynamic  T=8      4.781s  rss  3.07 GB  (4 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    20.631   20.442   20.792    1.00x     1.00x
+heavy-dynamic      8     4.827    4.781    4.841              4.27x
+heavy-dynamic     24     3.508    3.506    3.519              5.88x
+omp-dynamic        8     4.829    4.810    4.848              4.27x
+omp-dynamic       24     3.490    3.478    3.530              5.91x
+phoenix            8     4.786    4.767    4.857              4.31x
+phoenix           24     3.194    3.181    3.231              6.46x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_10.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_10_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_2M.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 5.3; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_len_100 rep 1 heavy-dynamic  T=8      4.725s  rss  2.72 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/35] e4_len_100 rep 1 phoenix        T=8      4.567s  rss  3.45 GB  (0 min elapsed, ~3 min left in this experiment)
+  [3/35] e4_len_100 rep 1 seq            T=1     20.472s  rss  2.20 GB  (1 min elapsed, ~5 min left in this experiment)
+  [4/35] e4_len_100 rep 1 omp-dynamic    T=24     3.455s  rss  3.95 GB  (1 min elapsed, ~4 min left in this experiment)
+  [5/35] e4_len_100 rep 1 omp-dynamic    T=8      4.747s  rss  2.86 GB  (1 min elapsed, ~4 min left in this experiment)
+  [6/35] e4_len_100 rep 1 heavy-dynamic  T=24     3.436s  rss  3.80 GB  (1 min elapsed, ~3 min left in this experiment)
+  [7/35] e4_len_100 rep 1 phoenix        T=24     3.009s  rss  4.68 GB  (1 min elapsed, ~3 min left in this experiment)
+  [8/35] e4_len_100 rep 2 heavy-dynamic  T=24     3.410s  rss  3.79 GB  (1 min elapsed, ~3 min left in this experiment)
+  [9/35] e4_len_100 rep 2 heavy-dynamic  T=8      4.713s  rss  2.72 GB  (1 min elapsed, ~3 min left in this experiment)
+  [10/35] e4_len_100 rep 2 omp-dynamic    T=8      4.758s  rss  2.86 GB  (1 min elapsed, ~2 min left in this experiment)
+  [11/35] e4_len_100 rep 2 omp-dynamic    T=24     3.435s  rss  3.94 GB  (1 min elapsed, ~2 min left in this experiment)
+  [12/35] e4_len_100 rep 2 seq            T=1     20.293s  rss  2.19 GB  (1 min elapsed, ~3 min left in this experiment)
+  [13/35] e4_len_100 rep 2 phoenix        T=24     2.924s  rss  4.72 GB  (1 min elapsed, ~2 min left in this experiment)
+  [14/35] e4_len_100 rep 2 phoenix        T=8      4.512s  rss  3.41 GB  (2 min elapsed, ~2 min left in this experiment)
+  [15/35] e4_len_100 rep 3 heavy-dynamic  T=24     3.436s  rss  3.79 GB  (2 min elapsed, ~2 min left in this experiment)
+  [16/35] e4_len_100 rep 3 phoenix        T=8      4.582s  rss  3.45 GB  (2 min elapsed, ~2 min left in this experiment)
+  [17/35] e4_len_100 rep 3 omp-dynamic    T=8      4.770s  rss  2.85 GB  (2 min elapsed, ~2 min left in this experiment)
+  [18/35] e4_len_100 rep 3 phoenix        T=24     2.931s  rss  4.71 GB  (2 min elapsed, ~2 min left in this experiment)
+  [19/35] e4_len_100 rep 3 heavy-dynamic  T=8      4.744s  rss  2.72 GB  (2 min elapsed, ~2 min left in this experiment)
+  [20/35] e4_len_100 rep 3 seq            T=1     20.266s  rss  2.19 GB  (2 min elapsed, ~2 min left in this experiment)
+  [21/35] e4_len_100 rep 3 omp-dynamic    T=24     3.438s  rss  3.93 GB  (2 min elapsed, ~2 min left in this experiment)
+  [22/35] e4_len_100 rep 4 heavy-dynamic  T=24     3.418s  rss  3.80 GB  (2 min elapsed, ~1 min left in this experiment)
+  [23/35] e4_len_100 rep 4 phoenix        T=24     2.968s  rss  4.68 GB  (2 min elapsed, ~1 min left in this experiment)
+  [24/35] e4_len_100 rep 4 omp-dynamic    T=8      4.758s  rss  2.85 GB  (3 min elapsed, ~1 min left in this experiment)
+  [25/35] e4_len_100 rep 4 phoenix        T=8      4.538s  rss  3.47 GB  (3 min elapsed, ~1 min left in this experiment)
+  [26/35] e4_len_100 rep 4 seq            T=1     20.272s  rss  2.19 GB  (3 min elapsed, ~1 min left in this experiment)
+  [27/35] e4_len_100 rep 4 omp-dynamic    T=24     3.440s  rss  3.93 GB  (3 min elapsed, ~1 min left in this experiment)
+  [28/35] e4_len_100 rep 4 heavy-dynamic  T=8      4.711s  rss  2.72 GB  (3 min elapsed, ~1 min left in this experiment)
+  [29/35] e4_len_100 rep 5 phoenix        T=24     2.982s  rss  4.71 GB  (3 min elapsed, ~1 min left in this experiment)
+  [30/35] e4_len_100 rep 5 omp-dynamic    T=24     3.429s  rss  3.94 GB  (3 min elapsed, ~1 min left in this experiment)
+  [31/35] e4_len_100 rep 5 phoenix        T=8      4.508s  rss  3.41 GB  (3 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_len_100 rep 5 seq            T=1     20.495s  rss  2.20 GB  (4 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_len_100 rep 5 omp-dynamic    T=8      4.723s  rss  2.85 GB  (4 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_len_100 rep 5 heavy-dynamic  T=24     3.426s  rss  3.79 GB  (4 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_len_100 rep 5 heavy-dynamic  T=8      4.701s  rss  2.72 GB  (4 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    20.293   20.266   20.495    1.00x     1.00x
+heavy-dynamic      8     4.713    4.701    4.744              4.31x
+heavy-dynamic     24     3.426    3.410    3.436              5.92x
+omp-dynamic        8     4.758    4.723    4.770              4.26x
+omp-dynamic       24     3.438    3.429    3.455              5.90x
+phoenix            8     4.538    4.508    4.582              4.47x
+phoenix           24     2.968    2.924    3.009              6.84x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_100.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_100_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_len1000.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 7.3; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_len_1000 rep 1 heavy-dynamic  T=8      4.598s  rss  2.44 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/35] e4_len_1000 rep 1 phoenix        T=8      4.417s  rss  3.20 GB  (0 min elapsed, ~3 min left in this experiment)
+  [3/35] e4_len_1000 rep 1 seq            T=1     20.269s  rss  1.92 GB  (0 min elapsed, ~5 min left in this experiment)
+  [4/35] e4_len_1000 rep 1 omp-dynamic    T=24     3.399s  rss  3.68 GB  (1 min elapsed, ~4 min left in this experiment)
+  [5/35] e4_len_1000 rep 1 omp-dynamic    T=8      4.690s  rss  2.61 GB  (1 min elapsed, ~4 min left in this experiment)
+  [6/35] e4_len_1000 rep 1 heavy-dynamic  T=24     3.343s  rss  3.50 GB  (1 min elapsed, ~3 min left in this experiment)
+  [7/35] e4_len_1000 rep 1 phoenix        T=24     2.876s  rss  4.36 GB  (1 min elapsed, ~3 min left in this experiment)
+  [8/35] e4_len_1000 rep 2 heavy-dynamic  T=24     3.345s  rss  3.50 GB  (1 min elapsed, ~3 min left in this experiment)
+  [9/35] e4_len_1000 rep 2 heavy-dynamic  T=8      4.656s  rss  2.44 GB  (1 min elapsed, ~3 min left in this experiment)
+  [10/35] e4_len_1000 rep 2 omp-dynamic    T=8      4.675s  rss  2.60 GB  (1 min elapsed, ~2 min left in this experiment)
+  [11/35] e4_len_1000 rep 2 omp-dynamic    T=24     3.423s  rss  3.69 GB  (1 min elapsed, ~2 min left in this experiment)
+  [12/35] e4_len_1000 rep 2 seq            T=1     20.619s  rss  1.93 GB  (1 min elapsed, ~3 min left in this experiment)
+  [13/35] e4_len_1000 rep 2 phoenix        T=24     2.892s  rss  4.36 GB  (1 min elapsed, ~2 min left in this experiment)
+  [14/35] e4_len_1000 rep 2 phoenix        T=8      4.354s  rss  3.21 GB  (2 min elapsed, ~2 min left in this experiment)
+  [15/35] e4_len_1000 rep 3 heavy-dynamic  T=24     3.342s  rss  3.50 GB  (2 min elapsed, ~2 min left in this experiment)
+  [16/35] e4_len_1000 rep 3 phoenix        T=8      4.408s  rss  3.18 GB  (2 min elapsed, ~2 min left in this experiment)
+  [17/35] e4_len_1000 rep 3 omp-dynamic    T=8      4.664s  rss  2.60 GB  (2 min elapsed, ~2 min left in this experiment)
+  [18/35] e4_len_1000 rep 3 phoenix        T=24     2.869s  rss  4.31 GB  (2 min elapsed, ~2 min left in this experiment)
+  [19/35] e4_len_1000 rep 3 heavy-dynamic  T=8      4.629s  rss  2.44 GB  (2 min elapsed, ~2 min left in this experiment)
+  [20/35] e4_len_1000 rep 3 seq            T=1     20.181s  rss  1.93 GB  (2 min elapsed, ~2 min left in this experiment)
+  [21/35] e4_len_1000 rep 3 omp-dynamic    T=24     3.403s  rss  3.69 GB  (2 min elapsed, ~2 min left in this experiment)
+  [22/35] e4_len_1000 rep 4 heavy-dynamic  T=24     3.349s  rss  3.50 GB  (2 min elapsed, ~1 min left in this experiment)
+  [23/35] e4_len_1000 rep 4 phoenix        T=24     2.890s  rss  4.36 GB  (2 min elapsed, ~1 min left in this experiment)
+  [24/35] e4_len_1000 rep 4 omp-dynamic    T=8      4.680s  rss  2.61 GB  (2 min elapsed, ~1 min left in this experiment)
+  [25/35] e4_len_1000 rep 4 phoenix        T=8      4.391s  rss  3.18 GB  (3 min elapsed, ~1 min left in this experiment)
+  [26/35] e4_len_1000 rep 4 seq            T=1     20.178s  rss  1.93 GB  (3 min elapsed, ~1 min left in this experiment)
+  [27/35] e4_len_1000 rep 4 omp-dynamic    T=24     3.418s  rss  3.70 GB  (3 min elapsed, ~1 min left in this experiment)
+  [28/35] e4_len_1000 rep 4 heavy-dynamic  T=8      4.693s  rss  2.44 GB  (3 min elapsed, ~1 min left in this experiment)
+  [29/35] e4_len_1000 rep 5 phoenix        T=24     2.882s  rss  4.36 GB  (3 min elapsed, ~1 min left in this experiment)
+  [30/35] e4_len_1000 rep 5 omp-dynamic    T=24     3.402s  rss  3.68 GB  (3 min elapsed, ~1 min left in this experiment)
+  [31/35] e4_len_1000 rep 5 phoenix        T=8      4.408s  rss  3.20 GB  (3 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_len_1000 rep 5 seq            T=1     20.421s  rss  1.92 GB  (4 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_len_1000 rep 5 omp-dynamic    T=8      4.663s  rss  2.61 GB  (4 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_len_1000 rep 5 heavy-dynamic  T=24     3.337s  rss  3.51 GB  (4 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_len_1000 rep 5 heavy-dynamic  T=8      4.670s  rss  2.44 GB  (4 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    20.269   20.178   20.619    1.00x     1.00x
+heavy-dynamic      8     4.656    4.598    4.693              4.35x
+heavy-dynamic     24     3.343    3.337    3.349              6.06x
+omp-dynamic        8     4.675    4.663    4.690              4.34x
+omp-dynamic       24     3.403    3.399    3.423              5.96x
+phoenix            8     4.407    4.354    4.417              4.60x
+phoenix           24     2.882    2.869    2.892              7.03x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_1000.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_1000_summary.csv
+7 configurations x 5 reps = 35 runs on data/zipf_len10000.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 6.8; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/35] e4_len_10000 rep 1 heavy-dynamic  T=8      4.452s  rss  2.12 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/35] e4_len_10000 rep 1 phoenix        T=8      4.179s  rss  2.58 GB  (0 min elapsed, ~2 min left in this experiment)
+  [3/35] e4_len_10000 rep 1 seq            T=1     19.405s  rss  1.65 GB  (0 min elapsed, ~5 min left in this experiment)
+  [4/35] e4_len_10000 rep 1 omp-dynamic    T=24     3.288s  rss  3.36 GB  (1 min elapsed, ~4 min left in this experiment)
+  [5/35] e4_len_10000 rep 1 omp-dynamic    T=8      4.474s  rss  2.32 GB  (1 min elapsed, ~4 min left in this experiment)
+  [6/35] e4_len_10000 rep 1 heavy-dynamic  T=24     3.255s  rss  3.18 GB  (1 min elapsed, ~3 min left in this experiment)
+  [7/35] e4_len_10000 rep 1 phoenix        T=24     2.766s  rss  3.92 GB  (1 min elapsed, ~3 min left in this experiment)
+  [8/35] e4_len_10000 rep 2 heavy-dynamic  T=24     3.244s  rss  3.18 GB  (1 min elapsed, ~3 min left in this experiment)
+  [9/35] e4_len_10000 rep 2 heavy-dynamic  T=8      4.455s  rss  2.12 GB  (1 min elapsed, ~2 min left in this experiment)
+  [10/35] e4_len_10000 rep 2 omp-dynamic    T=8      4.481s  rss  2.32 GB  (1 min elapsed, ~2 min left in this experiment)
+  [11/35] e4_len_10000 rep 2 omp-dynamic    T=24     3.277s  rss  3.37 GB  (1 min elapsed, ~2 min left in this experiment)
+  [12/35] e4_len_10000 rep 2 seq            T=1     19.445s  rss  1.65 GB  (1 min elapsed, ~3 min left in this experiment)
+  [13/35] e4_len_10000 rep 2 phoenix        T=24     2.780s  rss  3.92 GB  (1 min elapsed, ~2 min left in this experiment)
+  [14/35] e4_len_10000 rep 2 phoenix        T=8      4.149s  rss  2.58 GB  (1 min elapsed, ~2 min left in this experiment)
+  [15/35] e4_len_10000 rep 3 heavy-dynamic  T=24     3.262s  rss  3.18 GB  (2 min elapsed, ~2 min left in this experiment)
+  [16/35] e4_len_10000 rep 3 phoenix        T=8      4.161s  rss  2.57 GB  (2 min elapsed, ~2 min left in this experiment)
+  [17/35] e4_len_10000 rep 3 omp-dynamic    T=8      4.462s  rss  2.32 GB  (2 min elapsed, ~2 min left in this experiment)
+  [18/35] e4_len_10000 rep 3 phoenix        T=24     2.797s  rss  3.92 GB  (2 min elapsed, ~2 min left in this experiment)
+  [19/35] e4_len_10000 rep 3 heavy-dynamic  T=8      4.469s  rss  2.12 GB  (2 min elapsed, ~2 min left in this experiment)
+  [20/35] e4_len_10000 rep 3 seq            T=1     19.322s  rss  1.65 GB  (2 min elapsed, ~2 min left in this experiment)
+  [21/35] e4_len_10000 rep 3 omp-dynamic    T=24     3.267s  rss  3.37 GB  (2 min elapsed, ~1 min left in this experiment)
+  [22/35] e4_len_10000 rep 4 heavy-dynamic  T=24     3.258s  rss  3.18 GB  (2 min elapsed, ~1 min left in this experiment)
+  [23/35] e4_len_10000 rep 4 phoenix        T=24     2.773s  rss  3.92 GB  (2 min elapsed, ~1 min left in this experiment)
+  [24/35] e4_len_10000 rep 4 omp-dynamic    T=8      4.490s  rss  2.32 GB  (2 min elapsed, ~1 min left in this experiment)
+  [25/35] e4_len_10000 rep 4 phoenix        T=8      4.169s  rss  2.58 GB  (2 min elapsed, ~1 min left in this experiment)
+  [26/35] e4_len_10000 rep 4 seq            T=1     19.327s  rss  1.65 GB  (3 min elapsed, ~1 min left in this experiment)
+  [27/35] e4_len_10000 rep 4 omp-dynamic    T=24     3.264s  rss  3.37 GB  (3 min elapsed, ~1 min left in this experiment)
+  [28/35] e4_len_10000 rep 4 heavy-dynamic  T=8      4.436s  rss  2.12 GB  (3 min elapsed, ~1 min left in this experiment)
+  [29/35] e4_len_10000 rep 5 phoenix        T=24     2.810s  rss  3.92 GB  (3 min elapsed, ~1 min left in this experiment)
+  [30/35] e4_len_10000 rep 5 omp-dynamic    T=24     3.252s  rss  3.37 GB  (3 min elapsed, ~0 min left in this experiment)
+  [31/35] e4_len_10000 rep 5 phoenix        T=8      4.157s  rss  2.58 GB  (3 min elapsed, ~0 min left in this experiment)
+  [32/35] e4_len_10000 rep 5 seq            T=1     21.135s  rss  1.65 GB  (3 min elapsed, ~0 min left in this experiment)
+  [33/35] e4_len_10000 rep 5 omp-dynamic    T=8      4.475s  rss  2.32 GB  (4 min elapsed, ~0 min left in this experiment)
+  [34/35] e4_len_10000 rep 5 heavy-dynamic  T=24     3.384s  rss  3.19 GB  (4 min elapsed, ~0 min left in this experiment)
+  [35/35] e4_len_10000 rep 5 heavy-dynamic  T=8      4.543s  rss  2.12 GB  (4 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    19.405   19.322   21.135    1.00x     1.00x
+heavy-dynamic      8     4.455    4.436    4.543              4.36x
+heavy-dynamic     24     3.258    3.244    3.384              5.96x
+omp-dynamic        8     4.475    4.462    4.490              4.34x
+omp-dynamic       24     3.267    3.252    3.288              5.94x
+phoenix            8     4.162    4.149    4.179              4.66x
+phoenix           24     2.780    2.766    2.810              6.98x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_10000.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e4_len_10000_summary.csv
+22 configurations x 5 reps = 110 runs on data/zipf_2M.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 5.6; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/110] e6_zipf_2M rep 1 heavy-dynamic  T=16     3.919s  rss  3.31 GB  (0 min elapsed, ~8 min left in this experiment)
+  [2/110] e6_zipf_2M rep 1 seq            T=1     23.089s  rss  2.19 GB  (0 min elapsed, ~25 min left in this experiment)
+  [3/110] e6_zipf_2M rep 1 heavy-dynamic  T=2     13.064s  rss  2.15 GB  (1 min elapsed, ~24 min left in this experiment)
+  [4/110] e6_zipf_2M rep 1 heavy-dynamic  T=8      4.755s  rss  2.72 GB  (1 min elapsed, ~20 min left in this experiment)
+  [5/110] e6_zipf_2M rep 1 omp-dynamic    T=16     3.880s  rss  3.44 GB  (1 min elapsed, ~17 min left in this experiment)
+  [6/110] e6_zipf_2M rep 1 heavy-dynamic  T=1     20.519s  rss  2.04 GB  (1 min elapsed, ~20 min left in this experiment)
+  [7/110] e6_zipf_2M rep 1 phoenix        T=24     2.933s  rss  4.71 GB  (1 min elapsed, ~18 min left in this experiment)
+  [8/110] e6_zipf_2M rep 1 omp-dynamic    T=2     12.850s  rss  2.30 GB  (1 min elapsed, ~19 min left in this experiment)
+  [9/110] e6_zipf_2M rep 1 omp-dynamic    T=12     4.293s  rss  3.16 GB  (2 min elapsed, ~17 min left in this experiment)
+  [10/110] e6_zipf_2M rep 1 omp-dynamic    T=1     20.540s  rss  2.20 GB  (2 min elapsed, ~19 min left in this experiment)
+  [11/110] e6_zipf_2M rep 1 phoenix        T=4      7.488s  rss  3.12 GB  (2 min elapsed, ~18 min left in this experiment)
+  [12/110] e6_zipf_2M rep 1 omp-dynamic    T=8      4.736s  rss  2.85 GB  (2 min elapsed, ~17 min left in this experiment)
+  [13/110] e6_zipf_2M rep 1 phoenix        T=2     12.876s  rss  3.00 GB  (2 min elapsed, ~17 min left in this experiment)
+  [14/110] e6_zipf_2M rep 1 heavy-dynamic  T=24     3.473s  rss  3.80 GB  (2 min elapsed, ~16 min left in this experiment)
+  [15/110] e6_zipf_2M rep 1 phoenix        T=12     3.909s  rss  3.59 GB  (2 min elapsed, ~15 min left in this experiment)
+  [16/110] e6_zipf_2M rep 1 omp-dynamic    T=24     3.440s  rss  3.94 GB  (3 min elapsed, ~15 min left in this experiment)
+  [17/110] e6_zipf_2M rep 1 phoenix        T=1     21.936s  rss  2.96 GB  (3 min elapsed, ~16 min left in this experiment)
+  [18/110] e6_zipf_2M rep 1 phoenix        T=16     3.368s  rss  3.93 GB  (3 min elapsed, ~15 min left in this experiment)
+  [19/110] e6_zipf_2M rep 1 omp-dynamic    T=4      7.591s  rss  2.49 GB  (3 min elapsed, ~15 min left in this experiment)
+  [20/110] e6_zipf_2M rep 1 phoenix        T=8      4.533s  rss  3.41 GB  (3 min elapsed, ~14 min left in this experiment)
+  [21/110] e6_zipf_2M rep 1 heavy-dynamic  T=4      7.896s  rss  2.35 GB  (3 min elapsed, ~14 min left in this experiment)
+  [22/110] e6_zipf_2M rep 1 heavy-dynamic  T=12     4.329s  rss  3.02 GB  (3 min elapsed, ~13 min left in this experiment)
+  [23/110] e6_zipf_2M rep 2 omp-dynamic    T=16     3.894s  rss  3.44 GB  (3 min elapsed, ~13 min left in this experiment)
+  [24/110] e6_zipf_2M rep 2 omp-dynamic    T=2     13.269s  rss  2.30 GB  (4 min elapsed, ~13 min left in this experiment)
+  [25/110] e6_zipf_2M rep 2 phoenix        T=24     3.038s  rss  4.72 GB  (4 min elapsed, ~13 min left in this experiment)
+  [26/110] e6_zipf_2M rep 2 heavy-dynamic  T=4      7.597s  rss  2.35 GB  (4 min elapsed, ~12 min left in this experiment)
+  [27/110] e6_zipf_2M rep 2 phoenix        T=8      4.577s  rss  3.45 GB  (4 min elapsed, ~12 min left in this experiment)
+  [28/110] e6_zipf_2M rep 2 seq            T=1     20.549s  rss  2.19 GB  (4 min elapsed, ~12 min left in this experiment)
+  [29/110] e6_zipf_2M rep 2 heavy-dynamic  T=24     3.421s  rss  3.78 GB  (4 min elapsed, ~12 min left in this experiment)
+  [30/110] e6_zipf_2M rep 2 omp-dynamic    T=12     4.277s  rss  3.16 GB  (4 min elapsed, ~12 min left in this experiment)
+  [31/110] e6_zipf_2M rep 2 phoenix        T=2     12.902s  rss  3.00 GB  (5 min elapsed, ~12 min left in this experiment)
+  [32/110] e6_zipf_2M rep 2 heavy-dynamic  T=1     20.664s  rss  2.04 GB  (5 min elapsed, ~12 min left in this experiment)
+  [33/110] e6_zipf_2M rep 2 heavy-dynamic  T=8      4.769s  rss  2.72 GB  (5 min elapsed, ~12 min left in this experiment)
+  [34/110] e6_zipf_2M rep 2 phoenix        T=12     3.871s  rss  3.57 GB  (5 min elapsed, ~11 min left in this experiment)
+  [35/110] e6_zipf_2M rep 2 heavy-dynamic  T=16     3.867s  rss  3.30 GB  (5 min elapsed, ~11 min left in this experiment)
+  [36/110] e6_zipf_2M rep 2 heavy-dynamic  T=2     12.810s  rss  2.15 GB  (5 min elapsed, ~11 min left in this experiment)
+  [37/110] e6_zipf_2M rep 2 phoenix        T=16     3.400s  rss  3.93 GB  (5 min elapsed, ~11 min left in this experiment)
+  [38/110] e6_zipf_2M rep 2 phoenix        T=4      7.474s  rss  3.13 GB  (6 min elapsed, ~11 min left in this experiment)
+  [39/110] e6_zipf_2M rep 2 omp-dynamic    T=8      4.767s  rss  2.85 GB  (6 min elapsed, ~10 min left in this experiment)
+  [40/110] e6_zipf_2M rep 2 omp-dynamic    T=1     20.693s  rss  2.20 GB  (6 min elapsed, ~11 min left in this experiment)
+  [41/110] e6_zipf_2M rep 2 omp-dynamic    T=24     3.432s  rss  3.95 GB  (6 min elapsed, ~10 min left in this experiment)
+  [42/110] e6_zipf_2M rep 2 heavy-dynamic  T=12     4.283s  rss  3.02 GB  (6 min elapsed, ~10 min left in this experiment)
+  [43/110] e6_zipf_2M rep 2 phoenix        T=1     22.056s  rss  2.96 GB  (7 min elapsed, ~10 min left in this experiment)
+  [44/110] e6_zipf_2M rep 2 omp-dynamic    T=4      7.652s  rss  2.49 GB  (7 min elapsed, ~10 min left in this experiment)
+  [45/110] e6_zipf_2M rep 3 phoenix        T=24     2.928s  rss  4.71 GB  (7 min elapsed, ~10 min left in this experiment)
+  [46/110] e6_zipf_2M rep 3 phoenix        T=8      4.557s  rss  3.44 GB  (7 min elapsed, ~9 min left in this experiment)
+  [47/110] e6_zipf_2M rep 3 omp-dynamic    T=12     4.273s  rss  3.16 GB  (7 min elapsed, ~9 min left in this experiment)
+  [48/110] e6_zipf_2M rep 3 heavy-dynamic  T=12     4.291s  rss  3.02 GB  (7 min elapsed, ~9 min left in this experiment)
+  [49/110] e6_zipf_2M rep 3 omp-dynamic    T=24     3.426s  rss  3.95 GB  (7 min elapsed, ~9 min left in this experiment)
+  [50/110] e6_zipf_2M rep 3 phoenix        T=2     12.900s  rss  3.00 GB  (7 min elapsed, ~9 min left in this experiment)
+  [51/110] e6_zipf_2M rep 3 heavy-dynamic  T=4      7.564s  rss  2.35 GB  (7 min elapsed, ~9 min left in this experiment)
+  [52/110] e6_zipf_2M rep 3 phoenix        T=16     3.631s  rss  3.92 GB  (7 min elapsed, ~8 min left in this experiment)
+  [53/110] e6_zipf_2M rep 3 seq            T=1     22.461s  rss  2.20 GB  (8 min elapsed, ~8 min left in this experiment)
+  [54/110] e6_zipf_2M rep 3 omp-dynamic    T=4      7.601s  rss  2.50 GB  (8 min elapsed, ~8 min left in this experiment)
+  [55/110] e6_zipf_2M rep 3 omp-dynamic    T=1     24.536s  rss  2.20 GB  (8 min elapsed, ~8 min left in this experiment)
+  [56/110] e6_zipf_2M rep 3 phoenix        T=4      7.486s  rss  3.13 GB  (8 min elapsed, ~8 min left in this experiment)
+  [57/110] e6_zipf_2M rep 3 heavy-dynamic  T=24     3.447s  rss  3.80 GB  (9 min elapsed, ~8 min left in this experiment)
+  [58/110] e6_zipf_2M rep 3 heavy-dynamic  T=1     20.853s  rss  2.04 GB  (9 min elapsed, ~8 min left in this experiment)
+  [59/110] e6_zipf_2M rep 3 omp-dynamic    T=2     12.788s  rss  2.30 GB  (9 min elapsed, ~8 min left in this experiment)
+  [60/110] e6_zipf_2M rep 3 phoenix        T=1     21.869s  rss  2.96 GB  (9 min elapsed, ~8 min left in this experiment)
+  [61/110] e6_zipf_2M rep 3 omp-dynamic    T=8      4.757s  rss  2.85 GB  (10 min elapsed, ~8 min left in this experiment)
+  [62/110] e6_zipf_2M rep 3 heavy-dynamic  T=2     12.725s  rss  2.15 GB  (10 min elapsed, ~8 min left in this experiment)
+  [63/110] e6_zipf_2M rep 3 heavy-dynamic  T=8      4.759s  rss  2.72 GB  (10 min elapsed, ~7 min left in this experiment)
+  [64/110] e6_zipf_2M rep 3 heavy-dynamic  T=16     3.869s  rss  3.31 GB  (10 min elapsed, ~7 min left in this experiment)
+  [65/110] e6_zipf_2M rep 3 omp-dynamic    T=16     3.877s  rss  3.44 GB  (10 min elapsed, ~7 min left in this experiment)
+  [66/110] e6_zipf_2M rep 3 phoenix        T=12     3.892s  rss  3.56 GB  (10 min elapsed, ~7 min left in this experiment)
+  [67/110] e6_zipf_2M rep 4 seq            T=1     20.651s  rss  2.20 GB  (10 min elapsed, ~7 min left in this experiment)
+  [68/110] e6_zipf_2M rep 4 omp-dynamic    T=8      4.762s  rss  2.86 GB  (11 min elapsed, ~6 min left in this experiment)
+  [69/110] e6_zipf_2M rep 4 omp-dynamic    T=24     3.440s  rss  3.93 GB  (11 min elapsed, ~6 min left in this experiment)
+  [70/110] e6_zipf_2M rep 4 heavy-dynamic  T=8      4.747s  rss  2.72 GB  (11 min elapsed, ~6 min left in this experiment)
+  [71/110] e6_zipf_2M rep 4 phoenix        T=4      7.451s  rss  3.12 GB  (11 min elapsed, ~6 min left in this experiment)
+  [72/110] e6_zipf_2M rep 4 heavy-dynamic  T=4      7.547s  rss  2.35 GB  (11 min elapsed, ~6 min left in this experiment)
+  [73/110] e6_zipf_2M rep 4 omp-dynamic    T=12     4.270s  rss  3.16 GB  (11 min elapsed, ~6 min left in this experiment)
+  [74/110] e6_zipf_2M rep 4 omp-dynamic    T=16     3.870s  rss  3.43 GB  (11 min elapsed, ~5 min left in this experiment)
+  [75/110] e6_zipf_2M rep 4 phoenix        T=1     21.891s  rss  2.96 GB  (11 min elapsed, ~5 min left in this experiment)
+  [76/110] e6_zipf_2M rep 4 phoenix        T=24     2.941s  rss  4.72 GB  (11 min elapsed, ~5 min left in this experiment)
+  [77/110] e6_zipf_2M rep 4 heavy-dynamic  T=12     4.284s  rss  3.02 GB  (12 min elapsed, ~5 min left in this experiment)
+  [78/110] e6_zipf_2M rep 4 phoenix        T=8      4.579s  rss  3.45 GB  (12 min elapsed, ~5 min left in this experiment)
+  [79/110] e6_zipf_2M rep 4 phoenix        T=12     3.911s  rss  3.57 GB  (12 min elapsed, ~5 min left in this experiment)
+  [80/110] e6_zipf_2M rep 4 omp-dynamic    T=1     20.556s  rss  2.20 GB  (12 min elapsed, ~5 min left in this experiment)
+  [81/110] e6_zipf_2M rep 4 heavy-dynamic  T=24     3.447s  rss  3.80 GB  (12 min elapsed, ~4 min left in this experiment)
+  [82/110] e6_zipf_2M rep 4 heavy-dynamic  T=2     12.698s  rss  2.15 GB  (12 min elapsed, ~4 min left in this experiment)
+  [83/110] e6_zipf_2M rep 4 heavy-dynamic  T=1     20.543s  rss  2.04 GB  (13 min elapsed, ~4 min left in this experiment)
+  [84/110] e6_zipf_2M rep 4 phoenix        T=2     12.837s  rss  3.00 GB  (13 min elapsed, ~4 min left in this experiment)
+  [85/110] e6_zipf_2M rep 4 omp-dynamic    T=2     12.729s  rss  2.30 GB  (13 min elapsed, ~4 min left in this experiment)
+  [86/110] e6_zipf_2M rep 4 phoenix        T=16     3.406s  rss  3.93 GB  (13 min elapsed, ~4 min left in this experiment)
+  [87/110] e6_zipf_2M rep 4 omp-dynamic    T=4      7.593s  rss  2.49 GB  (13 min elapsed, ~4 min left in this experiment)
+  [88/110] e6_zipf_2M rep 4 heavy-dynamic  T=16     3.890s  rss  3.31 GB  (13 min elapsed, ~3 min left in this experiment)
+  [89/110] e6_zipf_2M rep 5 phoenix        T=12     3.912s  rss  3.58 GB  (13 min elapsed, ~3 min left in this experiment)
+  [90/110] e6_zipf_2M rep 5 omp-dynamic    T=1     20.410s  rss  2.21 GB  (14 min elapsed, ~3 min left in this experiment)
+  [91/110] e6_zipf_2M rep 5 seq            T=1     20.429s  rss  2.20 GB  (14 min elapsed, ~3 min left in this experiment)
+  [92/110] e6_zipf_2M rep 5 phoenix        T=1     21.974s  rss  2.96 GB  (15 min elapsed, ~3 min left in this experiment)
+  [93/110] e6_zipf_2M rep 5 heavy-dynamic  T=4      7.551s  rss  2.35 GB  (15 min elapsed, ~3 min left in this experiment)
+  [94/110] e6_zipf_2M rep 5 heavy-dynamic  T=16     3.871s  rss  3.30 GB  (15 min elapsed, ~3 min left in this experiment)
+  [95/110] e6_zipf_2M rep 5 omp-dynamic    T=16     3.873s  rss  3.44 GB  (15 min elapsed, ~2 min left in this experiment)
+  [96/110] e6_zipf_2M rep 5 omp-dynamic    T=12     4.302s  rss  3.16 GB  (15 min elapsed, ~2 min left in this experiment)
+  [97/110] e6_zipf_2M rep 5 heavy-dynamic  T=12     4.306s  rss  3.02 GB  (15 min elapsed, ~2 min left in this experiment)
+  [98/110] e6_zipf_2M rep 5 phoenix        T=4      7.461s  rss  3.12 GB  (15 min elapsed, ~2 min left in this experiment)
+  [99/110] e6_zipf_2M rep 5 heavy-dynamic  T=8      4.782s  rss  2.72 GB  (15 min elapsed, ~2 min left in this experiment)
+  [100/110] e6_zipf_2M rep 5 phoenix        T=16     3.431s  rss  3.93 GB  (15 min elapsed, ~2 min left in this experiment)
+  [101/110] e6_zipf_2M rep 5 heavy-dynamic  T=1     20.567s  rss  2.04 GB  (16 min elapsed, ~1 min left in this experiment)
+  [102/110] e6_zipf_2M rep 5 omp-dynamic    T=2     12.873s  rss  2.30 GB  (16 min elapsed, ~1 min left in this experiment)
+  [103/110] e6_zipf_2M rep 5 phoenix        T=2     12.861s  rss  3.00 GB  (16 min elapsed, ~1 min left in this experiment)
+  [104/110] e6_zipf_2M rep 5 omp-dynamic    T=4      7.575s  rss  2.49 GB  (16 min elapsed, ~1 min left in this experiment)
+  [105/110] e6_zipf_2M rep 5 omp-dynamic    T=24     3.464s  rss  3.95 GB  (16 min elapsed, ~1 min left in this experiment)
+  [106/110] e6_zipf_2M rep 5 heavy-dynamic  T=2     12.632s  rss  2.15 GB  (16 min elapsed, ~1 min left in this experiment)
+  [107/110] e6_zipf_2M rep 5 heavy-dynamic  T=24     3.418s  rss  3.78 GB  (16 min elapsed, ~0 min left in this experiment)
+  [108/110] e6_zipf_2M rep 5 phoenix        T=24     2.936s  rss  4.72 GB  (17 min elapsed, ~0 min left in this experiment)
+  [109/110] e6_zipf_2M rep 5 omp-dynamic    T=8      4.753s  rss  2.85 GB  (17 min elapsed, ~0 min left in this experiment)
+  [110/110] e6_zipf_2M rep 5 phoenix        T=8      4.532s  rss  3.41 GB  (17 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    20.651   20.429   23.089    1.00x     1.00x
+heavy-dynamic      1    20.567   20.519   20.853    1.00x     1.00x
+heavy-dynamic      2    12.725   12.632   13.064    1.62x     1.62x
+heavy-dynamic      4     7.564    7.547    7.896    2.72x     2.73x
+heavy-dynamic      8     4.759    4.747    4.782    4.32x     4.34x
+heavy-dynamic     12     4.291    4.283    4.329    4.79x     4.81x
+heavy-dynamic     16     3.871    3.867    3.919    5.31x     5.33x
+heavy-dynamic     24     3.447    3.418    3.473    5.97x     5.99x
+omp-dynamic        1    20.556   20.410   24.536    1.00x     1.00x
+omp-dynamic        2    12.850   12.729   13.269    1.60x     1.61x
+omp-dynamic        4     7.593    7.575    7.652    2.71x     2.72x
+omp-dynamic        8     4.757    4.736    4.767    4.32x     4.34x
+omp-dynamic       12     4.277    4.270    4.302    4.81x     4.83x
+omp-dynamic       16     3.877    3.870    3.894    5.30x     5.33x
+omp-dynamic       24     3.440    3.426    3.464    5.98x     6.00x
+phoenix            1    21.936   21.869   22.055    1.00x     0.94x
+phoenix            2    12.876   12.837   12.902    1.70x     1.60x
+phoenix            4     7.473    7.452    7.488    2.94x     2.76x
+phoenix            8     4.557    4.532    4.579    4.81x     4.53x
+phoenix           12     3.909    3.871    3.912    5.61x     5.28x
+phoenix           16     3.406    3.368    3.631    6.44x     6.06x
+phoenix           24     2.936    2.928    3.038    7.47x     7.03x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e6_zipf_2M.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e6_zipf_2M_summary.csv
+22 configurations x 5 reps = 110 runs on data/gutenberg.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 7.6; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/110] e6_gutenberg rep 1 heavy-dynamic  T=16     1.306s  rss  2.11 GB  (0 min elapsed, ~3 min left in this experiment)
+  [2/110] e6_gutenberg rep 1 seq            T=1     11.806s  rss  1.98 GB  (0 min elapsed, ~12 min left in this experiment)
+  [3/110] e6_gutenberg rep 1 heavy-dynamic  T=2      5.877s  rss  1.89 GB  (0 min elapsed, ~12 min left in this experiment)
+  [4/110] e6_gutenberg rep 1 heavy-dynamic  T=8      1.879s  rss  1.97 GB  (0 min elapsed, ~10 min left in this experiment)
+  [5/110] e6_gutenberg rep 1 omp-dynamic    T=16     1.398s  rss  2.18 GB  (0 min elapsed, ~8 min left in this experiment)
+  [6/110] e6_gutenberg rep 1 heavy-dynamic  T=1     11.547s  rss  1.87 GB  (1 min elapsed, ~10 min left in this experiment)
+  [7/110] e6_gutenberg rep 1 phoenix        T=24     1.164s  rss  2.52 GB  (1 min elapsed, ~9 min left in this experiment)
+  [8/110] e6_gutenberg rep 1 omp-dynamic    T=2      5.985s  rss  2.01 GB  (1 min elapsed, ~9 min left in this experiment)
+  [9/110] e6_gutenberg rep 1 omp-dynamic    T=12     1.622s  rss  2.15 GB  (1 min elapsed, ~8 min left in this experiment)
+  [10/110] e6_gutenberg rep 1 omp-dynamic    T=1     11.847s  rss  1.98 GB  (1 min elapsed, ~10 min left in this experiment)
+  [11/110] e6_gutenberg rep 1 phoenix        T=4      3.183s  rss  2.26 GB  (1 min elapsed, ~9 min left in this experiment)
+  [12/110] e6_gutenberg rep 1 omp-dynamic    T=8      1.902s  rss  2.09 GB  (1 min elapsed, ~9 min left in this experiment)
+  [13/110] e6_gutenberg rep 1 phoenix        T=2      5.798s  rss  2.19 GB  (1 min elapsed, ~9 min left in this experiment)
+  [14/110] e6_gutenberg rep 1 heavy-dynamic  T=24     1.073s  rss  2.17 GB  (1 min elapsed, ~8 min left in this experiment)
+  [15/110] e6_gutenberg rep 1 phoenix        T=12     1.614s  rss  2.39 GB  (1 min elapsed, ~8 min left in this experiment)
+  [16/110] e6_gutenberg rep 1 omp-dynamic    T=24     1.162s  rss  2.21 GB  (1 min elapsed, ~7 min left in this experiment)
+  [17/110] e6_gutenberg rep 1 phoenix        T=1     11.227s  rss  2.21 GB  (1 min elapsed, ~8 min left in this experiment)
+  [18/110] e6_gutenberg rep 1 phoenix        T=16     1.379s  rss  2.45 GB  (1 min elapsed, ~7 min left in this experiment)
+  [19/110] e6_gutenberg rep 1 omp-dynamic    T=4      3.312s  rss  2.06 GB  (2 min elapsed, ~7 min left in this experiment)
+  [20/110] e6_gutenberg rep 1 phoenix        T=8      1.874s  rss  2.36 GB  (2 min elapsed, ~7 min left in this experiment)
+  [21/110] e6_gutenberg rep 1 heavy-dynamic  T=4      3.180s  rss  1.94 GB  (2 min elapsed, ~7 min left in this experiment)
+  [22/110] e6_gutenberg rep 1 heavy-dynamic  T=12     1.512s  rss  2.04 GB  (2 min elapsed, ~7 min left in this experiment)
+  [23/110] e6_gutenberg rep 2 omp-dynamic    T=16     1.380s  rss  2.19 GB  (2 min elapsed, ~6 min left in this experiment)
+  [24/110] e6_gutenberg rep 2 omp-dynamic    T=2      5.956s  rss  2.01 GB  (2 min elapsed, ~6 min left in this experiment)
+  [25/110] e6_gutenberg rep 2 phoenix        T=24     1.151s  rss  2.49 GB  (2 min elapsed, ~6 min left in this experiment)
+  [26/110] e6_gutenberg rep 2 heavy-dynamic  T=4      3.199s  rss  1.94 GB  (2 min elapsed, ~6 min left in this experiment)
+  [27/110] e6_gutenberg rep 2 phoenix        T=8      1.869s  rss  2.36 GB  (2 min elapsed, ~6 min left in this experiment)
+  [28/110] e6_gutenberg rep 2 seq            T=1     11.671s  rss  1.98 GB  (2 min elapsed, ~6 min left in this experiment)
+  [29/110] e6_gutenberg rep 2 heavy-dynamic  T=24     1.076s  rss  2.16 GB  (2 min elapsed, ~6 min left in this experiment)
+  [30/110] e6_gutenberg rep 2 omp-dynamic    T=12     1.619s  rss  2.14 GB  (2 min elapsed, ~6 min left in this experiment)
+  [31/110] e6_gutenberg rep 2 phoenix        T=2      5.802s  rss  2.19 GB  (2 min elapsed, ~6 min left in this experiment)
+  [32/110] e6_gutenberg rep 2 heavy-dynamic  T=1     11.684s  rss  1.87 GB  (2 min elapsed, ~6 min left in this experiment)
+  [33/110] e6_gutenberg rep 2 heavy-dynamic  T=8      1.872s  rss  1.98 GB  (2 min elapsed, ~6 min left in this experiment)
+  [34/110] e6_gutenberg rep 2 phoenix        T=12     1.612s  rss  2.39 GB  (3 min elapsed, ~6 min left in this experiment)
+  [35/110] e6_gutenberg rep 2 heavy-dynamic  T=16     1.307s  rss  2.10 GB  (3 min elapsed, ~5 min left in this experiment)
+  [36/110] e6_gutenberg rep 2 heavy-dynamic  T=2      5.875s  rss  1.89 GB  (3 min elapsed, ~5 min left in this experiment)
+  [37/110] e6_gutenberg rep 2 phoenix        T=16     1.372s  rss  2.42 GB  (3 min elapsed, ~5 min left in this experiment)
+  [38/110] e6_gutenberg rep 2 phoenix        T=4      3.183s  rss  2.26 GB  (3 min elapsed, ~5 min left in this experiment)
+  [39/110] e6_gutenberg rep 2 omp-dynamic    T=8      1.921s  rss  2.10 GB  (3 min elapsed, ~5 min left in this experiment)
+  [40/110] e6_gutenberg rep 2 omp-dynamic    T=1     11.867s  rss  1.98 GB  (3 min elapsed, ~5 min left in this experiment)
+  [41/110] e6_gutenberg rep 2 omp-dynamic    T=24     1.173s  rss  2.21 GB  (3 min elapsed, ~5 min left in this experiment)
+  [42/110] e6_gutenberg rep 2 heavy-dynamic  T=12     1.505s  rss  2.04 GB  (3 min elapsed, ~5 min left in this experiment)
+  [43/110] e6_gutenberg rep 2 phoenix        T=1     11.319s  rss  2.21 GB  (3 min elapsed, ~5 min left in this experiment)
+  [44/110] e6_gutenberg rep 2 omp-dynamic    T=4      3.301s  rss  2.06 GB  (3 min elapsed, ~5 min left in this experiment)
+  [45/110] e6_gutenberg rep 3 phoenix        T=24     1.151s  rss  2.53 GB  (3 min elapsed, ~5 min left in this experiment)
+  [46/110] e6_gutenberg rep 3 phoenix        T=8      1.867s  rss  2.36 GB  (3 min elapsed, ~5 min left in this experiment)
+  [47/110] e6_gutenberg rep 3 omp-dynamic    T=12     1.614s  rss  2.15 GB  (3 min elapsed, ~5 min left in this experiment)
+  [48/110] e6_gutenberg rep 3 heavy-dynamic  T=12     1.519s  rss  2.04 GB  (3 min elapsed, ~4 min left in this experiment)
+  [49/110] e6_gutenberg rep 3 omp-dynamic    T=24     1.166s  rss  2.22 GB  (3 min elapsed, ~4 min left in this experiment)
+  [50/110] e6_gutenberg rep 3 phoenix        T=2      5.801s  rss  2.19 GB  (4 min elapsed, ~4 min left in this experiment)
+  [51/110] e6_gutenberg rep 3 heavy-dynamic  T=4      3.183s  rss  1.94 GB  (4 min elapsed, ~4 min left in this experiment)
+  [52/110] e6_gutenberg rep 3 phoenix        T=16     1.372s  rss  2.42 GB  (4 min elapsed, ~4 min left in this experiment)
+  [53/110] e6_gutenberg rep 3 seq            T=1     11.719s  rss  1.98 GB  (4 min elapsed, ~4 min left in this experiment)
+  [54/110] e6_gutenberg rep 3 omp-dynamic    T=4      3.264s  rss  2.06 GB  (4 min elapsed, ~4 min left in this experiment)
+  [55/110] e6_gutenberg rep 3 omp-dynamic    T=1     11.921s  rss  1.98 GB  (4 min elapsed, ~4 min left in this experiment)
+  [56/110] e6_gutenberg rep 3 phoenix        T=4      3.211s  rss  2.26 GB  (4 min elapsed, ~4 min left in this experiment)
+  [57/110] e6_gutenberg rep 3 heavy-dynamic  T=24     1.076s  rss  2.16 GB  (4 min elapsed, ~4 min left in this experiment)
+  [58/110] e6_gutenberg rep 3 heavy-dynamic  T=1     11.625s  rss  1.87 GB  (4 min elapsed, ~4 min left in this experiment)
+  [59/110] e6_gutenberg rep 3 omp-dynamic    T=2      6.059s  rss  2.02 GB  (4 min elapsed, ~4 min left in this experiment)
+  [60/110] e6_gutenberg rep 3 phoenix        T=1     11.261s  rss  2.21 GB  (5 min elapsed, ~4 min left in this experiment)
+  [61/110] e6_gutenberg rep 3 omp-dynamic    T=8      1.906s  rss  2.09 GB  (5 min elapsed, ~4 min left in this experiment)
+  [62/110] e6_gutenberg rep 3 heavy-dynamic  T=2      5.914s  rss  1.89 GB  (5 min elapsed, ~4 min left in this experiment)
+  [63/110] e6_gutenberg rep 3 heavy-dynamic  T=8      1.853s  rss  1.97 GB  (5 min elapsed, ~4 min left in this experiment)
+  [64/110] e6_gutenberg rep 3 heavy-dynamic  T=16     1.307s  rss  2.12 GB  (5 min elapsed, ~4 min left in this experiment)
+  [65/110] e6_gutenberg rep 3 omp-dynamic    T=16     1.390s  rss  2.19 GB  (5 min elapsed, ~3 min left in this experiment)
+  [66/110] e6_gutenberg rep 3 phoenix        T=12     1.610s  rss  2.39 GB  (5 min elapsed, ~3 min left in this experiment)
+  [67/110] e6_gutenberg rep 4 seq            T=1     11.680s  rss  1.98 GB  (5 min elapsed, ~3 min left in this experiment)
+  [68/110] e6_gutenberg rep 4 omp-dynamic    T=8      1.927s  rss  2.09 GB  (5 min elapsed, ~3 min left in this experiment)
+  [69/110] e6_gutenberg rep 4 omp-dynamic    T=24     1.148s  rss  2.22 GB  (5 min elapsed, ~3 min left in this experiment)
+  [70/110] e6_gutenberg rep 4 heavy-dynamic  T=8      1.852s  rss  1.97 GB  (5 min elapsed, ~3 min left in this experiment)
+  [71/110] e6_gutenberg rep 4 phoenix        T=4      3.182s  rss  2.32 GB  (5 min elapsed, ~3 min left in this experiment)
+  [72/110] e6_gutenberg rep 4 heavy-dynamic  T=4      3.186s  rss  1.94 GB  (5 min elapsed, ~3 min left in this experiment)
+  [73/110] e6_gutenberg rep 4 omp-dynamic    T=12     1.615s  rss  2.15 GB  (5 min elapsed, ~3 min left in this experiment)
+  [74/110] e6_gutenberg rep 4 omp-dynamic    T=16     1.376s  rss  2.19 GB  (5 min elapsed, ~3 min left in this experiment)
+  [75/110] e6_gutenberg rep 4 phoenix        T=1     11.672s  rss  2.21 GB  (6 min elapsed, ~3 min left in this experiment)
+  [76/110] e6_gutenberg rep 4 phoenix        T=24     1.191s  rss  2.51 GB  (6 min elapsed, ~3 min left in this experiment)
+  [77/110] e6_gutenberg rep 4 heavy-dynamic  T=12     1.519s  rss  2.04 GB  (6 min elapsed, ~2 min left in this experiment)
+  [78/110] e6_gutenberg rep 4 phoenix        T=8      1.872s  rss  2.36 GB  (6 min elapsed, ~2 min left in this experiment)
+  [79/110] e6_gutenberg rep 4 phoenix        T=12     1.620s  rss  2.39 GB  (6 min elapsed, ~2 min left in this experiment)
+  [80/110] e6_gutenberg rep 4 omp-dynamic    T=1     12.066s  rss  1.98 GB  (6 min elapsed, ~2 min left in this experiment)
+  [81/110] e6_gutenberg rep 4 heavy-dynamic  T=24     1.074s  rss  2.16 GB  (6 min elapsed, ~2 min left in this experiment)
+  [82/110] e6_gutenberg rep 4 heavy-dynamic  T=2      5.885s  rss  1.89 GB  (6 min elapsed, ~2 min left in this experiment)
+  [83/110] e6_gutenberg rep 4 heavy-dynamic  T=1     11.673s  rss  1.87 GB  (6 min elapsed, ~2 min left in this experiment)
+  [84/110] e6_gutenberg rep 4 phoenix        T=2      5.808s  rss  2.19 GB  (6 min elapsed, ~2 min left in this experiment)
+  [85/110] e6_gutenberg rep 4 omp-dynamic    T=2      6.014s  rss  2.01 GB  (6 min elapsed, ~2 min left in this experiment)
+  [86/110] e6_gutenberg rep 4 phoenix        T=16     1.387s  rss  2.43 GB  (6 min elapsed, ~2 min left in this experiment)
+  [87/110] e6_gutenberg rep 4 omp-dynamic    T=4      3.327s  rss  2.06 GB  (7 min elapsed, ~2 min left in this experiment)
+  [88/110] e6_gutenberg rep 4 heavy-dynamic  T=16     1.316s  rss  2.11 GB  (7 min elapsed, ~2 min left in this experiment)
+  [89/110] e6_gutenberg rep 5 phoenix        T=12     1.592s  rss  2.39 GB  (7 min elapsed, ~2 min left in this experiment)
+  [90/110] e6_gutenberg rep 5 omp-dynamic    T=1     12.084s  rss  1.98 GB  (7 min elapsed, ~2 min left in this experiment)
+  [91/110] e6_gutenberg rep 5 seq            T=1     12.056s  rss  1.98 GB  (7 min elapsed, ~1 min left in this experiment)
+  [92/110] e6_gutenberg rep 5 phoenix        T=1     11.530s  rss  2.21 GB  (7 min elapsed, ~1 min left in this experiment)
+  [93/110] e6_gutenberg rep 5 heavy-dynamic  T=4      3.206s  rss  1.94 GB  (7 min elapsed, ~1 min left in this experiment)
+  [94/110] e6_gutenberg rep 5 heavy-dynamic  T=16     1.319s  rss  2.11 GB  (7 min elapsed, ~1 min left in this experiment)
+  [95/110] e6_gutenberg rep 5 omp-dynamic    T=16     1.389s  rss  2.19 GB  (7 min elapsed, ~1 min left in this experiment)
+  [96/110] e6_gutenberg rep 5 omp-dynamic    T=12     1.608s  rss  2.15 GB  (7 min elapsed, ~1 min left in this experiment)
+  [97/110] e6_gutenberg rep 5 heavy-dynamic  T=12     1.516s  rss  2.04 GB  (7 min elapsed, ~1 min left in this experiment)
+  [98/110] e6_gutenberg rep 5 phoenix        T=4      3.222s  rss  2.26 GB  (7 min elapsed, ~1 min left in this experiment)
+  [99/110] e6_gutenberg rep 5 heavy-dynamic  T=8      1.866s  rss  1.97 GB  (8 min elapsed, ~1 min left in this experiment)
+  [100/110] e6_gutenberg rep 5 phoenix        T=16     1.447s  rss  2.45 GB  (8 min elapsed, ~1 min left in this experiment)
+  [101/110] e6_gutenberg rep 5 heavy-dynamic  T=1     12.733s  rss  1.87 GB  (8 min elapsed, ~1 min left in this experiment)
+  [102/110] e6_gutenberg rep 5 omp-dynamic    T=2      6.382s  rss  2.01 GB  (8 min elapsed, ~1 min left in this experiment)
+  [103/110] e6_gutenberg rep 5 phoenix        T=2      5.846s  rss  2.20 GB  (8 min elapsed, ~1 min left in this experiment)
+  [104/110] e6_gutenberg rep 5 omp-dynamic    T=4      3.487s  rss  2.06 GB  (8 min elapsed, ~0 min left in this experiment)
+  [105/110] e6_gutenberg rep 5 omp-dynamic    T=24     1.203s  rss  2.21 GB  (8 min elapsed, ~0 min left in this experiment)
+  [106/110] e6_gutenberg rep 5 heavy-dynamic  T=2      6.477s  rss  1.89 GB  (8 min elapsed, ~0 min left in this experiment)
+  [107/110] e6_gutenberg rep 5 heavy-dynamic  T=24     1.076s  rss  2.17 GB  (8 min elapsed, ~0 min left in this experiment)
+  [108/110] e6_gutenberg rep 5 phoenix        T=24     1.151s  rss  2.53 GB  (8 min elapsed, ~0 min left in this experiment)
+  [109/110] e6_gutenberg rep 5 omp-dynamic    T=8      1.939s  rss  2.10 GB  (8 min elapsed, ~0 min left in this experiment)
+  [110/110] e6_gutenberg rep 5 phoenix        T=8      1.875s  rss  2.36 GB  (8 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    11.719   11.671   12.056    1.00x     1.00x
+heavy-dynamic      1    11.672   11.547   12.732    1.00x     1.00x
+heavy-dynamic      2     5.885    5.875    6.477    1.98x     1.99x
+heavy-dynamic      4     3.186    3.180    3.206    3.66x     3.68x
+heavy-dynamic      8     1.865    1.852    1.879    6.26x     6.28x
+heavy-dynamic     12     1.516    1.506    1.519    7.70x     7.73x
+heavy-dynamic     16     1.307    1.306    1.319    8.93x     8.97x
+heavy-dynamic     24     1.075    1.073    1.076   10.85x    10.90x
+omp-dynamic        1    11.921   11.847   12.084    1.00x     0.98x
+omp-dynamic        2     6.014    5.956    6.382    1.98x     1.95x
+omp-dynamic        4     3.312    3.264    3.487    3.60x     3.54x
+omp-dynamic        8     1.921    1.903    1.939    6.21x     6.10x
+omp-dynamic       12     1.615    1.608    1.622    7.38x     7.25x
+omp-dynamic       16     1.389    1.376    1.398    8.59x     8.44x
+omp-dynamic       24     1.166    1.148    1.203   10.23x    10.05x
+phoenix            1    11.319   11.227   11.672    1.00x     1.03x
+phoenix            2     5.802    5.798    5.846    1.95x     2.02x
+phoenix            4     3.183    3.182    3.222    3.56x     3.68x
+phoenix            8     1.873    1.867    1.875    6.04x     6.26x
+phoenix           12     1.612    1.592    1.620    7.02x     7.27x
+phoenix           16     1.379    1.372    1.447    8.21x     8.50x
+phoenix           24     1.151    1.151    1.191    9.83x    10.18x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e6_gutenberg.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e6_gutenberg_summary.csv
+22 configurations x 5 reps = 110 runs on data/wiki.txt
+pinning order: 8 P-cores (1 thread each), 8 E-cores, then hyperthreads: [0, 2, 4, 6, 8, 10, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 1, 3, 5, 7, 9, 11, 13, 15]
+WARNING: load average is 4.0; something else is running and will distort timings
+warm-up run (page cache)...
+  [1/110] e6_wiki rep 1 heavy-dynamic  T=16     2.607s  rss  4.04 GB  (0 min elapsed, ~6 min left in this experiment)
+  [2/110] e6_wiki rep 1 seq            T=1     17.363s  rss  3.76 GB  (0 min elapsed, ~19 min left in this experiment)
+  [3/110] e6_wiki rep 1 heavy-dynamic  T=2     10.445s  rss  3.58 GB  (1 min elapsed, ~19 min left in this experiment)
+  [4/110] e6_wiki rep 1 heavy-dynamic  T=8      3.476s  rss  3.88 GB  (1 min elapsed, ~16 min left in this experiment)
+  [5/110] e6_wiki rep 1 omp-dynamic    T=16     2.726s  rss  4.28 GB  (1 min elapsed, ~14 min left in this experiment)
+  [6/110] e6_wiki rep 1 heavy-dynamic  T=1     18.299s  rss  3.49 GB  (1 min elapsed, ~17 min left in this experiment)
+  [7/110] e6_wiki rep 1 phoenix        T=24     2.689s  rss  5.60 GB  (1 min elapsed, ~15 min left in this experiment)
+  [8/110] e6_wiki rep 1 omp-dynamic    T=2     10.379s  rss  3.86 GB  (1 min elapsed, ~15 min left in this experiment)
+  [9/110] e6_wiki rep 1 omp-dynamic    T=12     3.074s  rss  4.29 GB  (1 min elapsed, ~14 min left in this experiment)
+  [10/110] e6_wiki rep 1 omp-dynamic    T=1     17.521s  rss  3.79 GB  (2 min elapsed, ~16 min left in this experiment)
+  [11/110] e6_wiki rep 1 phoenix        T=4      6.464s  rss  4.82 GB  (2 min elapsed, ~15 min left in this experiment)
+  [12/110] e6_wiki rep 1 omp-dynamic    T=8      3.583s  rss  4.16 GB  (2 min elapsed, ~14 min left in this experiment)
+  [13/110] e6_wiki rep 1 phoenix        T=2     11.343s  rss  4.86 GB  (2 min elapsed, ~14 min left in this experiment)
+  [14/110] e6_wiki rep 1 heavy-dynamic  T=24     2.255s  rss  4.23 GB  (2 min elapsed, ~14 min left in this experiment)
+  [15/110] e6_wiki rep 1 phoenix        T=12     3.680s  rss  5.03 GB  (2 min elapsed, ~13 min left in this experiment)
+  [16/110] e6_wiki rep 1 omp-dynamic    T=24     2.322s  rss  4.47 GB  (2 min elapsed, ~12 min left in this experiment)
+  [17/110] e6_wiki rep 1 phoenix        T=1     18.381s  rss  4.54 GB  (2 min elapsed, ~13 min left in this experiment)
+  [18/110] e6_wiki rep 1 phoenix        T=16     3.173s  rss  5.20 GB  (2 min elapsed, ~13 min left in this experiment)
+  [19/110] e6_wiki rep 1 omp-dynamic    T=4      5.942s  rss  4.04 GB  (3 min elapsed, ~12 min left in this experiment)
+  [20/110] e6_wiki rep 1 phoenix        T=8      3.878s  rss  5.05 GB  (3 min elapsed, ~12 min left in this experiment)
+  [21/110] e6_wiki rep 1 heavy-dynamic  T=4      5.861s  rss  3.76 GB  (3 min elapsed, ~12 min left in this experiment)
+  [22/110] e6_wiki rep 1 heavy-dynamic  T=12     2.997s  rss  4.05 GB  (3 min elapsed, ~11 min left in this experiment)
+  [23/110] e6_wiki rep 2 omp-dynamic    T=16     2.683s  rss  4.28 GB  (3 min elapsed, ~11 min left in this experiment)
+  [24/110] e6_wiki rep 2 omp-dynamic    T=2     10.354s  rss  3.86 GB  (3 min elapsed, ~11 min left in this experiment)
+  [25/110] e6_wiki rep 2 phoenix        T=24     2.684s  rss  5.55 GB  (3 min elapsed, ~11 min left in this experiment)
+  [26/110] e6_wiki rep 2 heavy-dynamic  T=4      5.869s  rss  3.76 GB  (3 min elapsed, ~10 min left in this experiment)
+  [27/110] e6_wiki rep 2 phoenix        T=8      3.881s  rss  5.09 GB  (3 min elapsed, ~10 min left in this experiment)
+  [28/110] e6_wiki rep 2 seq            T=1     16.937s  rss  3.77 GB  (4 min elapsed, ~10 min left in this experiment)
+  [29/110] e6_wiki rep 2 heavy-dynamic  T=24     2.258s  rss  4.22 GB  (4 min elapsed, ~10 min left in this experiment)
+  [30/110] e6_wiki rep 2 omp-dynamic    T=12     3.079s  rss  4.29 GB  (4 min elapsed, ~10 min left in this experiment)
+  [31/110] e6_wiki rep 2 phoenix        T=2     11.326s  rss  4.86 GB  (4 min elapsed, ~10 min left in this experiment)
+  [32/110] e6_wiki rep 2 heavy-dynamic  T=1     18.305s  rss  3.49 GB  (4 min elapsed, ~10 min left in this experiment)
+  [33/110] e6_wiki rep 2 heavy-dynamic  T=8      3.473s  rss  3.88 GB  (4 min elapsed, ~10 min left in this experiment)
+  [34/110] e6_wiki rep 2 phoenix        T=12     3.646s  rss  5.03 GB  (4 min elapsed, ~10 min left in this experiment)
+  [35/110] e6_wiki rep 2 heavy-dynamic  T=16     2.610s  rss  4.04 GB  (4 min elapsed, ~9 min left in this experiment)
+  [36/110] e6_wiki rep 2 heavy-dynamic  T=2     10.338s  rss  3.58 GB  (5 min elapsed, ~9 min left in this experiment)
+  [37/110] e6_wiki rep 2 phoenix        T=16     3.149s  rss  5.19 GB  (5 min elapsed, ~9 min left in this experiment)
+  [38/110] e6_wiki rep 2 phoenix        T=4      6.432s  rss  4.82 GB  (5 min elapsed, ~9 min left in this experiment)
+  [39/110] e6_wiki rep 2 omp-dynamic    T=8      3.599s  rss  4.16 GB  (5 min elapsed, ~9 min left in this experiment)
+  [40/110] e6_wiki rep 2 omp-dynamic    T=1     17.307s  rss  3.79 GB  (5 min elapsed, ~9 min left in this experiment)
+  [41/110] e6_wiki rep 2 omp-dynamic    T=24     2.333s  rss  4.46 GB  (5 min elapsed, ~9 min left in this experiment)
+  [42/110] e6_wiki rep 2 heavy-dynamic  T=12     2.982s  rss  4.04 GB  (5 min elapsed, ~8 min left in this experiment)
+  [43/110] e6_wiki rep 2 phoenix        T=1     18.294s  rss  4.54 GB  (6 min elapsed, ~9 min left in this experiment)
+  [44/110] e6_wiki rep 2 omp-dynamic    T=4      5.951s  rss  4.05 GB  (6 min elapsed, ~8 min left in this experiment)
+  [45/110] e6_wiki rep 3 phoenix        T=24     2.678s  rss  5.55 GB  (6 min elapsed, ~8 min left in this experiment)
+  [46/110] e6_wiki rep 3 phoenix        T=8      3.903s  rss  5.09 GB  (6 min elapsed, ~8 min left in this experiment)
+  [47/110] e6_wiki rep 3 omp-dynamic    T=12     3.089s  rss  4.29 GB  (6 min elapsed, ~8 min left in this experiment)
+  [48/110] e6_wiki rep 3 heavy-dynamic  T=12     2.994s  rss  4.05 GB  (6 min elapsed, ~8 min left in this experiment)
+  [49/110] e6_wiki rep 3 omp-dynamic    T=24     2.328s  rss  4.46 GB  (6 min elapsed, ~7 min left in this experiment)
+  [50/110] e6_wiki rep 3 phoenix        T=2     11.313s  rss  4.86 GB  (6 min elapsed, ~7 min left in this experiment)
+  [51/110] e6_wiki rep 3 heavy-dynamic  T=4      5.873s  rss  3.76 GB  (6 min elapsed, ~7 min left in this experiment)
+  [52/110] e6_wiki rep 3 phoenix        T=16     3.119s  rss  5.19 GB  (6 min elapsed, ~7 min left in this experiment)
+  [53/110] e6_wiki rep 3 seq            T=1     17.481s  rss  3.76 GB  (7 min elapsed, ~7 min left in this experiment)
+  [54/110] e6_wiki rep 3 omp-dynamic    T=4      5.949s  rss  4.04 GB  (7 min elapsed, ~7 min left in this experiment)
+  [55/110] e6_wiki rep 3 omp-dynamic    T=1     17.529s  rss  3.79 GB  (7 min elapsed, ~7 min left in this experiment)
+  [56/110] e6_wiki rep 3 phoenix        T=4      6.462s  rss  4.82 GB  (7 min elapsed, ~7 min left in this experiment)
+  [57/110] e6_wiki rep 3 heavy-dynamic  T=24     2.270s  rss  4.23 GB  (7 min elapsed, ~7 min left in this experiment)
+  [58/110] e6_wiki rep 3 heavy-dynamic  T=1     18.302s  rss  3.49 GB  (7 min elapsed, ~7 min left in this experiment)
+  [59/110] e6_wiki rep 3 omp-dynamic    T=2     10.390s  rss  3.86 GB  (8 min elapsed, ~7 min left in this experiment)
+  [60/110] e6_wiki rep 3 phoenix        T=1     18.288s  rss  4.54 GB  (8 min elapsed, ~7 min left in this experiment)
+  [61/110] e6_wiki rep 3 omp-dynamic    T=8      3.595s  rss  4.16 GB  (8 min elapsed, ~6 min left in this experiment)
+  [62/110] e6_wiki rep 3 heavy-dynamic  T=2     10.431s  rss  3.58 GB  (8 min elapsed, ~6 min left in this experiment)
+  [63/110] e6_wiki rep 3 heavy-dynamic  T=8      3.482s  rss  3.88 GB  (8 min elapsed, ~6 min left in this experiment)
+  [64/110] e6_wiki rep 3 heavy-dynamic  T=16     2.634s  rss  4.04 GB  (8 min elapsed, ~6 min left in this experiment)
+  [65/110] e6_wiki rep 3 omp-dynamic    T=16     2.717s  rss  4.28 GB  (8 min elapsed, ~6 min left in this experiment)
+  [66/110] e6_wiki rep 3 phoenix        T=12     3.658s  rss  5.03 GB  (8 min elapsed, ~6 min left in this experiment)
+  [67/110] e6_wiki rep 4 seq            T=1     17.453s  rss  3.77 GB  (9 min elapsed, ~6 min left in this experiment)
+  [68/110] e6_wiki rep 4 omp-dynamic    T=8      3.599s  rss  4.16 GB  (9 min elapsed, ~5 min left in this experiment)
+  [69/110] e6_wiki rep 4 omp-dynamic    T=24     2.366s  rss  4.46 GB  (9 min elapsed, ~5 min left in this experiment)
+  [70/110] e6_wiki rep 4 heavy-dynamic  T=8      3.462s  rss  3.88 GB  (9 min elapsed, ~5 min left in this experiment)
+  [71/110] e6_wiki rep 4 phoenix        T=4      6.445s  rss  4.83 GB  (9 min elapsed, ~5 min left in this experiment)
+  [72/110] e6_wiki rep 4 heavy-dynamic  T=4      5.881s  rss  3.75 GB  (9 min elapsed, ~5 min left in this experiment)
+  [73/110] e6_wiki rep 4 omp-dynamic    T=12     3.074s  rss  4.28 GB  (9 min elapsed, ~5 min left in this experiment)
+  [74/110] e6_wiki rep 4 omp-dynamic    T=16     2.647s  rss  4.28 GB  (9 min elapsed, ~4 min left in this experiment)
+  [75/110] e6_wiki rep 4 phoenix        T=1     18.315s  rss  4.54 GB  (10 min elapsed, ~4 min left in this experiment)
+  [76/110] e6_wiki rep 4 phoenix        T=24     2.645s  rss  5.56 GB  (10 min elapsed, ~4 min left in this experiment)
+  [77/110] e6_wiki rep 4 heavy-dynamic  T=12     2.979s  rss  4.05 GB  (10 min elapsed, ~4 min left in this experiment)
+  [78/110] e6_wiki rep 4 phoenix        T=8      3.878s  rss  5.09 GB  (10 min elapsed, ~4 min left in this experiment)
+  [79/110] e6_wiki rep 4 phoenix        T=12     3.662s  rss  5.03 GB  (10 min elapsed, ~4 min left in this experiment)
+  [80/110] e6_wiki rep 4 omp-dynamic    T=1     17.656s  rss  3.78 GB  (10 min elapsed, ~4 min left in this experiment)
+  [81/110] e6_wiki rep 4 heavy-dynamic  T=24     2.292s  rss  4.23 GB  (10 min elapsed, ~4 min left in this experiment)
+  [82/110] e6_wiki rep 4 heavy-dynamic  T=2     10.432s  rss  3.58 GB  (10 min elapsed, ~4 min left in this experiment)
+  [83/110] e6_wiki rep 4 heavy-dynamic  T=1     18.201s  rss  3.49 GB  (11 min elapsed, ~3 min left in this experiment)
+  [84/110] e6_wiki rep 4 phoenix        T=2     11.340s  rss  4.86 GB  (11 min elapsed, ~3 min left in this experiment)
+  [85/110] e6_wiki rep 4 omp-dynamic    T=2     10.408s  rss  3.86 GB  (11 min elapsed, ~3 min left in this experiment)
+  [86/110] e6_wiki rep 4 phoenix        T=16     3.233s  rss  5.21 GB  (11 min elapsed, ~3 min left in this experiment)
+  [87/110] e6_wiki rep 4 omp-dynamic    T=4      5.939s  rss  4.04 GB  (11 min elapsed, ~3 min left in this experiment)
+  [88/110] e6_wiki rep 4 heavy-dynamic  T=16     2.603s  rss  4.04 GB  (11 min elapsed, ~3 min left in this experiment)
+  [89/110] e6_wiki rep 5 phoenix        T=12     3.678s  rss  5.03 GB  (11 min elapsed, ~3 min left in this experiment)
+  [90/110] e6_wiki rep 5 omp-dynamic    T=1     17.531s  rss  3.79 GB  (12 min elapsed, ~3 min left in this experiment)
+  [91/110] e6_wiki rep 5 seq            T=1     17.433s  rss  3.77 GB  (12 min elapsed, ~2 min left in this experiment)
+  [92/110] e6_wiki rep 5 phoenix        T=1     18.428s  rss  4.54 GB  (12 min elapsed, ~2 min left in this experiment)
+  [93/110] e6_wiki rep 5 heavy-dynamic  T=4      5.893s  rss  3.76 GB  (12 min elapsed, ~2 min left in this experiment)
+  [94/110] e6_wiki rep 5 heavy-dynamic  T=16     2.605s  rss  4.04 GB  (12 min elapsed, ~2 min left in this experiment)
+  [95/110] e6_wiki rep 5 omp-dynamic    T=16     2.720s  rss  4.28 GB  (12 min elapsed, ~2 min left in this experiment)
+  [96/110] e6_wiki rep 5 omp-dynamic    T=12     3.070s  rss  4.29 GB  (12 min elapsed, ~2 min left in this experiment)
+  [97/110] e6_wiki rep 5 heavy-dynamic  T=12     2.992s  rss  4.05 GB  (13 min elapsed, ~2 min left in this experiment)
+  [98/110] e6_wiki rep 5 phoenix        T=4      6.454s  rss  4.82 GB  (13 min elapsed, ~2 min left in this experiment)
+  [99/110] e6_wiki rep 5 heavy-dynamic  T=8      3.494s  rss  3.88 GB  (13 min elapsed, ~1 min left in this experiment)
+  [100/110] e6_wiki rep 5 phoenix        T=16     3.222s  rss  5.19 GB  (13 min elapsed, ~1 min left in this experiment)
+  [101/110] e6_wiki rep 5 heavy-dynamic  T=1     18.337s  rss  3.49 GB  (13 min elapsed, ~1 min left in this experiment)
+  [102/110] e6_wiki rep 5 omp-dynamic    T=2     10.398s  rss  3.86 GB  (13 min elapsed, ~1 min left in this experiment)
+  [103/110] e6_wiki rep 5 phoenix        T=2     11.308s  rss  4.86 GB  (13 min elapsed, ~1 min left in this experiment)
+  [104/110] e6_wiki rep 5 omp-dynamic    T=4      5.914s  rss  4.03 GB  (14 min elapsed, ~1 min left in this experiment)
+  [105/110] e6_wiki rep 5 omp-dynamic    T=24     2.326s  rss  4.46 GB  (14 min elapsed, ~1 min left in this experiment)
+  [106/110] e6_wiki rep 5 heavy-dynamic  T=2     10.412s  rss  3.58 GB  (14 min elapsed, ~1 min left in this experiment)
+  [107/110] e6_wiki rep 5 heavy-dynamic  T=24     2.253s  rss  4.22 GB  (14 min elapsed, ~0 min left in this experiment)
+  [108/110] e6_wiki rep 5 phoenix        T=24     2.678s  rss  5.57 GB  (14 min elapsed, ~0 min left in this experiment)
+  [109/110] e6_wiki rep 5 omp-dynamic    T=8      3.601s  rss  4.16 GB  (14 min elapsed, ~0 min left in this experiment)
+  [110/110] e6_wiki rep 5 phoenix        T=8      3.884s  rss  5.05 GB  (14 min elapsed, ~0 min left in this experiment)
+
+variant            T  median s      min      max  scaling practical
+seq                1    17.433   16.937   17.481    1.00x     1.00x
+heavy-dynamic      1    18.302   18.201   18.337    1.00x     0.95x
+heavy-dynamic      2    10.431   10.338   10.445    1.75x     1.67x
+heavy-dynamic      4     5.873    5.862    5.893    3.12x     2.97x
+heavy-dynamic      8     3.476    3.462    3.494    5.27x     5.02x
+heavy-dynamic     12     2.992    2.979    2.997    6.12x     5.83x
+heavy-dynamic     16     2.607    2.603    2.634    7.02x     6.69x
+heavy-dynamic     24     2.258    2.253    2.292    8.11x     7.72x
+omp-dynamic        1    17.529   17.307   17.656    1.00x     0.99x
+omp-dynamic        2    10.390   10.354   10.408    1.69x     1.68x
+omp-dynamic        4     5.942    5.913    5.950    2.95x     2.93x
+omp-dynamic        8     3.599    3.583    3.601    4.87x     4.84x
+omp-dynamic       12     3.074    3.070    3.089    5.70x     5.67x
+omp-dynamic       16     2.717    2.647    2.726    6.45x     6.42x
+omp-dynamic       24     2.328    2.322    2.366    7.53x     7.49x
+phoenix            1    18.316   18.288   18.428    1.00x     0.95x
+phoenix            2    11.326   11.308   11.343    1.62x     1.54x
+phoenix            4     6.454    6.432    6.464    2.84x     2.70x
+phoenix            8     3.881    3.877    3.903    4.72x     4.49x
+phoenix           12     3.663    3.646    3.680    5.00x     4.76x
+phoenix           16     3.173    3.119    3.233    5.77x     5.50x
+phoenix           24     2.678    2.645    2.689    6.84x     6.51x
+
+raw: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e6_wiki.jsonl
+summary: /home/tren/Desktop/CUDA/Parallel Project/inverted-index/results/e6_wiki_summary.csv

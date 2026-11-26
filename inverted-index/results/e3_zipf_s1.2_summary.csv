@@ -1,0 +1,6 @@
+variant,threads,runs,median_s,min_s,max_s,scaling_speedup,practical_speedup
+seq,1,5,9.8289,9.7261,9.8597,1.0,1.0
+heavy-dynamic,8,5,2.1366,2.1157,2.1482,,4.6
+heavy-dynamic,24,5,1.4211,1.4061,1.4356,,6.916
+omp-dynamic,8,5,2.1831,2.1764,2.1842,,4.502
+omp-dynamic,24,5,1.4618,1.4408,1.465,,6.724

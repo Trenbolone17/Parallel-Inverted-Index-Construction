@@ -1,0 +1,9 @@
+variant,threads,runs,median_s,min_s,max_s,scaling_speedup,practical_speedup
+omp-dynamic,8,5,3.5904,3.5743,3.5969,,
+omp-dynamic,24,5,2.3201,2.3128,2.3234,,
+sample 0.1%,8,5,3.4532,3.4369,3.4793,,
+sample 0.1%,24,5,2.2629,2.2479,2.3018,,
+sample 1%,8,5,3.4666,3.4617,3.5005,,
+sample 1%,24,5,2.2575,2.2282,2.2729,,
+sample 10%,8,5,3.6289,3.6147,3.6496,,
+sample 10%,24,5,2.3351,2.3255,2.3505,,
