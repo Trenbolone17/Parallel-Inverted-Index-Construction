@@ -27,7 +27,34 @@ PLAN.md           plan, design decisions and dated progress log with all results
 
 - **Compiler:** a C++20 compiler with OpenMP. Tested with GCC 16.2.1 and libgomp on Linux.
 - **Python 3.12** (for datasets and figures), with pyarrow, numpy, pandas and matplotlib. Tested with pyarrow 26.0.1, numpy 2.5.5, pandas 3.1.1 and matplotlib 3.11.2.
-- **Optional:** `git`, to fetch Phoenix++ for `make phoenix`; LLVM's OpenMP runtime, for `make tsan`; a Chromium-based browser, to print the report (`report/build.sh`).
+- **Optional:** `git`, to fetch Phoenix++ for `make phoenix`; LLVM's OpenMP runtime, for `make tsan`.
+
+## Datasets
+
+**Download: [Google Drive folder](https://drive.google.com/drive/folders/1jMJhfT0rGFCVyRQ_BsZYel7MI44Wak44?usp=drive_link).** Put the files in `inverted-index/data/`, then decompress them with `gunzip *.gz`.
+
+| File | Contents | Size |
+|---|---|---|
+| `gutenberg.txt` (+ `.meta.json`) | 4,976 Project Gutenberg books (PG-19, shards 0–3), one book per line, tokenized | 1.73 GB |
+| `wiki.txt` (+ `.meta.json`) | first paragraph of 6,407,814 English Wikipedia articles (dump 2023-11-01), tokenized | 1.68 GB |
+| `zipf_2M.txt` | synthetic: 2M documents of about 100 words, Zipf s = 1, vocabulary 1M | 0.71 GB |
+| `gutenberg_test.txt`, `wiki_1shard.txt` (+ `.meta.json`) | small samples for quick runs (100 books; 156k paragraphs) | 38 MB, 47 MB |
+
+To check the files after decompressing, run `sha256sum -c` in `inverted-index/data/` with these lines:
+
+```
+09a33f117096592019f700492782dee81c47cdaa3bbaa4763f593fa239f55b04  gutenberg.txt
+0bee59009b24f8d07aabcb8d95762342e6844bbe6f411648c952c671baa073ee  wiki.txt
+62f7d3a46f94ab036987fdd8de04fd0280c883e6b77995e781728ff56c2bdb39  zipf_2M.txt
+384c6536c9fbd7d26d564d3ddd39edc5d02fc339cb736db30567c1ae75a4ddd8  gutenberg_test.txt
+dd42c30f0450e52fa91e58f0c090a01f195abb27ab9b4c5b9d1fb5b109c72093  wiki_1shard.txt
+```
+
+**Not on the Drive, because the scripts regenerate them:**
+- **Synthetic corpora:** `bench/experiments.sh` generates the other synthetic corpora used for the skew, vocabulary and document-length sweeps. `bin/gen_zipf` is deterministic, so `zipf_2M.txt` also comes out byte-for-byte the same: `bin/gen_zipf --docs 2000000 --vocab 1000000 --zipf 1.0 --len 100 --seed 7 --out data/zipf_2M.txt`.
+- **25% and 50% subsets:** `bench/experiments.sh sizes` takes every 4th or 2nd line of the full corpora.
+
+`tools/fetch_corpus.py` can rebuild the two real corpora from Hugging Face (see Usage), but the hosted datasets may change. The Drive copies are the exact files the results were measured on.
 
 ## Build and test
 
@@ -137,13 +164,6 @@ How the harness measures:
 
 Run benchmarks only on AC power with nothing else running, including the dataset download. Never mix results from different machines on one curve.
 
-To rebuild the report and the slide charts from the results (from the repository root):
-
-```sh
-report/build.sh                                              # figures + report/report.pdf
-inverted-index/.venv/bin/python presentation/make_charts.py  # presentation/charts/*.png
-```
-
 ## Input and output contract
 
 **Input** (details in [inverted-index/include/corpus.hpp](inverted-index/include/corpus.hpp)):
@@ -177,6 +197,24 @@ To add a builder (paths under `inverted-index/`):
 2. Add a branch in `src/invidx.cpp`.
 3. Add the source file to `BUILDERS` in the Makefile.
 4. Add its name to `ALGOS` in `tests/run_tests.sh`; `algo_args` maps test variant names to flags.
+
+## Attribution
+
+- **Phoenix++** (J. Talbot, R. M. Yoo, C. Kozyrakis; Stanford University, BSD license) is used unmodified as the baseline. `make phoenix` fetches it at a pinned commit, and it is not redistributed. Our application on top of it is `baselines/phoenix_index.cpp`.
+- **Datasets:** PG-19 (Rae et al., ICLR 2020; Project Gutenberg books published before 1919), from Hugging Face `emozilla/pg19`, and English Wikipedia (Wikimedia Foundation, CC BY-SA 4.0), from Hugging Face `wikimedia/wikipedia`, dump 20231101.en.
+- **Hash finalizer:** `fmix64` in `include/hash.hpp` and `tools/gen_zipf.cpp` is MurmurHash3's 64-bit finalizer (Austin Appleby, public domain).
+- Everything else (index format, builders, tests, corpus generator, benchmark scripts, figures) was written for this project. The use of AI tools and each member's contribution are stated in the report, section "Attribution and use of AI tools".
+
+## Report and slide sources
+
+The report is `report/report.html`, printed to PDF by `report/build.sh` (needs a Chromium-based browser). The slide charts are drawn by `presentation/make_charts.py`. Both read `inverted-index/results/`. From the repository root:
+
+```sh
+report/build.sh                                              # figures + report/report.pdf
+inverted-index/.venv/bin/python presentation/make_charts.py  # presentation/charts/*.png
+```
+
+`./make_submission.sh` assembles the submission package (`submission/CS_F422_Project23.zip`) from the last commit.
 
 ## Status
 

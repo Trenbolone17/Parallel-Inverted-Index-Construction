@@ -1,2 +1,4 @@
 # Course lecture slides (instructor material): kept locally, not redistributed
 Slides/
+# assembled by make_submission.sh
+submission/

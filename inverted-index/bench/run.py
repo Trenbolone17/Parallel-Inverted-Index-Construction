@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Benchmark harness: pinned, repeated, shuffled runs of bin/invidx.
 
-Measurement protocol (PLAN.md section 5):
+Measurement protocol (README.md, section Benchmarks):
   - Each run is a fresh process, so peak RSS is clean per configuration.
   - One untimed warm-up run per corpus loads it into the page cache; load I/O is
     timed separately by invidx anyway.

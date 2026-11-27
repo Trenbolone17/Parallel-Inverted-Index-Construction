@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Reproduces the report's experiments. Run from inverted-index/ on AC power with
-# nothing else running (not even the dataset download). See PLAN.md section 5.
+# nothing else running (not even the dataset download). See README.md, section Benchmarks.
 #
 #   bench/experiments.sh e1      # E1/E2 strong scaling + phases, 3 corpora, D2 and D3 (~45 min)
 #   bench/experiments.sh sizes   # E1 at 25% and 50% of each corpus (~20 min)
@@ -18,6 +18,7 @@
 #   data/wiki.txt      tools/fetch_corpus.py wiki --out data/wiki.txt
 set -euo pipefail
 cd "$(dirname "$0")/.."
+mkdir -p data results
 PY=.venv/bin/python
 THREADS=${THREADS:-1,2,4,8,12,16,24}
 REPS=${REPS:-5}

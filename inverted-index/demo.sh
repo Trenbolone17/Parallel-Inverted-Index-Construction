@@ -55,6 +55,7 @@ if [ -z "$CORPUS" ]; then
         CORPUS=data/wiki.txt
     else
         CORPUS=data/demo_zipf.txt
+        mkdir -p data
         [ -s "$CORPUS" ] || bin/gen_zipf --docs 2000000 --vocab 1000000 --zipf 1.0 --len 100 --seed 7 --out "$CORPUS"
     fi
 fi
